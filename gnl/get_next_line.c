@@ -6,62 +6,60 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 15:00:34 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/01/19 15:00:36 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/01/21 16:03:59 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_new_line(char **s, char **line, int fd, int ret)
+static int	create_line(char **strings, char **line, int fd)
 {
 	char	*tmp;
-	int		len;
+	int		l;
 
-	len = 0;
-	while (s[fd][len] != '\n' && s[fd][len] != '\0')
-		len++;
-	if (s[fd][len] == '\n')
+	l = 0;
+	while (strings[fd][l] != '\n' && strings[fd][l])
+		l++;
+	if (strings[fd][l] == '\n')
 	{
-		*line = ft_strsub(s[fd], 0, len);
-		tmp = ft_strdup(s[fd] + len + 1);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (s[fd][0] == '\0')
-			ft_strdel(&s[fd]);
+		*line = ft_strsub(strings[fd], 0, l);
+		tmp = ft_strdup(strings[fd] + l + 1);
+		free(strings[fd]);
+		strings[fd] = tmp;
+		if (!strings[fd][0])
+			ft_strdel(&strings[fd]);
 	}
-	else if (s[fd][len] == '\0')
+	else
 	{
-		if (ret == BUFF_SIZE)
-			return (get_next_line(fd, line));
-		*line = ft_strdup(s[fd]);
-		ft_strdel(&s[fd]);
+		*line = ft_strdup(strings[fd]);
+		ft_strdel(&strings[fd]);
 	}
 	return (1);
 }
 
-int	get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
-	static char	*s[255];
+	static char	*strings[255];
 	char		buf[BUFF_SIZE + 1];
 	char		*tmp;
 	int			ret;
 
-	if (fd < 0 || line == NULL)
+	if (fd < 0 || !line)
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		if (s[fd] == NULL)
-			s[fd] = ft_strnew(1);
-		tmp = ft_strjoin(s[fd], buf);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (ft_strchr(buf, '\n'))
+		if (!strings[fd])
+			strings[fd] = ft_strnew(1);
+		tmp = ft_strjoin(strings[fd], buf);
+		free(strings[fd]);
+		strings[fd] = tmp;
+		if (ft_strchr(strings[fd], '\n'))
 			break ;
 	}
 	if (ret < 0)
 		return (-1);
-	else if (ret == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
+	else if (ret == 0 && (!strings[fd] || !strings[fd][0]))
 		return (0);
-	return (ft_new_line(s, line, fd, ret));
+	return (create_line(strings, line, fd));
 }
