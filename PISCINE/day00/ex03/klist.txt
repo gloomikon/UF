@@ -1,0 +1,7 @@
+Credentials cache: API:037E1CA7-8D34-46EB-B13F-D53408E7B7EC
+        Principal: mzhurba@UNIT.UA
+
+  Issued                Expires               Principal
+Jul  9 17:55:33 2018  Jul 10 03:55:33 2018  krbtgt/UNIT.UA@UNIT.UA
+Jul  9 17:59:54 2018  Jul 10 03:55:33 2018  ldap/ldap.unit.ua@UNIT.UA
+Jul  9 18:50:11 2018  Jul 10 03:55:33 2018  host/vogsphere-2.unit.ua@UNIT.UA
