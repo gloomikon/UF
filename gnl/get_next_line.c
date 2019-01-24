@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 15:00:34 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/01/21 16:03:59 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/01/23 13:53:51 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ static int	create_line(char **strings, char **line, int fd)
 
 int			get_next_line(const int fd, char **line)
 {
-	static char	*strings[255];
-	char		buf[BUFF_SIZE + 1];
+	static char	*strings[2147483648];
+	char		*buf;
 	char		*tmp;
 	int			ret;
 
-	if (fd < 0 || !line)
+	if (fd < 0 || !line || BUFF_SIZE <= 0 ||
+			!(buf = (char*)malloc(BUFF_SIZE + 1)))
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
@@ -57,6 +58,7 @@ int			get_next_line(const int fd, char **line)
 		if (ft_strchr(strings[fd], '\n'))
 			break ;
 	}
+	free(buf);
 	if (ret < 0)
 		return (-1);
 	else if (ret == 0 && (!strings[fd] || !strings[fd][0]))
