@@ -20,8 +20,9 @@ typedef	struct s_dlist
 	struct s_dlist *prev;
 }				t_dlist;
 
-//t_piece ft_read_piece(int fd);
+t_piece ft_read_piece(int fd);
 t_dlist *ft_create_list(int fd);
+void ft_print_piece(t_piece piece);
 //int	piece_fits(t_vector position, t_piece tetrimino, char **square);
 //int	put_piece(t_vector position, t_piece tetrimino, char **square);
 //int	fit(t_vector position, t_piece tetrimino, char **square);

@@ -1,4 +1,7 @@
 #include "fillit.h"
+#include <stdio.h>
+
+void ft_ddel(t_dlist **head);
 
 t_vector ft_create_vector_from_coords(int x, int y)
 {
@@ -20,6 +23,13 @@ void ft_vector_for_piece(int x, int y, t_vector *firstPoint, int *points, t_piec
     else
         coords = ft_create_vector_from_coords(x - firstPoint->x, y - firstPoint->y);
     curr->coords[*points] = coords;
+}
+
+void ft_print_piece(t_piece piece)
+{
+    for (int i = 0; i < 4; i++)
+        printf("%d %d\n", piece.coords[i].x, piece.coords[i].y);
+    printf("\n");
 }
 
 t_piece ft_read_piece(int fd)
@@ -44,30 +54,50 @@ t_piece ft_read_piece(int fd)
                 if (line[j] == '#')
                     ft_vector_for_piece(j, i, &firstPoint, &points, &curr);
         }
+        if (ret)
+            free(line);
     }
-    free(line);
+    if ((ret = get_next_line(fd, &line)) == 1)
+        free(line);
     return curr;    
 }
 
 t_dlist *ft_create_list(int fd)
 {
-    t_dlist *start;
-    t_dlist *curr;
-    t_dlist *prev;
-    t_piece piece;
+    t_dlist *head;
+    t_dlist *iter;
+    t_piece figurka;
 
-    start = (t_dlist*)malloc(sizeof(t_dlist*));
-    curr = start;
-    prev = NULL;
-    piece = ft_read_piece(fd);
-    while (!(piece.coords[0].x == -1 && piece.coords[0].y == -1))
+    if (!(head = (t_dlist*)malloc(sizeof(*head))))
+        return (NULL);
+    head->prev = NULL;
+    // head->next = NULL;
+    iter = head;
+    figurka = ft_read_piece(fd);
+    while (!(figurka.coords[0].x == -1 && figurka.coords[0].y == -1))
     {
-        curr->tet = piece;
-        curr->prev = prev;
-        curr->next = (t_dlist*)malloc(sizeof(t_dlist*));
-        prev = curr;
-        curr = curr->next;
-        piece = ft_read_piece(fd);
+        iter->tet = figurka;
+        if (!(iter->next = (t_dlist*)malloc(sizeof(*iter->next))))
+            return (NULL);
+        iter->next->prev = iter;
+        iter = iter->next;
+        figurka = ft_read_piece(fd);
     }
-    return (start);
+    iter->prev->next = NULL;
+    free(iter);
+    return (head);
+}
+
+void ft_ddel(t_dlist **head)
+{
+    t_dlist *curr = *head;
+    t_dlist *tmp;
+    
+    while (curr)
+    {
+        tmp = curr;
+        curr = curr->next;
+        free(tmp);
+    }
+    *head = NULL;
 }
