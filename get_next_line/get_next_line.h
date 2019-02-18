@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 11:10:59 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/08 16:47:15 by mzhurba          ###   ########.fr       */
+/*   Created: 2018/11/16 11:38:08 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/02/07 12:47:58 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 32
 
-void	ft_memdel(void **ap)
+# include "libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+
+int				get_next_line(const int fd, char **line);
+
+typedef struct	s_gnl
 {
-	if (ap)
-	{
-		free(*ap);
-		*ap = NULL;
-	}
-}
+	char	*rests[INT_MAX];
+	char	**curr;
+	char	*buf;
+}				t_gnl;
+
+#endif
