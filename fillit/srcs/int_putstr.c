@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_size.c                                      :+:      :+:    :+:   */
+/*   int_putstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 17:17:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/01 13:36:02 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/02/14 17:32:00 by tpokalch          #+#    #+#             */
+/*   Updated: 2019/02/14 17:55:24 by tpokalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-size_t	ft_lst_size(t_list *alst)
+int		int_putstr(char *s, int fd)
 {
-	if (alst)
-		return (1 + ft_lst_size(alst->next));
+	int i;
+
+	i = 0;
+	close(fd);
+	while (*(s + i) != '\0')
+	{
+		write(1, s + i, 1);
+		i++;
+	}
 	return (0);
 }

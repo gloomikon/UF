@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_push_back.c                                 :+:      :+:    :+:   */
+/*   ft_putarr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 16:36:59 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/01 13:33:04 by mzhurba          ###   ########.fr       */
+/*   Created: 2018/11/10 16:23:33 by tpokalch          #+#    #+#             */
+/*   Updated: 2018/11/11 22:08:32 by tpokalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	ft_lst_push_back(t_list **alst, t_list *new)
+void	ft_putarr(char **arr)
 {
-	t_list	*list;
+	int j;
 
-	if (alst == NULL || new == NULL)
-		return ;
-	list = *alst;
-	if (list)
+	j = 0;
+	while (*(arr + j))
 	{
-		while (list->next)
-			list = list->next;
-		list->next = new;
+		ft_putstr((*(arr + j)));
+		j++;
+		write(1, "\n", 1);
 	}
-	else
-		*alst = new;
 }

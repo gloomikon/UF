@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   piece.h                                            :+:      :+:    :+:   */
+/*   create_vector_from_coords.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/24 12:37:19 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/01/24 12:40:00 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/02/16 12:50:27 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/02/16 12:50:50 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIECE_H
-# define PIECE_H
+#include "fillit.h"
 
-typedef struct	s_coords
+t_vector	create_vector_from_coords(int x, int y)
 {
-	int	x;
-	int y;
-}				t_coords;
+	t_vector	coords;
 
-typedef struct	s_piece
-{
-	t_coords	crds[4];
-}				t_piece;
-
-#endif
+	coords.x = x;
+	coords.y = y;
+	return (coords);
+}

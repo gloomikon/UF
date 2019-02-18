@@ -3,68 +3,101 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 18:09:08 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/08 16:50:58 by mzhurba          ###   ########.fr       */
+/*   Created: 2018/11/01 13:55:05 by tpokalch          #+#    #+#             */
+/*   Updated: 2018/11/20 20:58:04 by tpokalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 #include "libft.h"
 
-static size_t	ft_count_words(char const *s, char c)
+static int		ft_words(char const *s, char c, int n)
 {
-	size_t		words;
-	char		*tmp;
-
-	words = 0;
-	tmp = (char*)s;
-	while (*tmp)
-	{
-		if (*tmp != c && (*(tmp - 1) == c || (tmp - 1) < s))
-			words++;
-		tmp++;
-	}
-	return (words);
-}
-
-static int		ft_copy_str(char const *s, char c, size_t words,
-				char **res)
-{
-	size_t	i;
-	size_t	len_str;
-	char	*ptr;
+	int	f;
+	int	i;
 
 	i = 0;
-	len_str = 0;
-	ptr = (char*)s;
-	while (i < words)
+	f = 0;
+	while (*(s + i) != '\0')
 	{
-		if (*ptr != c && *ptr)
-			len_str++;
-		else if (len_str)
+		if (*(s + i) == c)
+			f = 0;
+		else
+			f = 1;
+		if (f == 1)
 		{
-			if (!(res[i++] = ft_strndup((char*)(ptr - len_str), len_str)))
-				return (1);
-			len_str = 0;
+			n++;
+			while (*(s + i) != '\0' && *(s + i) != c)
+				i++;
 		}
-		ptr++;
+		else
+		{
+			while (*(s + i) == c)
+				i++;
+		}
 	}
-	return (0);
+	return (n);
+}
+
+static int		ft_full(char const *s, char **r, char c)
+{
+	int	i;
+	int	k;
+	int	j;
+
+	k = 0;
+	i = 0;
+	j = -1;
+	while (*(s + i) != '\0')
+	{
+		if (*(s + i) == c)
+			i++;
+		else
+		{
+			j++;
+			k = 0;
+			while (*(s + i) != c && *(s + i) != '\0')
+			{
+				*(*(r + j) + k) = *(s + i);
+				i++;
+				k++;
+			}
+			*(*(r + j) + k) = '\0';
+		}
+	}
+	return (j);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char		**res;
-	size_t		words;
+	int		i;
+	size_t	l;
+	int		n;
+	int		j;
+	char	**r;
 
-	if (s == NULL)
+	j = 0;
+	n = 0;
+	i = 0;
+	if (!s)
 		return (NULL);
-	words = ft_count_words(s, c);
-	if ((res = (char**)malloc(sizeof(char**) * (words + 1))) == NULL)
-		return (NULL);
-	if (ft_copy_str(s, c, words, res))
-		return (NULL);
-	res[words] = NULL;
-	return (res);
+	l = ft_strlen(s);
+	n = ft_words(s, c, n);
+	r = (char**)malloc((n + 1) * sizeof(char *));
+	if (r == 0)
+		return (0);
+	while (i <= n)
+	{
+		if (!(*(r + i) = (char *)malloc((l + 1) * sizeof(char))))
+			return (NULL);
+		i++;
+	}
+	j = ft_full(s, r, c);
+	r[j + 1] = NULL;
+	return (r);
 }

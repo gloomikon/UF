@@ -3,38 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/26 15:55:31 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/05 11:16:24 by mzhurba          ###   ########.fr       */
+/*   Created: 2018/11/09 19:43:05 by tpokalch          #+#    #+#             */
+/*   Updated: 2018/11/19 21:46:58 by tpokalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-int	ft_atoi(const char *str)
+static long int	number(char *str)
 {
-	size_t	i;
-	int		nbr;
-	int		neg;
+	int			i;
+	long int	ret;
 
-	nbr = 0;
-	neg = 0;
 	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\n') || (str[i] == '\t') ||
-			(str[i] == '\r') || (str[i] == '\v') || (str[i] == '\f'))
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while ((str[i] >= '0') && (str[i] <= '9'))
+	ret = 0;
+	while (*(str + i) >= '0' && *(str + i) <= '9')
 	{
-		nbr = nbr * 10 + (int)str[i] - (int)'0';
+		ret = ret * 10 + (*(str + i) - '0');
 		i++;
 	}
-	if (neg)
-		return (-nbr);
-	else
-		return (nbr);
+	return (ret);
+}
+
+int				ft_atoi(char *str)
+{
+	int i;
+
+	i = 0;
+	while (*(str + i) == ' ' || *(str + i) == '\n' || *(str + i) == '\t'
+			|| *(str + i) == '\v' || *(str + i) == '\r' || *(str + i) == '\f')
+	{
+		i++;
+	}
+	if (*(str + i) == '-')
+	{
+		if (-(int)number(str + i + 1) >= 0)
+			return (0);
+		return (-(int)number(str + i + 1));
+	}
+	else if (*(str + i) == '+')
+	{
+		if ((int)number(str + i + 1) < 0)
+			return (-1);
+		return ((int)number((str + i + 1)));
+	}
+	if ((int)number((str + i)) < 0)
+		return (-1);
+	return ((int)number(str + i));
 }
