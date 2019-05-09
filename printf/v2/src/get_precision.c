@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_tag.c                                          :+:      :+:    :+:   */
+/*   get_precision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 17:42:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/09 17:05:02 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/05/09 17:09:11 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/05/09 17:13:37 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-void	get_tag(const char *restrict format, t_pf_env *e)
+void	get_precision(const char *restrict format, t_pf_env *e)
 {
-	int	i;
-	int	tmp;
-
-	init_flag(&e->flag);
-	e->flag.f &= ~SM_NO_MOD;
-	e->tag.tag = 0;
-	i = 0;
-	if (IS_NUM(format[e->i]))
+	if (e->flag.prec >= 0)
 	{
-		tmp = ft_atoi(format + e->i);
-		while (IS_NUM(format[e->i + i]))
-			i++;
-		if (format[e->i + i] == '$')
-		{
-			e->tag.tag = 1;
-			e->tag.pos = tmp;
-			e->i += i + 1;
-		}
+		++e->i;
+		return ;
+	}
+	if (format[e->i] == '.' && format[e->i + 1] == '*')
+	{
+		e->flag.prec = va_arg(e->ap[0], int);
+		e->i += 2;
+	}
+	else if (format[e->i] == '.')
+	{
+		++e->i;
+		e->flag.prec = ft_atoi(format + e->i);
+		while (IS_NUM(format[e->i]))
+			++e->i;
 	}
 }

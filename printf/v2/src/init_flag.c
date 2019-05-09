@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:48:48 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/08 17:57:00 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/05/09 17:15:02 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_flag(t_pf_flag *flag)
 {
 	flag->f = 0;
-	flag->neg = 0;
+	//flag->neg = 0;
 	flag->prec = -1;
 	flag->width = 0;
 }

@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_tag.c                                          :+:      :+:    :+:   */
+/*   get_width.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 17:42:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/09 17:05:02 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/05/09 17:06:24 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/05/09 17:08:29 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-void	get_tag(const char *restrict format, t_pf_env *e)
+void	get_width(t_pf_env *e)
 {
-	int	i;
-	int	tmp;
-
-	init_flag(&e->flag);
-	e->flag.f &= ~SM_NO_MOD;
-	e->tag.tag = 0;
-	i = 0;
-	if (IS_NUM(format[e->i]))
+	e->flag.width = va_arg(e->ap[0], int);
+	if (e->flag.width < 0)
 	{
-		tmp = ft_atoi(format + e->i);
-		while (IS_NUM(format[e->i + i]))
-			i++;
-		if (format[e->i + i] == '$')
-		{
-			e->tag.tag = 1;
-			e->tag.pos = tmp;
-			e->i += i + 1;
-		}
+		e->flag.width = -e->flag.width;
+		e->flag.f |= F_MINUS;
 	}
 }
