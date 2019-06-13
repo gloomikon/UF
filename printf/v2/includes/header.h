@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/09 19:34:54 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/13 14:03:24 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void				get_flag(const char *restrict format, t_pf_env *e);
 void				get_mod(const char *restrict format, t_pf_env *e);
 void				get_width(t_pf_env *e);
 void				get_precision(const char *restrict format, t_pf_env *e);
-void				get_spec(const char *restrict format, t_pf_env *e)
+void				get_spec(const char *restrict format, t_pf_env *e);
 void				init_flag(t_pf_flag *flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 18:02:58 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/09 19:28:54 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/13 14:18:36 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	get_flag(const char *restrict format, t_pf_env *e)
 	while (ft_strchr(FLAGS, format[e->i]))
 	{
 		format[e->i] >= 'L' && format[e->i] <= 'z' ? get_mod(format, e) : 0;
-		format[e->i] == ' ' ? e->flag.f |= F_SPACE : 0;
+		format[e->i] == ' ' ? e->flag.f |= F_SPACE : 0; // сдвиги влево переписать в одну строку
 		format[e->i] == '-' ? e->flag.f |= F_MINUS : 0;
 		format[e->i] == '+' ? e->flag.f |= F_PLUS : 0;
 		format[e->i] == '#' ? e->flag.f |= F_HASH : 0;
