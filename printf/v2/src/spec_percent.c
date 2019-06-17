@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_precision.c                                    :+:      :+:    :+:   */
+/*   spec_percent.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 17:09:11 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/17 13:37:29 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/06/17 14:49:51 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/06/17 14:54:57 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-void	get_precision(const char *restrict format, t_pf_env *e)
+void	spec_percent(t_pf_env *e)
 {
-	if (e->flag.prec >= 0)
+	if (e->flag.f & F_MINUS)
 	{
-		++e->i;
-		return ;
+		e->ret += write(e->fd, "%", 1);
+		while (e->flag.width-- > 1)
+			e->ret += write(e->fd, " ", 1);
 	}
-	if (format[e->i] == '.' && format[e->i + 1] == '*')
+	else
 	{
-		e->flag.prec = va_arg(e->ap[0], int);
-		e->i += 2;
+		while (e->flag.width-- > 1)
+			e->ret += ((e->flag.f & F_ZERO) ?
+			write(e->fd, "0", 1) : write(e->fd, " ", 1));
+		e->ret += write(e->fd, "%", 1);
 	}
-	else if (format[e->i] == '.')
-	{
-		++e->i;
-		e->flag.prec = ft_atoi(format + e->i);
-		while (IS_NUM(format[e->i]))
-			++e->i;
-	}
+	++e->i;
 }
