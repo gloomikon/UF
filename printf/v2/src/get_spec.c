@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/17 15:37:51 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:42:06 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	get_spec(const char *restrict format, t_pf_env *e)
 {
 	if (IS_PER(format[e->i]))
 		spec_percent(e);
-	// else if (IS_INT(format[e->i]) && !(e->flag.f & SM_Z))
-	// 	spec_int(e);
+	else if (IS_INT(format[e->i]) && !(e->flag.f & SM_Z))
+		spec_int(e);
 	// else if (IS_UINT(format[e->i]) || (IS_INT(format[e->i]) &&
 	// (e->flag.f & SM_Z)))
 	// 	spec_unsint(e, format[e->i]);

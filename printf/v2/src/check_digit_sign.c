@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spec_percent.c                                     :+:      :+:    :+:   */
+/*   check_digit_sign.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/17 14:49:51 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/19 18:34:01 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/06/19 17:12:22 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/06/19 17:17:56 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
-void	spec_percent(t_pf_env *e)
+void	check_digit_sign(t_pf_env *e)
 {
-	if (e->flag.f & F_MINUS)
+	char *tmp;
+
+	if (e->out[0] == '-')
 	{
-		e->ret += write(e->fd, "%", 1);
-		while (e->flag.width-- > 1)
-			e->ret += write(e->fd, " ", 1);
+		tmp = ft_strdup(e->out + 1);
+		ft_strdel(&e->out);
+		e->flag.f &= ~(F_SPACE | F_PLUS);
+		e->flag.f |= F_NEGATIVE;
 	}
-	else
-	{
-		while (e->flag.width-- > 1)
-			e->ret += ((e->flag.f & F_ZERO) ?
-			write(e->fd, "0", 1) : write(e->fd, " ", 1));
-		e->ret += write(e->fd, "%", 1);
-	}
-	++e->i;
 }

@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/17 15:37:20 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/19 18:42:38 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define F_PLUS		(1 << 2)
 # define F_MINUS	(1 << 3)
 # define F_ZERO		(1 << 4)
+# define F_NEGATIVE (1 << 5)
 
 /*
 ** This is used to save size modifiers
@@ -58,16 +59,16 @@
 # define SM_T		(1 << 14)
 # define SM_Z		(1 << 15)
 
-typedef struct		s_pf_tag
-{
-	int				tag;
-	int				pos;
-}					t_pf_tag;
+// typedef struct		s_pf_tag
+// {
+// 	int				tag;
+// 	int				pos;
+// }					t_pf_tag;
 
 typedef struct		s_pf_flag
 {
 	uint16_t		f;
-	int				neg;
+//	int				neg;
 	int				prec;
 	int				width;
 }					t_pf_flag;
@@ -76,7 +77,7 @@ typedef struct		s_pf_env
 {
 	va_list			ap[2];
 	char			*out;
-	t_pf_tag		tag;
+	int				tag;
 	t_pf_flag		flag;
 	int				fd;
 	int				i;
@@ -97,10 +98,18 @@ void				get_width(t_pf_env *e);
 void				get_precision(const char *restrict format, t_pf_env *e);
 void				init_flag(t_pf_flag *flag);
 
+void				init_int_arg(t_pf_env *e, long *tmp);
+void	print_digit(t_pf_env *e);
+void				check_digit_sign(t_pf_env *e);
+void				check_digit_prec(t_pf_env *e);
+void				print_digit_sign(t_pf_env *e);
+void				print_digit_width(t_pf_env *e); //?
+
 /*
 ** Output functions
 */
 
 void				spec_percent(t_pf_env *e);
+void				spec_int(t_pf_env *e);
 
 #endif

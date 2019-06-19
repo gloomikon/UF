@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:22:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/08 17:39:31 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/19 14:06:00 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		ft_printf(const char *restrict format, ...)
 	{
 		if (format[e.i] == '{')
 			check_settings(format, &e);
-		else if (format[e.i] == '%' && format[e.i] != '%')
+		else if (format[e.i] == '%' && format[e.i + 1] != '%')
 			print_conversion(format, &e);
-		else if (format[e.i] == '%' && format[e.i] == '%')
+		else if (format[e.i] == '%' && format[e.i + 1] == '%')
 		{
 			e.ret += write(e.fd, "%", 1);
 			e.i += 2;

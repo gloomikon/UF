@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:42:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/09 17:05:02 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/19 18:42:40 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	get_tag(const char *restrict format, t_pf_env *e)
 
 	init_flag(&e->flag);
 	e->flag.f &= ~SM_NO_MOD;
-	e->tag.tag = 0;
 	i = 0;
 	if (IS_NUM(format[e->i]))
 	{
@@ -28,8 +27,7 @@ void	get_tag(const char *restrict format, t_pf_env *e)
 			i++;
 		if (format[e->i + i] == '$')
 		{
-			e->tag.tag = 1;
-			e->tag.pos = tmp;
+			e->tag = tmp;
 			e->i += i + 1;
 		}
 	}
