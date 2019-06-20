@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_mod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 19:31:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/17 13:33:10 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/20 15:49:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_mod(const char *restrict format, t_pf_env *e)
 {
-	if (!(e->flag.f & SM_NO_MOD)) //not sure if everywhere or not
+	if ((e->flag.f & SM_NO_MOD)) //not sure if everywhere or not
 	{								// тут тоже можно сократить код
 		if (format[e->i] == 'h' && format[e->i + 1] != 'h')
 			e->flag.f |= SM_H;

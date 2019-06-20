@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_tag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:42:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/19 18:42:40 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/20 12:06:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 void	get_tag(const char *restrict format, t_pf_env *e)
 {
@@ -18,7 +18,7 @@ void	get_tag(const char *restrict format, t_pf_env *e)
 	int	tmp;
 
 	init_flag(&e->flag);
-	e->flag.f &= ~SM_NO_MOD;
+	e->flag.f |= SM_NO_MOD;
 	i = 0;
 	if (IS_NUM(format[e->i]))
 	{

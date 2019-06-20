@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/06/19 18:42:29 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/06/20 16:22:10 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
 HEADER = -I includes
 
-CC = gcc
-CFLAGS = -c -Wall -Wextra -Werror
+CC = clang
+CFLAGS = -c -Wall -Wextra -g  #-Werror
 
 .PHONY: all clean fclean re
 

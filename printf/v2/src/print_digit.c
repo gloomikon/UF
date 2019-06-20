@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_digit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 17:05:28 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/19 18:24:01 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/20 14:26:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,18 @@ void	print_digit(t_pf_env *e)
 		print_digit_width(e);
 		e->ret += write(e->fd, e->out, ft_strlen(e->out));
 	}
+	else if (e->flag.f & F_MINUS)
+	{
+		print_digit_sign(e);
+		e->ret += write(e->fd, e->out, ft_strlen(e->out));
+		print_digit_width(e);
+	}
+	else
+	{
+		print_digit_width(e);
+		print_digit_sign(e);
+		e->ret += write(e->fd, e->out, ft_strlen(e->out));
+	}
+	++e->i;
+	free(e->out);
 }

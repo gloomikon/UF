@@ -3,34 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 17:16:16 by tpokalch          #+#    #+#             */
-/*   Updated: 2018/11/20 20:32:30 by tpokalch         ###   ########.fr       */
+/*   Created: 2018/10/29 17:55:38 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/06/20 11:23:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(char const *s, int start, int len)
 {
-	char	*ret;
-	size_t	i;
+	char	*result;
+	int		i;
 
-	i = 0;
 	if (s == NULL)
 		return (NULL);
-	if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+	if (start > ft_strlen(s))
 		return (NULL);
-	while (i < len)
+	if ((result = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start] != '\0')
 	{
-		if (s + start + i)
-			*(ret + i) = *(s + start + i);
-		else
-			return (NULL);
+		result[i] = s[start];
+		start++;
 		i++;
 	}
-	*(ret + i) = '\0';
-	return (ret);
+	result[i] = '\0';
+	return (result);
 }

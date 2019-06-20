@@ -3,40 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 18:03:51 by tpokalch          #+#    #+#             */
-/*   Updated: 2018/12/09 17:58:56 by tpokalch         ###   ########.fr       */
+/*   Created: 2018/10/29 18:21:32 by mzhurba           #+#    #+#             */
+/*   Updated: 2018/11/09 13:40:38 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		j;
-	int		i;
 	char	*ret;
+	char	*temp_ret;
 
-	if (s2 == NULL || s1 == NULL)
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	if (!(ret = (char *)malloc(sizeof(char) *
-	(ft_strlen(s1) + ft_strlen(s2) + 1))))
+	if ((ret = (char*)malloc(sizeof(char) *
+					(ft_strlen(s1) + ft_strlen(s2) + 1))) == NULL)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < ft_strlen(s1))
-	{
-		*(ret + i) = *(s1 + i);
-		i++;
-	}
-	while (i < ft_strlen(s1) + ft_strlen(s2))
-	{
-		*(ret + i) = *(s2 + j);
-		i++;
-		j++;
-	}
-	*(ret + i) = '\0';
+	temp_ret = ret;
+	while (*s1 != '\0')
+		*temp_ret++ = *s1++;
+	while (*s2 != '\0')
+		*temp_ret++ = *s2++;
+	*temp_ret = '\0';
 	return (ret);
 }

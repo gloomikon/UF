@@ -3,34 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 18:52:22 by tpokalch          #+#    #+#             */
-/*   Updated: 2018/11/20 22:13:52 by tpokalch         ###   ########.fr       */
+/*   Created: 2018/10/26 15:41:52 by mzhurba           #+#    #+#             */
+/*   Updated: 2018/10/29 17:46:48 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int i;
+	size_t	len1;
+	size_t	len2;
+	size_t	len_max;
+	int		r;
 
-	i = 0;
-	while (*((unsigned char *)(s1 + i)) != '\0' &&
-			*((unsigned char *)(s2 + i)) != '\0' && s1 + i && s2 + i)
-	{
-		if (*((unsigned char *)(s1 + i)) < *((unsigned char *)(s2 + i)))
-			return (-1);
-		else if (*((unsigned char *)(s1 + i)) > *((unsigned char *)(s2 + i)))
-			return (1);
-		i++;
-	}
-	if (*((unsigned char *)(s1 + i)) == '\0' &&
-			*((unsigned char *)(s2 + i)) != '\0')
-		return (-1);
-	else if (*((unsigned char *)(s1 + i)) != '\0' &&
-			*((unsigned char *)(s2 + i)) == '\0')
-		return (1);
-	return (0);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len1 > len2)
+		len_max = len1;
+	else
+		len_max = len2;
+	r = ft_memcmp(s1, s2, len_max);
+	return (r);
 }

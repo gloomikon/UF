@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_lst_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 16:46:27 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/10/29 17:00:44 by mzhurba          ###   ########.fr       */
+/*   Created: 2018/10/31 17:17:24 by mzhurba           #+#    #+#             */
+/*   Updated: 2018/11/01 13:36:02 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+size_t	ft_lst_size(t_list *alst)
 {
-	if (s && f)
-		while (*s)
-			f(s++);
+	if (alst)
+		return (1 + ft_lst_size(alst->next));
+	return (0);
 }

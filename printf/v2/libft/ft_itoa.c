@@ -3,82 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/02 21:35:28 by tpokalch          #+#    #+#             */
-/*   Updated: 2018/11/20 15:27:41 by tpokalch         ###   ########.fr       */
+/*   Created: 2018/10/29 18:29:15 by mzhurba           #+#    #+#             */
+/*   Updated: 2018/11/08 16:44:21 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
-static int		intlen(int nb)
+static void	itoa_isnegative(int *n, int *negative)
 {
-	int i;
-
-	i = 0;
-	if (nb == -2147483648)
-		return (11);
-	else if (nb == 0)
-		return (1);
-	else if (nb < 0 && nb > -214748368)
-		return (intlen(-nb) + 1);
-	while (nb != 0)
+	if (*n < 0)
 	{
-		nb = nb / 10;
-		i++;
+		*n *= -1;
+		*negative = 1;
 	}
-	return (i);
 }
 
-static char		*max(char *s, int nb)
+char		*ft_itoa(int n)
 {
-	int i;
-	int a;
+	int		tmp;
+	int		l;
+	int		neg;
+	char	*str;
 
-	i = 1;
-	*s = '8';
-	nb = nb / 10;
-	nb = -nb;
-	a = intlen(nb);
-	while (nb != 0)
-	{
-		*(s + i) = (nb) % 10 + '0';
-		nb = nb / 10;
-		i++;
-	}
-	*(s + i++) = '-';
-	*(s + i) = '\0';
-	ft_strrev(s);
-	return (s);
-}
-
-char			*ft_itoa(int nbr)
-{
-	char	*s;
-	int		i;
-	int		b;
-
-	b = nbr;
-	if (!(s = (char *)malloc(sizeof(char) * (intlen(nbr) + 1))))
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	tmp = n;
+	l = 2;
+	neg = 0;
+	itoa_isnegative(&n, &neg);
+	while (tmp /= 10)
+		l++;
+	l += neg;
+	if ((str = (char*)malloc(l)) == NULL)
 		return (NULL);
-	i = (nbr == 0);
-	if (nbr == -2147483648)
-		return (max(s, nbr));
-	else if (nbr == 0)
-		*s = '0';
-	if (nbr < 0)
-		nbr = -(nbr);
-	while (nbr != 0)
+	str[--l] = '\0';
+	while (l--)
 	{
-		*(s + i) = (nbr) % 10 + '0';
-		nbr = nbr / 10;
-		i++;
+		str[l] = n % 10 + '0';
+		n = n / 10;
 	}
-	if (b < 0)
-		*(s + i++) = '-';
-	*(s + i) = '\0';
-	return (ft_strrev(s));
+	if (neg)
+		str[0] = '-';
+	return (str);
 }

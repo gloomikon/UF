@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpokalch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 15:43:14 by tpokalch          #+#    #+#             */
-/*   Updated: 2018/11/11 21:18:10 by tpokalch         ###   ########.fr       */
+/*   Created: 2018/10/26 16:10:37 by mzhurba           #+#    #+#             */
+/*   Updated: 2018/10/26 16:30:08 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_islower(int c)
+#include "libft.h"
+
+int	ft_islower(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if ((c >= (int)'a') && (c <= (int)'z'))
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spec_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:53:57 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/19 18:42:38 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/20 15:50:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	spec_int(t_pf_env *e)
 		e->out = ft_itoa((char)i);
 	else if (e->flag.f & SM_H)
 		e->out = ft_itoa((short)i);
-	// else if ((e->flag.f & SM_L) || (e->flag.f & SM_T) ||
-	// 		(e->flag.f & SM_LL) || (e->flag.f & SM_J))
-	// 	e->out = ft_ltoa((long)i);
+	else if ((e->flag.f & SM_L) || (e->flag.f & SM_T) ||
+			(e->flag.f & SM_LL) || (e->flag.f & SM_J))
+		e->out = ft_ltoa((long)i);
 	else if (e->flag.f & SM_NO_MOD)
 		e->out = ft_itoa((int)i);
 	print_digit(e);

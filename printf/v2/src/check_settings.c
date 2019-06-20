@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_settings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 15:35:39 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/17 16:23:58 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/06/20 11:18:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	check_settings(const char *restrict fmt, t_pf_env *e)
 {
-	if (e->fd)
-		fmt = "";
+	if (e->fd && fmt)
+		free(fmt);
 }
