@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/06/20 16:22:10 by marvin           ###   ########.fr        #
+#    Updated: 2019/06/24 20:22:42 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,23 @@ SRC =	check_digit_prec.c\
 		get_spec.c\
 		get_tag.c\
 		get_width.c\
+		init_char_arg.c\
 		init_flag.c\
 		init_int_arg.c\
+		init_str_arg.c\
+		print_char_width.c\
+		print_char.c\
 		print_conversion.c\
 		print_digit_sign.c\
 		print_digit_width.c\
 		print_digit.c\
+		print_null_str.c\
+		print_str_width.c\
+		print_str.c\
+		spec_char.c\
 		spec_int.c\
-		spec_percent.c
+		spec_percent.c\
+		spec_unsint.c
 
 OBJ = $(SRC:.c=.o)
 

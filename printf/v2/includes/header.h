@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/20 15:49:50 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/24 20:40:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define IS_BSCHR(x)	(x == 'C' || x == 'S')
 
 /*
-** This is used to save flags " #+-0"
+** This is used to save flags " #+-0" and either number is nrgative
 */
 
 # define F_HASH		(1 << 0)
@@ -59,16 +59,10 @@
 # define SM_T		(1 << 14)
 # define SM_Z		(1 << 15)
 
-// typedef struct		s_pf_tag
-// {
-// 	int				tag;
-// 	int				pos;
-// }					t_pf_tag;
 
 typedef struct		s_pf_flag
 {
 	uint16_t		f;
-//	int				neg;
 	int				prec;
 	int				width;
 }					t_pf_flag;
@@ -87,23 +81,32 @@ typedef struct		s_pf_env
 int					ft_printf(const char *restrict format, ...);
 
 void				check_settings(const char *restrict fmt, t_pf_env *e);
-void				print_conversion(const char *restrict format, t_pf_env *e);
 
 void				get_tag(const char *restrict format, t_pf_env *e);
 void				get_flag(const char *restrict format, t_pf_env *e);
 void				get_spec(const char *restrict format, t_pf_env *e);
-
 void				get_mod(const char *restrict format, t_pf_env *e);
 void				get_width(t_pf_env *e);
 void				get_precision(const char *restrict format, t_pf_env *e);
-void				init_flag(t_pf_flag *flag);
 
+
+void				init_flag(t_pf_flag *flag);
 void				init_int_arg(t_pf_env *e, long *tmp);
-void	print_digit(t_pf_env *e);
-void				check_digit_sign(t_pf_env *e);
-void				check_digit_prec(t_pf_env *e);
+void				init_str_arg(t_pf_env *e, char **tmp);
+void				init_char_arg(t_pf_env *e, int *tmp);
+
+void				print_conversion(const char *restrict format, t_pf_env *e);
+void				print_digit(t_pf_env *e);
 void				print_digit_sign(t_pf_env *e);
 void				print_digit_width(t_pf_env *e); //?
+void				print_str(t_pf_env *e);
+void				print_null_str(t_pf_env *e);
+void				print_str_width(t_pf_env *e);
+void				print_char(t_pf_env *e, char c);
+void				print_char_width(t_pf_env *e);
+
+void				check_digit_sign(t_pf_env *e);
+void				check_digit_prec(t_pf_env *e);
 
 /*
 ** Output functions
@@ -111,5 +114,7 @@ void				print_digit_width(t_pf_env *e); //?
 
 void				spec_percent(t_pf_env *e);
 void				spec_int(t_pf_env *e);
+void				spec_unsint(t_pf_env *e, char t);
+void				spec_char(t_pf_env *e, char type);
 
 #endif

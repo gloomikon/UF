@@ -111,14 +111,14 @@ void test_42(void)
 
 
 
-        ft_printf("%zd\n", 4294967295);                   //-> "4294967295"
-           printf("%zd\n", 4294967295);
-        ft_printf("%zd\n", 4294967296);                   //-> "4294967296"
-           printf("%zd\n", 4294967296);
-        ft_printf("%zd\n", -0);                           //-> "0"
-           printf("%zd\n", -0);
-        ft_printf("%zd\n", -1);                           //-> "4294967295"
-           printf("%zd\n", -1);
+        // ft_printf("%zd\n", 4294967295);                   //-> "4294967295"
+        //    printf("%zd\n", 4294967295);
+        // ft_printf("%zd\n", 4294967296);                   //-> "4294967296"
+        //    printf("%zd\n", 4294967296);
+        // ft_printf("%zd\n", -0);                           //-> "0"
+        //    printf("%zd\n", -0);
+        // ft_printf("%zd\n", -1);                           //-> "4294967295"
+        //    printf("%zd\n", -1);
 
 		
         // ft_printf("%d\n", 1);                             //-> "1"
@@ -265,6 +265,9 @@ void test_x_s_o(void)
 	//    printf("@moulitest: %.x %.0x\n", 0, 0);
 	// ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);                                   //-> "@moulitest:            "
 	//    printf("@moulitest: %5.x %5.0x\n", 0, 0);
+
+
+
 	// ft_printf("%s\n", "abc");                                                      //-> "abc"
 	//    printf("%s\n", "abc");
 	// ft_printf("%s\n", "this is a string");                                         //-> "this is a string"
@@ -293,8 +296,12 @@ void test_x_s_o(void)
 	//    printf("%5.2s is a string\n", "");
 	// ft_printf("%-10s is a string\n", "this");                                      //-> "this       is a string"
 	//    printf("%-10s is a string\n", "this");
+
+
 	// ft_printf("%-.2s is a string\n", "this");                                      //-> "th is a string"
 	//    printf("%-.2s is a string\n", "this");
+
+
 	// ft_printf("%-5.2s is a string\n", "this");                                     //-> "th    is a string"
 	//    printf("%-5.2s is a string\n", "this");
 	// ft_printf("%-10s is a string\n", "");                                          //-> "           is a string"
@@ -331,6 +338,9 @@ void test_x_s_o(void)
 	//    printf("null %c and text\n", 0); 
 	// ft_printf("% c\n", 0);                                                         //-> "^@"
 	//    printf("% c\n", 0);
+
+
+
 	// ft_printf("%o\n", 40);                                                         //-> "50"
 	//    printf("%o\n", 40);
 	// ft_printf("%5o\n", 41);                                                        //-> "   51"

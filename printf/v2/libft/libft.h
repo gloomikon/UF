@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 15:17:39 by tpokalch          #+#    #+#             */
-/*   Updated: 2019/06/20 16:21:10 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/24 17:01:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putarr(char **arr);
 char				*ft_itoa(int n);
 char				*ft_ltoa(long n);
+char				*ft_ultoa(unsigned long n);
 int					ft_atoi(const char *str);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
