@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/02 18:00:36 by tpokalch          #+#    #+#              #
-#    Updated: 2019/06/24 16:50:36 by marvin           ###   ########.fr        #
+#    Updated: 2019/06/25 14:44:35 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC =	ft_memset.c\
 		ft_memchr.c\
 		ft_memcmp.c\
 		ft_strlen.c\
+		ft_wstrlen.c\
 		ft_strdup.c\
 		ft_strcpy.c\
 		ft_strncpy.c\

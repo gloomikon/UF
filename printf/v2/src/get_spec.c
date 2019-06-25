@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/24 20:40:42 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/25 15:06:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	get_spec(const char *restrict format, t_pf_env *e)
 		spec_char(e, format[e->i]);
 	else if (IS_BSCHR(format[e->i]))
 		spec_char(e, format[e->i] + 32);
-	// else if (IS_SCHR(format[e->i]) && (e->flag.f & SM_L))
-	// 	spec_wchar(e, format[e->i]);
+	else if (IS_SCHR(format[e->i]) && (e->flag.f & SM_L))
+		spec_wchar(e, format[e->i]);
 	// else if (ft_strchr(PREC, format[e->i]))
 	// 	spec_precision(e, format[e->i]);
 	// else

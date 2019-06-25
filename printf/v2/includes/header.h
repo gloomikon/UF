@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/24 20:40:36 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/25 15:10:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,31 @@ void				init_flag(t_pf_flag *flag);
 void				init_int_arg(t_pf_env *e, long *tmp);
 void				init_str_arg(t_pf_env *e, char **tmp);
 void				init_char_arg(t_pf_env *e, int *tmp);
+void				init_wstr_arg(t_pf_env *e, wchar_t **tmp);
+void				init_wchar_arg(t_pf_env *e, wchar_t *tmp);
 
 void				print_conversion(const char *restrict format, t_pf_env *e);
 void				print_digit(t_pf_env *e);
 void				print_digit_sign(t_pf_env *e);
 void				print_digit_width(t_pf_env *e); //?
+
 void				print_str(t_pf_env *e);
 void				print_null_str(t_pf_env *e);
 void				print_str_width(t_pf_env *e);
+
 void				print_char(t_pf_env *e, char c);
+void				print_null_char(t_pf_env *e);
 void				print_char_width(t_pf_env *e);
+
+void				print_wstr(t_pf_env *e, wchar_t *wc);
+void				print_wstr_minus(t_pf_env *e, wchar_t *wc, int len);
+void				put_wstr(t_pf_env *e, wchar_t c);
+void				put_wstr_c(t_pf_env *e, char c);
+
+void				print_wchar(t_pf_env *e, wchar_t wc);
+void				put_wc(t_pf_env *e, wchar_t c);
+void				print_wchar_minus(t_pf_env *e, wchar_t wc);
+void				put_wchar(t_pf_env *e, char c);
 
 void				check_digit_sign(t_pf_env *e);
 void				check_digit_prec(t_pf_env *e);
@@ -116,5 +131,6 @@ void				spec_percent(t_pf_env *e);
 void				spec_int(t_pf_env *e);
 void				spec_unsint(t_pf_env *e, char t);
 void				spec_char(t_pf_env *e, char type);
+void				spec_wchar(t_pf_env *e, char type);
 
 #endif

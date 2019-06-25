@@ -370,9 +370,29 @@ void test_x_s_o(void)
 	// ft_printf("@moulitest: %.10o\n", 42);                                          //-> "@moulitest: 0000000052"
 	//    printf("@moulitest: %.10o\n", 42);
 }
+
+void my_tests()
+{
+	char *str1 = "narrow";
+    char *str2 = L"wide";
+	wchar_t qq = L'\u2604';
+
+       printf("1 %s \n", str1);
+	ft_printf("2 %s \n", str1);
+       printf("3 %ls \n", str2);
+	ft_printf("4 %ls \n", str2);
+	//   printf("%lc\n", qq);
+	ft_printf("%lc\n", qq);
+
+	
+}
 int main()
 {
 	test_42();
 	test_x_s_o();
+
+	my_tests();
+
+
 	return 0;
 }
