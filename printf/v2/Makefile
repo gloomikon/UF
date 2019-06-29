@@ -6,13 +6,14 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/06/25 15:13:12 by marvin           ###   ########.fr        #
+#    Updated: 2019/06/29 19:47:58 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC =	check_digit_prec.c\
+SRC =	check_base_prec.c\
+		check_digit_prec.c\
 		check_digit_sign.c\
 		check_settings.c\
 		ft_printf.c\
@@ -28,6 +29,9 @@ SRC =	check_digit_prec.c\
 		init_str_arg.c\
 		init_wchar_arg.c\
 		init_wstr_arg.c\
+		print_base_pre.c\
+		print_base_width.c\
+		print_base.c\
 		print_char_width.c\
 		print_char.c\
 		print_conversion.c\
@@ -46,6 +50,7 @@ SRC =	check_digit_prec.c\
 		put_wchar.c\
 		put_wstr_c.c\
 		put_wstr.c\
+		spec_base.c\
 		spec_char.c\
 		spec_int.c\
 		spec_percent.c\

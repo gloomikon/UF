@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 15:17:39 by tpokalch          #+#    #+#             */
-/*   Updated: 2019/06/25 14:43:47 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/29 19:44:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void				ft_putarr(char **arr);
 char				*ft_itoa(int n);
 char				*ft_ltoa(long n);
 char				*ft_ultoa(unsigned long n);
+char				*ft_ultoa_base(unsigned long n, int base);
 int					ft_atoi(const char *str);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
@@ -54,6 +55,7 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_islower(int c);
+void				ft_strlower(char *s);
 char				*ft_strsub(char const *s, int start, int len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
@@ -96,8 +98,6 @@ typedef struct		s_gnl
 	char	**curr;
 	char	*buf;
 }					t_gnl;
-int					ft_islower(int c);
-int					ft_isupper(int c);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));

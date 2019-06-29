@@ -373,17 +373,49 @@ void test_x_s_o(void)
 
 void my_tests()
 {
-	char *str1 = "narrow";
-    char *str2 = L"wide";
-	wchar_t qq = L'\u2604';
+	// char *str1 = "narrow";
+    // char *str2 = L"wide";
+	// wchar_t qq = L'\u2604';
 
-       printf("1 %s \n", str1);
-	ft_printf("2 %s \n", str1);
-       printf("3 %ls \n", str2);
-	ft_printf("4 %ls \n", str2);
-	//   printf("%lc\n", qq);
-	ft_printf("%lc\n", qq);
+    //    printf("1 %s \n", str1);
+	// ft_printf("2 %s \n", str1);
 
+    //    printf("3 %ls \n", str2);
+	// ft_printf("4 %ls \n", str2);
+
+	// ft_printf("%lc\n", qq);
+
+	//    printf("%10.3.4.5.6.7d\n", 123);
+	// ft_printf("%10.3.4.5.6.7d\n", 123);
+
+}
+
+void failed_tests()
+{
+	// ft_printf("%5%\n");
+	//    printf("%5%\n");
+	// ft_printf("%-5%\n");
+	//    printf("%-5%\n");
+
+
+	// ft_printf("%hhX\n", 4294967296);
+	//    printf("%hhX\n", 4294967296);
+
+
+	// ft_printf("%zd\n", -1);
+	//    printf("%zd\n", -1);
+
+
+	ft_printf("%U\n", 4294967295);
+	   printf("%U\n", 4294967295);
+	ft_printf("%hU\n", 4294967296);
+	   printf("%hU\n", 4294967296);
+	ft_printf("%U\n", 4294967296);
+	   printf("%U\n", 4294967296);
+	
+	int i1 = ft_printf("%llq\n", 33);
+	int i2 =   printf("%llq\n", 33);
+	printf("%d %d", i1, i2);
 	
 }
 int main()
@@ -392,6 +424,7 @@ int main()
 	test_x_s_o();
 
 	my_tests();
+	failed_tests();	
 
 
 	return 0;

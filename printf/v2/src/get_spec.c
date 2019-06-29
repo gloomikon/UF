@@ -6,16 +6,16 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/25 15:06:48 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/29 20:40:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-// static void get_spec_2(const char *restrict format, t_pf_env *e)
-// {
-// 	if (ft_strchr(HEX, format[e->i]))
-// 		spec_base(e, format[e->i]);
+static void get_spec_2(const char *restrict format, t_pf_env *e)
+{
+	if (ft_strchr(HEX, format[e->i]))
+		spec_base(e, format[e->i]);
 // 	else if (format[e->i] == 'n')
 // 		spec_return(e);
 // 	else if (format[e->i] == 'p' || format[e->i] == 'P')
@@ -28,7 +28,8 @@
 // 		print_dice(e);
 // 	else if (format[e->i] != '\0')
 // 		print_invalid_spec(e, format[e->i]);
-// }
+	else e->ret += write(e->fd, "%", 1);
+}
 
 void	get_spec(const char *restrict format, t_pf_env *e)
 {
@@ -47,6 +48,6 @@ void	get_spec(const char *restrict format, t_pf_env *e)
 		spec_wchar(e, format[e->i]);
 	// else if (ft_strchr(PREC, format[e->i]))
 	// 	spec_precision(e, format[e->i]);
-	// else
-	// 	get_spec_2(format, e);
+	else
+		get_spec_2(format, e);
 }

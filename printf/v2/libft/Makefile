@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/02 18:00:36 by tpokalch          #+#    #+#              #
-#    Updated: 2019/06/25 14:44:35 by marvin           ###   ########.fr        #
+#    Updated: 2019/06/29 19:44:50 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRC =	ft_memset.c\
 		ft_strsplit.c\
 		ft_itoa.c\
 		ft_ultoa.c\
+		ft_ultoa_base.c\
 		ft_putchar.c\
 		ft_putstr.c\
 		ft_putendl.c\
@@ -74,6 +75,7 @@ SRC =	ft_memset.c\
 		ft_lstiter.c\
 		ft_lstmap.c\
 		ft_islower.c\
+		ft_strlower.c\
 		ft_isupper.c\
 		ft_lstadd.c\
 		ft_striteri.c\

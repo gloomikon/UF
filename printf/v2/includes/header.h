@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/25 15:10:58 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/29 20:40:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 # define IS_PER(x)		(x == '%')
 # define IS_INT(x)		(x == 'd' || x == 'i')
-# define IS_UINT(x)		(x == 'u' || x == 'U' || x == 'D')
+# define IS_UINT(x)		(x == 'u' || x == 'D')
 # define IS_SCHR(x)		(x == 'c' || x == 's')
 # define IS_BSCHR(x)	(x == 'C' || x == 'S')
 
@@ -98,6 +98,7 @@ void				init_wstr_arg(t_pf_env *e, wchar_t **tmp);
 void				init_wchar_arg(t_pf_env *e, wchar_t *tmp);
 
 void				print_conversion(const char *restrict format, t_pf_env *e);
+
 void				print_digit(t_pf_env *e);
 void				print_digit_sign(t_pf_env *e);
 void				print_digit_width(t_pf_env *e); //?
@@ -123,6 +124,11 @@ void				put_wchar(t_pf_env *e, char c);
 void				check_digit_sign(t_pf_env *e);
 void				check_digit_prec(t_pf_env *e);
 
+void				print_base(t_pf_env *e, char type, long val);
+void				print_base_pre(t_pf_env *e, char type, long val);
+void				print_base_width(t_pf_env *e, char type);
+void				check_base_prec(t_pf_env *e, char type);
+
 /*
 ** Output functions
 */
@@ -132,5 +138,6 @@ void				spec_int(t_pf_env *e);
 void				spec_unsint(t_pf_env *e, char t);
 void				spec_char(t_pf_env *e, char type);
 void				spec_wchar(t_pf_env *e, char type);
+void				spec_base(t_pf_env *e, char tp);
 
 #endif
