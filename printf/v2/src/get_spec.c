@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/29 20:40:58 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/30 17:34:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void get_spec_2(const char *restrict format, t_pf_env *e)
 // 		spec_fd(e);
 // 	else if (format[e->i] == 'q')
 // 		print_dice(e);
-// 	else if (format[e->i] != '\0')
-// 		print_invalid_spec(e, format[e->i]);
+	// else if (format[e->i] != '\0')
+	// 	print_invalid_spec(e, format[e->i]);
 	else e->ret += write(e->fd, "%", 1);
 }
 

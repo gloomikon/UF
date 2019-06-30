@@ -21,9 +21,11 @@ void	spec_unsint(t_pf_env *e, char t)
 	init_int_arg(e, &tmp);
 	if (tmp == LLONG_MIN || tmp == LONG_MIN)
 		e->out = ft_strdup("-9223372036854775808");
-	else if (t == 'D' || t == 'U' || (e->flag.f & SM_Z) || (e->flag.f & SM_L) ||
-			(e->flag.f & SM_T) || (e->flag.f & SM_J) || (e->flag.f & SM_LL))
+	else if (t == 'D' || t == 'U' ||
+		(e->flag.f & (SM_L | SM_T | SM_J | SM_LL)))
 		e->out = ft_ultoa((unsigned long)tmp);
+	else if (e->flag.f & SM_Z)
+		e->out = ft_ltoa((long)tmp);
 	else if (e->flag.f & SM_H)
 		e->out = ft_ultoa((unsigned short)tmp);
 	else if (e->flag.f & SM_HH)

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/29 20:40:22 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/30 17:27:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,9 @@ void				print_base_pre(t_pf_env *e, char type, long val);
 void				print_base_width(t_pf_env *e, char type);
 void				check_base_prec(t_pf_env *e, char type);
 
+void				print_invalid_spec(t_pf_env *e, char c);
+void				print_invalid_width(t_pf_env *e);
+
 /*
 ** Output functions
 */
@@ -139,5 +142,6 @@ void				spec_unsint(t_pf_env *e, char t);
 void				spec_char(t_pf_env *e, char type);
 void				spec_wchar(t_pf_env *e, char type);
 void				spec_base(t_pf_env *e, char tp);
+void				spec_precision(t_pf_env *e, char type);
 
 #endif

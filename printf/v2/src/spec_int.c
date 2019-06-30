@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:53:57 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/20 15:50:09 by marvin           ###   ########.fr       */
+/*   Updated: 2019/06/30 17:49:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	spec_int(t_pf_env *e)
 		e->out = ft_itoa((char)i);
 	else if (e->flag.f & SM_H)
 		e->out = ft_itoa((short)i);
+	else if (e->flag.f & SM_Z)
+		e->out = ft_itoa((size_t)i);
 	else if ((e->flag.f & SM_L) || (e->flag.f & SM_T) ||
 			(e->flag.f & SM_LL) || (e->flag.f & SM_J))
 		e->out = ft_ltoa((long)i);

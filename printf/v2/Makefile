@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/06/29 19:47:58 by marvin           ###   ########.fr        #
+#    Updated: 2019/06/30 16:32:55 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRC =	check_base_prec.c\
 		print_digit_sign.c\
 		print_digit_width.c\
 		print_digit.c\
+		print_invalid_spec.c\
+		print_invalid_width.c\
 		print_null_char.c\
 		print_null_str.c\
 		print_str_width.c\

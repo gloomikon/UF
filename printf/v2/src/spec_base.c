@@ -19,9 +19,9 @@ void	spec_base(t_pf_env *e, char tp)
 
 	val = 0;
 	init_int_arg(e, &tmp);
-	if (tp == 'O' || (e->flag.f & (SM_HH | SM_Z | SM_T | SM_J | SM_L | SM_LL)))
+	if (tp == 'O' || (e->flag.f & (SM_Z | SM_T | SM_J | SM_L | SM_LL)))
 		val = (unsigned long)tmp;
-	else if (e->flag.f & SM_H)
+	else if (e->flag.f & (SM_H | SM_HH))
 		val = (unsigned short)tmp;
 	else if (e->flag.f & SM_NO_MOD)
 		val = (unsigned int)tmp;
