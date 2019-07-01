@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spec_precision.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/30 14:39:39 by marvin            #+#    #+#             */
-/*   Updated: 2019/06/30 14:39:39 by marvin           ###   ########.fr       */
+/*   Created: 2019/07/01 11:39:27 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/01 11:39:27 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	spec_precision(t_pf_env *e, char type)
 {
-	long double	ld;
 	double		d;
+	long double	ld;
 
 	if (e->flag.f & SM_BIG_L)
 	{
@@ -34,8 +34,8 @@ void	spec_precision(t_pf_env *e, char type)
 		return (print_prec_e(e, ld, type));
 	if (type == 'f' || type == 'F')
 		return (print_prec_f(e, ld));
-	if (type == 'g' || type == 'G')
-		return (print_prec_g(e, ld, type));
-	if (type == 'a' || type == 'A')
-		return (print_prec_a(e, ld, type));
+	// if (type == 'g' || type == 'G')
+	// 	return (print_prec_g(e, ld, type));
+	// if (type == 'a' || type == 'A')
+	// 	return (print_prec_a(e, ld, type));
 }

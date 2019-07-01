@@ -395,15 +395,39 @@ void my_tests()
 	// ft_printf("%10.3.4.5.6.7d\n", 123);
 
 
-	   printf("%zd\n", -1L);
-	ft_printf("%zd\n", -1L);
+	//    printf("%zd\n", -1L);
+	// ft_printf("%zd\n", -1L);
 
-	ft_printf("%zd\n", 4294967295);  
-	   printf("%zd\n", 4294967295);  
-	ft_printf("%zd\n", 4294967296); 
-	   printf("%zd\n", 4294967296); 
-	ft_printf("%lu\n", -42);
-	   printf("%lu\n", -42);
+	// ft_printf("%zd\n", 4294967295);  
+	//    printf("%zd\n", 4294967295);  
+	// ft_printf("%zd\n", 4294967296); 
+	//    printf("%zd\n", 4294967296); 
+	// ft_printf("%lu\n", -42);
+	//    printf("%lu\n", -42);
+
+	// ft_printf("%hho, %hho\n", 0, USHRT_MAX);
+    //    printf("%hho, %hho\n", 0, USHRT_MAX);
+	
+	// ft_printf("%hhx, %hhx\n", 0, UCHAR_MAX + 42);
+ 	//    printf("%hhx, %hhx\n", 0, UCHAR_MAX + 42);
+
+	ft_printf("Value %#2.0e \n", 1201.0);
+	   printf("Value %#2.0e \n", 1201.0);
+	
+	ft_printf("%5.2f\n", 12.32453);
+	   printf("%5.2f\n", 12.32453);
+
+	ft_printf("%5.0f\n", 12.32453);
+	   printf("%5.0f\n", 12.32453);
+
+	ft_printf("%#5.0f\n", 12.32453);
+	   printf("%#5.0f\n", 12.32453);
+
+	ft_printf("%-32s\n", NULL);
+       printf("%-32s\n", NULL);
+	
+	ft_printf("%Li\n", 42);
+	   printf("%Li\n", 42);
 
 }
 

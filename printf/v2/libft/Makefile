@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/02 18:00:36 by tpokalch          #+#    #+#              #
-#    Updated: 2019/06/29 19:44:50 by marvin           ###   ########.fr        #
+#    Updated: 2019/07/01 12:41:58 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRC =	ft_memset.c\
 		ft_strsplit.c\
 		ft_itoa.c\
 		ft_ultoa.c\
+		ft_ftoa.c\
 		ft_ultoa_base.c\
 		ft_putchar.c\
 		ft_putstr.c\

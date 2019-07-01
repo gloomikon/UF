@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spec_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 17:41:56 by marvin            #+#    #+#             */
-/*   Updated: 2019/06/28 17:41:56 by marvin           ###   ########.fr       */
+/*   Created: 2019/07/01 12:01:04 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/01 12:01:04 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	spec_base(t_pf_env *e, char tp)
 	init_int_arg(e, &tmp);
 	if (tp == 'O' || (e->flag.f & (SM_Z | SM_T | SM_J | SM_L | SM_LL)))
 		val = (unsigned long)tmp;
-	else if (e->flag.f & (SM_H | SM_HH))
+	else if (e->flag.f & (SM_H))
 		val = (unsigned short)tmp;
+	else if (e->flag.f & (SM_HH))
+		val = (unsigned char)tmp;
 	else if (e->flag.f & SM_NO_MOD)
 		val = (unsigned int)tmp;
 	(tp == 'b' || tp == 'B') ? e->out = ft_ultoa_base(val, 2) : 0;

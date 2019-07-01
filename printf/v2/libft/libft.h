@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 15:17:39 by tpokalch          #+#    #+#             */
-/*   Updated: 2019/06/30 18:13:09 by marvin           ###   ########.fr       */
+/*   Updated: 2019/07/01 12:41:52 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putarr(char **arr);
 char				*ft_itoa(int n);
 char				*ft_ltoa(long n);
+char				*ft_ftoa(long double d);
 char				*ft_ultoa(unsigned long n);
 char				*ft_ultoa_base(unsigned long n, int base);
 int					ft_atoi(const char *str);

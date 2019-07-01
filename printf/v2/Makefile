@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/06/30 16:32:55 by marvin           ###   ########.fr        #
+#    Updated: 2019/07/01 14:15:35 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,14 @@ SRC =	check_base_prec.c\
 		check_digit_sign.c\
 		check_settings.c\
 		ft_printf.c\
+		ft_str_prec.c\
+		ftoa_prec_e.c\
+		ftoa_prec_f.c\
+		get_exponent.c\
 		get_flag.c\
 		get_mod.c\
+		get_prec_num_e.c\
+		get_prec_num_f.c\
 		get_precision.c\
 		get_spec.c\
 		get_tag.c\
@@ -26,9 +32,12 @@ SRC =	check_base_prec.c\
 		init_char_arg.c\
 		init_flag.c\
 		init_int_arg.c\
+		init_long_double.c\
+		init_prec_arg.c\
 		init_str_arg.c\
 		init_wchar_arg.c\
 		init_wstr_arg.c\
+		nan_inf.c\
 		print_base_pre.c\
 		print_base_width.c\
 		print_base.c\
@@ -42,6 +51,9 @@ SRC =	check_base_prec.c\
 		print_invalid_width.c\
 		print_null_char.c\
 		print_null_str.c\
+		print_prec_e.c\
+		print_prec_f.c\
+		print_prec_width.c\
 		print_str_width.c\
 		print_str.c\
 		print_wchar_minus.c\
@@ -56,6 +68,7 @@ SRC =	check_base_prec.c\
 		spec_char.c\
 		spec_int.c\
 		spec_percent.c\
+		spec_precision.c\
 		spec_unsint.c\
 		spec_wchar.c
 
@@ -69,7 +82,7 @@ OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
 HEADER = -I includes
 
 CC = clang
-CFLAGS = -c -Wall -Wextra -g  #-Werror
+CFLAGS = -c -Wall -Wextra -g -fPIC #-Werror
 
 .PHONY: all clean fclean re
 

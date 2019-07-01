@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/30 17:27:00 by marvin           ###   ########.fr       */
+/*   Updated: 2019/07/01 14:07:23 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void				init_str_arg(t_pf_env *e, char **tmp);
 void				init_char_arg(t_pf_env *e, int *tmp);
 void				init_wstr_arg(t_pf_env *e, wchar_t **tmp);
 void				init_wchar_arg(t_pf_env *e, wchar_t *tmp);
+void				init_long_double(t_pf_env *e, long double *tmp);
+void				init_prec_arg(t_pf_env *e, double *tmp);
 
 void				print_conversion(const char *restrict format, t_pf_env *e);
 
@@ -131,6 +133,20 @@ void				check_base_prec(t_pf_env *e, char type);
 
 void				print_invalid_spec(t_pf_env *e, char c);
 void				print_invalid_width(t_pf_env *e);
+
+void				nan_inf(t_pf_env *e, char type, double var);
+
+void				print_prec_e(t_pf_env *e, long double d, char type);
+long				get_prec_num_e(long double d, int prec);
+void				ftoa_prec_e(t_pf_env *e, long double d, char type);
+void				ftoa_prec_e(t_pf_env *e, long double d, char type);
+void				get_exponent(long double d, char type, char **expo);
+char				*ft_str_prec(char *s1, int dot, int end, int hash);
+void				print_prec_width(t_pf_env *e);
+
+void				print_prec_f(t_pf_env *e, long double d);
+void				ftoa_prec_f(t_pf_env *e, long double d);
+long				get_prec_num_f(long double d, int prec);
 
 /*
 ** Output functions
