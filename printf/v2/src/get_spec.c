@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 13:07:21 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/01 17:29:46 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void get_spec_2(const char *restrict format, t_pf_env *e)
 		spec_base(e, format[e->i]);
 // 	else if (format[e->i] == 'n')
 // 		spec_return(e);
-// 	else if (format[e->i] == 'p' || format[e->i] == 'P')
-// 		spec_ptraddr(e, format[e->i]);
+	else if (format[e->i] == 'p' || format[e->i] == 'P')
+		spec_ptraddr(e, format[e->i]);
 // 	else if (format[e->i] == 'r')
 // 		spec_non_printable(e);
 // 	else if (format[e->i] == 'w')

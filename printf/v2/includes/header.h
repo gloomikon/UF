@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 14:07:23 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/01 16:58:15 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define FLAGS		" #+-*.0123456789Lhjltz"
 # define HEX		"boxBOX"
-# define PREC		"fageFAGE"
+# define PREC		"fgeFGE"
 
 # define IS_NUM(x)		(x >= '0' && x <= '9')
 # define IS_PNUM(x)		(x >= '1' && x <= '9')
@@ -99,14 +99,13 @@ void				init_wchar_arg(t_pf_env *e, wchar_t *tmp);
 void				init_long_double(t_pf_env *e, long double *tmp);
 void				init_prec_arg(t_pf_env *e, double *tmp);
 
-void				print_conversion(const char *restrict format, t_pf_env *e);
+void				parse_and_print(const char *restrict format, t_pf_env *e);
 
 void				print_digit(t_pf_env *e);
 void				print_digit_sign(t_pf_env *e);
 void				print_digit_width(t_pf_env *e); //?
 
 void				print_str(t_pf_env *e);
-void				print_null_str(t_pf_env *e);
 void				print_str_width(t_pf_env *e);
 
 void				print_char(t_pf_env *e, char c);
@@ -148,6 +147,19 @@ void				print_prec_f(t_pf_env *e, long double d);
 void				ftoa_prec_f(t_pf_env *e, long double d);
 long				get_prec_num_f(long double d, int prec);
 
+void				print_prec_g(t_pf_env *e, long double d, char type);
+void				check_form(t_pf_env *e, long double d, char type);
+void				ftoa_prec_eg(t_pf_env *e, long double d,
+					char type, int prec);
+void				ftoa_prec_fg(t_pf_env *e, long double d, int end);
+void				delete_zero(char *tmp);
+
+void				print_ptraddr(t_pf_env *e, char type);
+void				ptraddr_prec(t_pf_env *e);
+void				print_ptraddr_width(t_pf_env *e);
+
+
+
 /*
 ** Output functions
 */
@@ -159,5 +171,6 @@ void				spec_char(t_pf_env *e, char type);
 void				spec_wchar(t_pf_env *e, char type);
 void				spec_base(t_pf_env *e, char tp);
 void				spec_precision(t_pf_env *e, char type);
+void				spec_ptraddr(t_pf_env *e, char type);
 
 #endif

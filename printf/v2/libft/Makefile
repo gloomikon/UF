@@ -6,7 +6,7 @@
 #    By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/02 18:00:36 by tpokalch          #+#    #+#              #
-#    Updated: 2019/07/01 12:41:58 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/01 16:18:00 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC =	ft_memset.c\
 		ft_ultoa.c\
 		ft_ftoa.c\
 		ft_ultoa_base.c\
+		ft_ltoa_base.c\
 		ft_putchar.c\
 		ft_putstr.c\
 		ft_putendl.c\

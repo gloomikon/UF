@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 15:17:39 by tpokalch          #+#    #+#             */
-/*   Updated: 2019/07/01 12:41:52 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/01 16:16:57 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char				*ft_ltoa(long n);
 char				*ft_ftoa(long double d);
 char				*ft_ultoa(unsigned long n);
 char				*ft_ultoa_base(unsigned long n, int base);
+char				*ft_ltoa_base(long n, int base);
 int					ft_atoi(const char *str);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);

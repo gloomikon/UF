@@ -6,7 +6,7 @@
 #    By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/01 14:15:35 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/01 17:56:09 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,15 @@ NAME = libftprintf.a
 SRC =	check_base_prec.c\
 		check_digit_prec.c\
 		check_digit_sign.c\
+		check_form.c\
 		check_settings.c\
+		delete_zero.c\
 		ft_printf.c\
 		ft_str_prec.c\
 		ftoa_prec_e.c\
+		ftoa_prec_eg.c\
 		ftoa_prec_f.c\
+		ftoa_prec_fg.c\
 		get_exponent.c\
 		get_flag.c\
 		get_mod.c\
@@ -43,23 +47,26 @@ SRC =	check_base_prec.c\
 		print_base.c\
 		print_char_width.c\
 		print_char.c\
-		print_conversion.c\
+		parse_and_print.c\
 		print_digit_sign.c\
 		print_digit_width.c\
 		print_digit.c\
 		print_invalid_spec.c\
 		print_invalid_width.c\
 		print_null_char.c\
-		print_null_str.c\
 		print_prec_e.c\
 		print_prec_f.c\
+		print_prec_g.c\
 		print_prec_width.c\
+		print_ptraddr_width.c\
+		print_ptraddr.c\
 		print_str_width.c\
 		print_str.c\
 		print_wchar_minus.c\
 		print_wchar.c\
 		print_wstr_minus.c\
 		print_wstr.c\
+		ptraddr_prec.c\
 		put_wc.c\
 		put_wchar.c\
 		put_wstr_c.c\
@@ -69,6 +76,7 @@ SRC =	check_base_prec.c\
 		spec_int.c\
 		spec_percent.c\
 		spec_precision.c\
+		spec_ptraddr.c\
 		spec_unsint.c\
 		spec_wchar.c
 

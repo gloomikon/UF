@@ -30,12 +30,10 @@ void	spec_precision(t_pf_env *e, char type)
 			return (nan_inf(e, type, d));
 		ld = (long double)d;
 	}
-	if (type == 'e' || type == 'E')
-		return (print_prec_e(e, ld, type));
 	if (type == 'f' || type == 'F')
 		return (print_prec_f(e, ld));
-	// if (type == 'g' || type == 'G')
-	// 	return (print_prec_g(e, ld, type));
-	// if (type == 'a' || type == 'A')
-	// 	return (print_prec_a(e, ld, type));
+	if (type == 'e' || type == 'E')
+		return (print_prec_e(e, ld, type));
+	if (type == 'g' || type == 'G')
+		return (print_prec_g(e, ld, type));
 }

@@ -23,7 +23,7 @@ void	spec_wchar(t_pf_env *e, char type)
 	{
 		init_wstr_arg(e, &ws);
 		if (ws == NULL)
-			return (print_null_str(e));
+			e->out = ft_strdup("(null)");
 		print_wstr(e, ws);
 	}
 	else if (type == 'c' || type == 'C')

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:22:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/30 16:38:20 by marvin           ###   ########.fr       */
+/*   Updated: 2019/07/01 17:55:57 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 int		ft_printf(const char *restrict format, ...)
 {
@@ -24,8 +24,13 @@ int		ft_printf(const char *restrict format, ...)
 	{
 		// // if (format[e.i] == '{')
 		// 	check_settings(format, &e);
-		if (format[e.i] == '%' && format[e.i + 1] != '%')
-			print_conversion(format, &e);
+		if (!ft_strcmp(format + e.i, "%"))
+		{
+			e.ret = -1;
+			break ;
+		}
+		else if (format[e.i] == '%' && format[e.i + 1] != '%')
+			parse_and_print(format, &e);
 		else if (format[e.i] == '%' && format[e.i + 1] == '%')
 		{
 			e.ret += write(e.fd, "%", 1);

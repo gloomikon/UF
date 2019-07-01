@@ -22,8 +22,9 @@ void	spec_char(t_pf_env *e, char type)
 	{
 		init_str_arg(e, &stmp);
 		if (stmp == NULL)
-			return (print_null_str(e));
-		e->out = ft_strdup((char*)stmp);
+			e->out = ft_strdup("(null)");
+		else 
+			e->out = ft_strdup((char*)stmp);
 		print_str(e);
 	}
 	else if (type == 'c')
