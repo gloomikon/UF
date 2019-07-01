@@ -6,7 +6,7 @@
 #    By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/01 17:56:09 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/01 23:45:39 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,9 +74,11 @@ SRC =	check_base_prec.c\
 		spec_base.c\
 		spec_char.c\
 		spec_int.c\
+		spec_non_printable.c\
 		spec_percent.c\
 		spec_precision.c\
 		spec_ptraddr.c\
+		spec_return.c\
 		spec_unsint.c\
 		spec_wchar.c
 

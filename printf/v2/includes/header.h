@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 16:58:15 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/01 23:42:16 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct		s_pf_env
 }					t_pf_env;
 
 int					ft_printf(const char *restrict format, ...);
+int					ft_dprintf(int fd, const char *restrict format, ...);
 
 void				check_settings(const char *restrict fmt, t_pf_env *e);
 
@@ -158,7 +159,9 @@ void				print_ptraddr(t_pf_env *e, char type);
 void				ptraddr_prec(t_pf_env *e);
 void				print_ptraddr_width(t_pf_env *e);
 
-
+void				print_zero_to_ten(t_pf_env *e, char c);
+void				print_ten_to_twenty(t_pf_env *e, char c);
+void				print_twenty_to_thirty(t_pf_env *e, char c);
 
 /*
 ** Output functions
@@ -172,5 +175,7 @@ void				spec_wchar(t_pf_env *e, char type);
 void				spec_base(t_pf_env *e, char tp);
 void				spec_precision(t_pf_env *e, char type);
 void				spec_ptraddr(t_pf_env *e, char type);
+void				spec_non_printable(t_pf_env *e);
+void				spec_return(t_pf_env *e);
 
 #endif

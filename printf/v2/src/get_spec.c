@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 17:29:46 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/01 23:40:49 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@ static void get_spec_2(const char *restrict format, t_pf_env *e)
 {
 	if (ft_strchr(HEX, format[e->i]))
 		spec_base(e, format[e->i]);
-// 	else if (format[e->i] == 'n')
-// 		spec_return(e);
+	else if (format[e->i] == 'n')
+		spec_return(e);
 	else if (format[e->i] == 'p' || format[e->i] == 'P')
 		spec_ptraddr(e, format[e->i]);
-// 	else if (format[e->i] == 'r')
-// 		spec_non_printable(e);
-// 	else if (format[e->i] == 'w')
-// 		spec_fd(e);
-// 	else if (format[e->i] == 'q')
-// 		print_dice(e);
+	else if (format[e->i] == 'r')
+		spec_non_printable(e);
 	// else if (format[e->i] != '\0')
 	// 	print_invalid_spec(e, format[e->i]);
 	else e->ret += write(e->fd, "%", 1);

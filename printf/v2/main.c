@@ -1,4 +1,5 @@
 #include "./includes/header.h"
+#include "fcntl.h"
 //------------------------------------
 void test_42(void)
 {
@@ -456,9 +457,23 @@ void my_tests()
 	// ft_printf("%");
 	//    printf("%");
 
-	int i1 = ft_printf("{%f}{%lf}\n", 1.42, 1.42l);
-	int i2 =    printf("{%f}{%lf}\n", 1.42, 1.42l);
-	printf("%d %d", i1, i2);
+	// int i1 = ft_printf("{%f}{%lf}\n", 1.42, 1.42l);
+	// int i2 =    printf("{%f}{%lf}\n", 1.42, 1.42l);
+	// printf("%d %d\n", i1, i2);
+
+	ft_printf("%21r\n", "hello world!\tbithes\0");
+	ft_printf("%r\n", "hello world!\tbithes\0");
+	
+	int fd = open("test.txt", O_WRONLY | O_CREAT);
+	ft_dprintf(fd, "%21r", "hello world!\tbithes\0");
+	close(fd);
+	
+
+
+	int c; 
+  	ft_printf("geeks for %ngeeks ", &c); 
+  	ft_printf("%d\n", c); 
+
 
 }
 
