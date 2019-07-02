@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spec_unsint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 16:43:10 by marvin            #+#    #+#             */
-/*   Updated: 2019/06/24 16:43:10 by marvin           ###   ########.fr       */
+/*   Created: 2019/07/02 14:17:27 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 18:52:14 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	spec_unsint(t_pf_env *e, char t)
 
 	e->flag.f &= ~F_SPACE;
 	e->flag.f &= ~F_PLUS;
+	e->flag.f & F_MINUS ? e->flag.f &= ~F_ZERO : 0;
 	init_int_arg(e, &tmp);
 	if (tmp == LLONG_MIN || tmp == LONG_MIN)
 		e->out = ft_strdup("-9223372036854775808");
@@ -30,7 +31,7 @@ void	spec_unsint(t_pf_env *e, char t)
 		e->out = ft_ultoa((unsigned short)tmp);
 	else if (e->flag.f & SM_HH)
 		e->out = ft_ultoa((unsigned char)tmp);
-	else if ((e->flag.f & SM_NO_MOD) && t != 'U')
+	else if ((e->flag.f & (SM_BIG_L | SM_NO_MOD)) && t != 'U')
 		e->out = ft_ultoa((unsigned int)tmp);
 	print_digit(e);
 }

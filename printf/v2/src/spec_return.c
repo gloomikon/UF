@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   spec_return.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 23:41:03 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 23:41:03 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:17:20 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:24:00 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
 
 void	spec_return(t_pf_env *e)
 {

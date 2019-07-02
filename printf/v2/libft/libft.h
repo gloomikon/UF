@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/03 15:17:39 by tpokalch          #+#    #+#             */
-/*   Updated: 2019/07/01 16:16:57 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 13:46:12 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 17:01:52 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
+int					ft_strchri(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *big,
 	const char *little);

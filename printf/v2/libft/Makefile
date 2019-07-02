@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+         #
+#    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/02 18:00:36 by tpokalch          #+#    #+#              #
-#    Updated: 2019/07/01 16:18:00 by mzhurba          ###   ########.fr        #
+#    Created: 2019/07/02 13:46:35 by mzhurba           #+#    #+#              #
+#    Updated: 2019/07/02 17:02:07 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC =	ft_memset.c\
 		ft_strncat.c\
 		ft_strlcat.c\
 		ft_strchr.c\
+		ft_strchri.c\
 		ft_strrchr.c\
 		ft_strstr.c\
 		ft_strnstr.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 17:04:20 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 23:42:16 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:20:53 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 19:56:05 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdint.h>
 # include "../libft/libft.h"
 
-# define FLAGS		" #+-*.0123456789Lhjltz"
+# define FLAGS		"# +-0*.123456789Lhjltz"
 # define HEX		"boxBOX"
 # define PREC		"fgeFGE"
 
@@ -30,7 +30,7 @@
 
 # define IS_PER(x)		(x == '%')
 # define IS_INT(x)		(x == 'd' || x == 'i')
-# define IS_UINT(x)		(x == 'u' || x == 'D')
+# define IS_UINT(x)		(x == 'u' || x == 'D' || x == 'U')
 # define IS_SCHR(x)		(x == 'c' || x == 's')
 # define IS_BSCHR(x)	(x == 'C' || x == 'S')
 
@@ -58,7 +58,6 @@
 # define SM_L		(1 << 13)
 # define SM_T		(1 << 14)
 # define SM_Z		(1 << 15)
-
 
 typedef struct		s_pf_flag
 {
@@ -90,7 +89,6 @@ void				get_mod(const char *restrict format, t_pf_env *e);
 void				get_width(t_pf_env *e);
 void				get_precision(const char *restrict format, t_pf_env *e);
 
-
 void				init_flag(t_pf_flag *flag);
 void				init_int_arg(t_pf_env *e, long *tmp);
 void				init_str_arg(t_pf_env *e, char **tmp);
@@ -104,7 +102,7 @@ void				parse_and_print(const char *restrict format, t_pf_env *e);
 
 void				print_digit(t_pf_env *e);
 void				print_digit_sign(t_pf_env *e);
-void				print_digit_width(t_pf_env *e); //?
+void				print_digit_width(t_pf_env *e);
 
 void				print_str(t_pf_env *e);
 void				print_str_width(t_pf_env *e);
@@ -146,7 +144,7 @@ void				print_prec_width(t_pf_env *e);
 
 void				print_prec_f(t_pf_env *e, long double d);
 void				ftoa_prec_f(t_pf_env *e, long double d);
-long				get_prec_num_f(long double d, int prec);
+long 				get_prec_num_f(long double d, int prec);
 
 void				print_prec_g(t_pf_env *e, long double d, char type);
 void				check_form(t_pf_env *e, long double d, char type);

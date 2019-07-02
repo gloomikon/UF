@@ -461,19 +461,31 @@ void my_tests()
 	// int i2 =    printf("{%f}{%lf}\n", 1.42, 1.42l);
 	// printf("%d %d\n", i1, i2);
 
-	ft_printf("%21r\n", "hello world!\tbithes\0");
-	ft_printf("%r\n", "hello world!\tbithes\0");
+	// ft_printf("%21r\n", "hello world!\tbithes\0");
+	// ft_printf("%r\n", "hello world!\tbithes\0");
 	
-	int fd = open("test.txt", O_WRONLY | O_CREAT);
-	ft_dprintf(fd, "%21r", "hello world!\tbithes\0");
-	close(fd);
+	// int fd = open("test.txt", O_WRONLY | O_CREAT);
+	// ft_dprintf(fd, "%21r", "hello world!\tbithes\0");
+	// close(fd);
 	
 
 
-	int c; 
-  	ft_printf("geeks for %ngeeks ", &c); 
-  	ft_printf("%d\n", c); 
+	// int c; 
+  	// ft_printf("geeks for %ngeeks ", &c); 
+  	// ft_printf("%d\n", c); 
 
+	// int i1 =    printf("%");
+	// int i2 = ft_printf("%");
+	// printf("%d %d\n", i1, i2);
+	// ft_printf("%0-8.5u.\n", 34);
+	//    printf("%0-8.5u.\n", 34); 
+	// ft_printf("%-5");
+	//    printf("%-5\n");
+	// ft_printf("%#8.5x\n", 34);
+	//    printf("%#8.5x\n", 34);
+	// ft_printf("%ls", NULL);
+	// ft_printf("%Ld", 42);
+	ft_printf("%.19f",        1.025978542436587568678);
 
 }
 

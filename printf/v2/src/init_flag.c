@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_flag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 17:48:48 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/19 18:42:41 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:08:04 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 14:08:04 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	init_flag(t_pf_flag *flag)
 {
 	flag->f = 0;
-	//flag->neg = 0;
 	flag->prec = -1;
 	flag->width = 0;
 }

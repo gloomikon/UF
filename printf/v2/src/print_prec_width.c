@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_prec_width.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 12:59:28 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 12:59:28 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:14:31 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:23:07 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_prec_width(t_pf_env *e)
 	int len;
 
 	i = -1;
-	len = ft_strlen(e->out) + ((e->flag.f & F_PLUS) / F_PLUS) + 
+	len = ft_strlen(e->out) + ((e->flag.f & F_PLUS) / F_PLUS) +
 		((e->flag.f & F_SPACE) / F_SPACE);
 	if (e->flag.prec >= 0)
 	{

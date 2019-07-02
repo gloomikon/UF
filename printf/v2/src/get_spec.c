@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_spec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 18:52:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 23:40:49 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:04:25 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:22:32 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static void get_spec_2(const char *restrict format, t_pf_env *e)
+static void	get_spec_2(const char *restrict format, t_pf_env *e)
 {
 	if (ft_strchr(HEX, format[e->i]))
 		spec_base(e, format[e->i]);
@@ -27,7 +27,7 @@ static void get_spec_2(const char *restrict format, t_pf_env *e)
 	else e->ret += write(e->fd, "%", 1);
 }
 
-void	get_spec(const char *restrict format, t_pf_env *e)
+void		get_spec(const char *restrict format, t_pf_env *e)
 {
 	if (IS_PER(format[e->i]))
 		spec_percent(e);

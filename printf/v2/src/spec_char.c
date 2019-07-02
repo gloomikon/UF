@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spec_char.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 18:24:59 by marvin            #+#    #+#             */
-/*   Updated: 2019/06/24 18:24:59 by marvin           ###   ########.fr       */
+/*   Created: 2019/07/02 14:16:31 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:23:25 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	spec_char(t_pf_env *e, char type)
 		init_str_arg(e, &stmp);
 		if (stmp == NULL)
 			e->out = ft_strdup("(null)");
-		else 
+		else
 			e->out = ft_strdup((char*)stmp);
 		print_str(e);
 	}

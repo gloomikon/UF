@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_digit_sign.c                                 :+:      :+:    :+:   */
+/*   ft_strchri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 14:12:54 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/02 15:22:52 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 17:00:17 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 17:01:00 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
-void	print_digit_sign(t_pf_env *e)
+int	ft_strchri(const char *s, int c)
 {
-	if (e->flag.f & F_PLUS)
-		e->ret += write(e->fd, "+", 1);
-	else if (e->flag.f & F_SPACE)
-		e->ret += write(e->fd, " ", 1);
-	else if (e->flag.f & F_NEGATIVE)
-		e->ret += write(e->fd, "-", 1);
+	size_t	i;
+
+	i = -1;
+	while (s[++i])
+	{
+		if (s[i] == (char)c)
+			return (i);
+	}
+	if (c == 0)
+		return (i);
+	return (-1);
 }

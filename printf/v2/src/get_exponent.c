@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_exponent.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 12:44:03 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 12:44:03 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 13:57:08 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:16:26 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	get_exponent(long double d, char type, char **expo)
 	char	*tmp2;
 
 	d *= d < 0 ? -1 : 1;
-	//d < 0 ? d *= -1 : 0;
 	ex = 0;
 	while (d < 1)
 	{

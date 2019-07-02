@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_precision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 17:09:11 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/06/17 13:37:29 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:04:01 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 14:04:01 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 void	get_precision(const char *restrict format, t_pf_env *e)
 {

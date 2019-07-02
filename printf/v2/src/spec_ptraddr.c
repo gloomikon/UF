@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spec_ptraddr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 16:09:46 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 16:09:46 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:17:15 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:19:37 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	spec_ptraddr(t_pf_env *e, char type)
 
 	init_int_arg(e, &tmp);
 	addr = (unsigned long)tmp;
-	if (tmp == 0)
-		e->out = ft_strdup("(nil)");
-	else if (e->flag.prec == 0)
+	if (e->flag.prec == 0)
 		e->out = ft_strdup("\0");
 	else
 		e->out = ft_ltoa_base(addr, 16);

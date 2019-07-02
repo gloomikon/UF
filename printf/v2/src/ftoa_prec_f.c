@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ftoa_prec_f.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 13:52:29 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 13:52:29 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 13:56:49 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 19:55:22 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ftoa_prec_f(t_pf_env *e, long double d)
 	int		prec;
 	char	*tmp;
 	char	*nb;
-	long	num;
+	long 	num;
 
 	tmp = ft_ltoa((long)d);
 	d == 0 ? --e->flag.prec : 0;

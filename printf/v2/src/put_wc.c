@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   put_wc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 15:05:20 by marvin            #+#    #+#             */
-/*   Updated: 2019/06/25 15:05:20 by marvin           ###   ########.fr       */
+/*   Created: 2019/07/02 14:15:58 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:19:37 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "header.h"
 
 void	put_wc(t_pf_env *e, wchar_t c)

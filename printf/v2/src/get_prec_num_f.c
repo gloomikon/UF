@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_prec_num_f.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 13:54:34 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/01 13:54:34 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:03:51 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 19:55:44 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-long	get_prec_num_f(long double d, int prec)
+long 	get_prec_num_f(long double d, int prec)
 {
 	int		i;
 	int		neg;

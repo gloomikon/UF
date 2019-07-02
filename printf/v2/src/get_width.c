@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_width.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 17:06:24 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/05/09 17:08:29 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/02 14:07:30 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/02 15:22:09 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 void	get_width(t_pf_env *e)
 {
