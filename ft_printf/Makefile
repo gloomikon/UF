@@ -6,7 +6,7 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:57:34 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/03 00:58:22 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/08 19:45:02 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ $(NAME) : $(OBJS)
 	@cp ./libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "[ft_printf is ready]"
+	@echo "\x1B[32m[ft_printf is ready]\x1B[0m"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@/bin/mkdir -p $(OBJDIR)
@@ -112,11 +112,11 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 clean:
 	@/bin/rm -rf $(OBJDIR)
 	@make -C ./libft clean 
-	@echo "[ft_printf - clean]"
+	@echo "\x1B[31m[ft_printf - clean]\x1B[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make -C ./libft fclean 
-	@echo "[ft_printf - fclean]"
+	@echo "\x1B[31m[ft_printf - fclean]\x1B[0m"
 
 re: fclean all

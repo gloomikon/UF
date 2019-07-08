@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:47:44 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/03 00:45:40 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/08 19:31:18 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ static void	set_color(const char *restrict fmt, t_pf_env *e)
 	int i;
 
 	if (!ft_strncmp(fmt + e->i, "{black}", 7) && (i = 7))
-		e->out += write(e->fd, "\x1B[30m", 5);
+		e->ret += write(e->fd, "\x1B[30m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{red}", 5) && (i = 5))
-		e->out += write(e->fd, "\x1B[31m", 5);
+		e->ret += write(e->fd, "\x1B[31m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{green}", 7) && (i = 7))
-		e->out += write(e->fd, "\x1B[32m", 5);
+		e->ret += write(e->fd, "\x1B[32m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{yellow}", 8) && (i = 8))
-		e->out += write(e->fd, "\x1B[33m", 5);
+		e->ret += write(e->fd, "\x1B[33m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{blue}", 6) && (i = 6))
-		e->out += write(e->fd, "\x1B[34m", 5);
+		e->ret += write(e->fd, "\x1B[34m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{magenta}", 9) && (i = 9))
-		e->out += write(e->fd, "\x1B[35m", 5);
+		e->ret += write(e->fd, "\x1B[35m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{cyan}", 6) && (i = 6))
-		e->out += write(e->fd, "\x1B[36m", 5);
+		e->ret += write(e->fd, "\x1B[36m", 5);
 	else if (!ft_strncmp(fmt + e->i, "{white}", 7) && (i = 7))
-		e->out += write(e->fd, "\x1B[37m", 5);
+		e->ret += write(e->fd, "\x1B[37m", 5);
 	else
 		return ;
 	e->i += i;

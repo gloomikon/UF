@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 14:20:53 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/03 00:45:06 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/08 19:16:49 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define IS_BSCHR(x)	(x == 'C' || x == 'S')
 
 /*
-** This is used to save flags " #+-0" and either number is nrgative
+** This is used to save flags " #+-0" and either number is negative
 */
 
 # define F_HASH		(1 << 0)

@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:47:53 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/03 00:45:59 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/08 19:36:09 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	main_loop(const char *restrict format, t_pf_env *e)
 	{
 		if (format[e->i] == '{')
 			check_settings(format, e);
-		if (!ft_strcmp(format + e->i, "%"))
+		else if (!ft_strcmp(format + e->i, "%"))
 			break ;
 		else if (format[e->i] == '%' && format[e->i + 1] != '%')
 			parse_and_print(format, e);
