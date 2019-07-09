@@ -29,9 +29,8 @@ In progress :clock130: :clock1230: :clock930:
 
 ## Piscines
 
-* [Piscince C](https://github.com/gloomikon/UnitFactory/tree/master/PISCINE)
-Day | Result
----|---
+* [Piscince C](https://github.com/gloomikon/UnitFactory/tree/master/PISCINE)  
+
 Day 00 | 92
 Day 02 | 65
 Day 03 | 100
