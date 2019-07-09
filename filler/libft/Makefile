@@ -6,7 +6,7 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 13:46:35 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/09 15:09:57 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/09 20:12:09 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c\
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 		ft_lstnew.c ft_ltoa.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c\
 		ft_lstmap.c ft_islower.c ft_strlower.c ft_isupper.c ft_lstadd.c\
-		ft_striteri.c ft_striter.c ft_putarr.c get_next_line.c\
+		ft_striteri.c ft_striter.c ft_putarr.c get_next_line.c ft_splitdel.c\
 
 SRC1 =	check_base_prec.c check_digit_prec.c check_digit_sign.c check_form.c\
 		check_settings.c delete_zero.c ft_printf.c ft_str_prec.c\
@@ -69,23 +69,23 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "📙[libft - ready]📙"
+	@echo "📙 [libft - ready] 📙"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@/bin/mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) $(HEADER) -o $@ -c $<
-	@echo "🔨$(<:src/%=%)"
+#	@echo "🔨$(<:src/%=%)"
 
 $(OBJDIR)/%.o: $(SRC1DIR)/%.c
 	@/bin/mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) $(HEADER) -o $@ -c $<
-	@echo "🔨$(<:ft_printf/src/%=%)"
+#	@echo "🔨$(<:ft_printf/src/%=%)"
 
 clean:
 	@/bin/rm -rf $(OBJDIR)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "🚮[libft - fclean]🚮"
+	@echo "🚮 [libft - fclean] 🚮"
 
 re: fclean all

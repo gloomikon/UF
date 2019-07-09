@@ -12,59 +12,52 @@
 
 #include "libft.h"
 
-static size_t	ft_count_words(char const *s, char c)
+static int		count_words(char const *str, char c)
 {
-	size_t		words;
-	char		*tmp;
+	int i;
+	int space;
+	int	words;
 
+	i = -1;
+	space = 1;
 	words = 0;
-	tmp = (char*)s;
-	while (*tmp)
-	{
-		if (*tmp != c && (*(tmp - 1) == c || (tmp - 1) < s))
-			words++;
-		tmp++;
-	}
+	while (str[++i])
+		if (str[i] == c)
+			space = 1;
+		else
+		{
+			if (space)
+				words++;
+			space = 0;
+		}
 	return (words);
 }
 
-static int		ft_copy_str(char const *s, char c, size_t words,
-				char **res)
+char		**ft_strsplit(char const *str, char c)
 {
-	size_t	i;
-	size_t	len_str;
-	char	*ptr;
+	char	**words;
+	int		i;
+	int		k;
+	int		w;
 
-	i = 0;
-	len_str = 0;
-	ptr = (char*)s;
-	while (i < words)
-	{
-		if (*ptr != c && *ptr)
-			len_str++;
-		else if (len_str)
+	words = (char**)malloc(sizeof(char*) * (count_words(str, c) + 1));
+	words[count_words(str, c)] = NULL;
+	w = -1;
+	i = -1;
+	while (str[++i])
+		if ((str[i] != c) && (k = 0) == 0)
 		{
-			if (!(res[i++] = ft_strndup((char*)(ptr - len_str), len_str)))
-				return (1);
-			len_str = 0;
+			while (str[i + k] && (str[i + k] != c))
+				k++;
+			words[++w] = (char*)malloc(k);
+			k = 0;
+			while (str[i + k] && (str[i + k]) != c)
+			{
+				words[w][k] = str[i + k];
+				k++;
+			}
+			words[w][k] = '\0';
+			i = i + k - 1;
 		}
-		ptr++;
-	}
-	return (0);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char		**res;
-	size_t		words;
-
-	if (s == NULL)
-		return (NULL);
-	words = ft_count_words(s, c);
-	if ((res = (char**)malloc(sizeof(char**) * (words + 1))) == NULL)
-		return (NULL);
-	if (ft_copy_str(s, c, words, res))
-		return (NULL);
-	res[words] = NULL;
-	return (res);
+	return (words);
 }
