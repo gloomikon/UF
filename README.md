@@ -9,7 +9,7 @@
 	* Filler
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
-## My profile :  
+## My profile  
 [mzhurba](https://profile.intra.42.fr/users/mzhurba "mzhurba")  
 
 ## Projects
