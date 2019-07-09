@@ -33,5 +33,17 @@ In progress :clock130: :clock1230: :clock930:
 
 Day | Result
 --- | ---
-Day 00 | 92
-
+Day 00	| 92
+Day 02	| 65
+Day 03	| 100
+Day 04	| 5
+Day 05	| 60
+Day 06	| 100
+Day 07	| 20
+Day 08	| 0
+Day 09	| 0
+Day 10	| 20
+Day 11	| 29
+Day 12	| 35
+Day 13	| 50
+Rush 01	| 0
