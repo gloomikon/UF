@@ -13,23 +13,27 @@
 #ifndef FILLER_H
 # define FILLER_H
 
-# include "header.h"
+# include "../libft/ft_printf/includes/header.h"
+# include <fcntl.h>
 
-# define DOWN	filler->board.height - 1
-# define UP		0
-# define RIGHT	filler->board.width - 1
-# define LEFT	0
+# define EQUALS(a, b)	(a == b) || (a == b + 32)
+
+# define UP_LEFT	7
+# define DOWN_RIGHT 3
+
+# define UP			8
+# define LEFT		4
+# define RIGHT		6
+# define DOWN		2
+
+# define FILL_LEFT	0
+# define FILL_RIGHT	1
+
 typedef struct	s_point
 {
 	int			x;
 	int			y;
 }				t_point;
-
-typedef struct	s_player
-{
-	t_point		start;
-	char		symbol;
-}				t_player;
 
 typedef struct	s_object
 {
@@ -41,18 +45,15 @@ typedef struct	s_object
 
 typedef struct	s_filler
 {
-	int			inited;
-	t_player	me;
-	t_player	bot;
-	t_object	board;
+	char		me;
+	char		bot;
+	t_object	map;
 	t_object	piece;
-	t_point		target;
-	t_point		*buf_player;
-	t_point		*buf_enemy;
-	t_point		count;		// x for player |  y for enemy
+	t_point		diff;
+	int			corner;
+	int			direction;
+	t_point		result;
 }				t_filler;
 
-int		get_player(t_filler *filler);
-void	filler_loop(t_filler *filler);
 
 #endif	
