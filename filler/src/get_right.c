@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   get_right.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 16:06:50 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/14 23:37:06 by mikim            ###   ########.fr       */
+/*   Created: 2019/07/11 21:41:32 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/11 21:42:04 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "filler.h"
 
-void	ft_bzero(void *s, size_t n)
+int		get_right(t_object map, char who)
 {
-	while (n--)
-		*((unsigned char*)s++) = '\0';
+	t_point loop;
+
+	loop.x = map.width;
+	while (--loop.x >= 0 && (loop.y = -1))
+		while (++loop.y < map.height)
+			if (EQUALS(map.info[loop.y][loop.x], who))
+				return (loop.x);
+	return (-1);
 }

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_left.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/09 18:30:51 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/11 21:53:04 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/11 21:40:41 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/11 21:40:47 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		main(void)
+int		get_left(t_object map, char who)
 {
-	t_filler	filler;
+	t_point loop;
 
-	ft_bzero(&filler, sizeof(t_filler));
-	get_player(&filler);
-	while (69)
-	{
-		read_data(&filler);
-		fit_piece(&filler);
-	}
-	return (0);
+	loop.x = -1;
+	while (++loop.x < map.width && (loop.y = -1))
+		while (++loop.y < map.height)
+			if (EQUALS(map.info[loop.y][loop.x], who))
+				return (loop.x);
+	return (map.width + 1);
 }

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 16:06:50 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/14 23:37:06 by mikim            ###   ########.fr       */
+/*   Created: 2019/07/11 21:37:37 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/11 21:38:35 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "filler.h"
 
-void	ft_bzero(void *s, size_t n)
+void	get_player(t_filler *filler)
 {
-	while (n--)
-		*((unsigned char*)s++) = '\0';
+	char *line;
+
+	get_next_line(0, &line);
+	filler->me = 70 + (line[10] - '0') * 9;
+	filler->bot = 97 - (line[10] - '0') * 9;
+	ft_strdel(&line);
 }

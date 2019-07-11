@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   cr_point.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 16:06:50 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/14 23:37:06 by mikim            ###   ########.fr       */
+/*   Created: 2019/07/11 21:51:15 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/11 21:51:23 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "filler.h"
 
-void	ft_bzero(void *s, size_t n)
+t_point	cr_point(int x, int y)
 {
-	while (n--)
-		*((unsigned char*)s++) = '\0';
+	t_point	point;
+
+	point.x = x;
+	point.y = y;
+	return (point);
 }

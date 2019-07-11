@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fit_piece.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/09 18:30:51 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/11 21:53:04 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/11 21:42:35 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/11 23:08:35 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		main(void)
+void	fit_piece(t_filler *filler)
 {
-	t_filler	filler;
-
-	ft_bzero(&filler, sizeof(t_filler));
-	get_player(&filler);
-	while (69)
+	check_map(filler);
+	filler->result = (filler->put_or_fill == FILL) ?
+		fill(filler) : put(filler);
+	if (filler->result.y != -1)
 	{
-		read_data(&filler);
-		fit_piece(&filler);
+		ft_putnbr(filler->result.y);
+		ft_putchar(' ');
+		ft_putnbr(filler->result.x);
+		ft_putchar('\n');
+		//ft_printf("%d %d\n", filler->result.y, filler->result.x);
 	}
-	return (0);
+	else
+	{
+		ft_printf("0 0\n");
+		exit(0);
+	}
 }

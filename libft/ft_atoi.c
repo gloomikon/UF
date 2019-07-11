@@ -3,38 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/26 15:55:31 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/05 11:16:24 by mzhurba          ###   ########.fr       */
+/*   Created: 2017/10/07 16:06:31 by mikim             #+#    #+#             */
+/*   Updated: 2017/10/14 23:36:37 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *s)
 {
-	size_t	i;
-	int		nbr;
-	int		neg;
+	long	n;
+	int		np;
 
-	nbr = 0;
-	neg = 0;
-	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\n') || (str[i] == '\t') ||
-			(str[i] == '\r') || (str[i] == '\v') || (str[i] == '\f'))
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while ((str[i] >= '0') && (str[i] <= '9'))
+	np = 1;
+	n = 0;
+	while (*s == '\t' || *s == ' ' || *s == '\n' ||
+			*s == '\r' || *s == '\v' || *s == '\f')
+		++s;
+	*s == '-' ? np = -1 : 0;
+	*s == '-' || *s == '+' ? ++s : 0;
+	while (*s >= '0' && *s <= '9')
 	{
-		nbr = nbr * 10 + (int)str[i] - (int)'0';
-		i++;
+		n *= 10;
+		n += *s - 48;
+		++s;
 	}
-	if (neg)
-		return (-nbr);
-	else
-		return (nbr);
+	return ((int)n * np);
 }

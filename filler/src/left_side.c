@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   left_side.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 16:06:50 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/14 23:37:06 by mikim            ###   ########.fr       */
+/*   Created: 2019/07/11 21:46:39 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/11 21:47:07 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "filler.h"
 
-void	ft_bzero(void *s, size_t n)
+int		left_side(t_filler *filler)
 {
-	while (n--)
-		*((unsigned char*)s++) = '\0';
+	int	y;
+
+	if (ft_strchr(MI[MH - 1], filler->me))
+		return (1);
+	y = -1;
+	while (++y < MH)
+		if (MI[y][0] == filler->me)
+			return (1);
+	return (0);
 }
