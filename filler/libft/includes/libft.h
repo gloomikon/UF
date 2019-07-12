@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:46:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/03 01:05:24 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/12 00:36:49 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <limits.h>
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 1
 
 void				ft_putmem(void *s, int a);
 char				*ft_strrev(char *s);
