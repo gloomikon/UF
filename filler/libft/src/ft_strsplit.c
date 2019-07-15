@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 18:09:08 by mzhurba           #+#    #+#             */
-/*   Updated: 2018/11/08 16:50:58 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/15 20:04:41 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int		count_words(char const *str, char c)
 	return (words);
 }
 
-char		**ft_strsplit(char const *str, char c)
+char			**ft_strsplit(char const *str, char c)
 {
 	char	**words;
 	int		i;

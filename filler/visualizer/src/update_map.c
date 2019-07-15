@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   update_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/11 21:36:40 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/15 19:43:39 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/15 19:37:20 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/15 19:41:59 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visualizer.h"
 
-void	read_map(char *line, t_object *map)
+void	update_map(t_visualizer *v)
 {
-	char	*tmp;
+	char	*line;
 	int		i;
 
-	tmp = ft_strchr(line, ' ') + 1;
-	map->height = ft_atoi(tmp);
-	tmp = ft_strchr(tmp, ' ') + 1;
-	map->width = ft_atoi(tmp);
-	map->info = ft_memalloc(sizeof(char *) * map->height);
+	ft_bzero(&v->scores, sizeof(t_point));
 	i = -1;
-	get_next_line(0, &tmp);
-	free(tmp);
-	while (++i < map->height)
+	while (++i < MY)
 	{
-		get_next_line(0, &tmp);
-		map->info[i] = ft_strdup(tmp + 4);
-		free(tmp);
+		get_next_line(0, &line);
+		print_one_line(line, i, v);
+		ft_strdel(&line);
 	}
+	wrefresh(v->map);
 }

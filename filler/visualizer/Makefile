@@ -5,42 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/07/11 21:56:49 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/15 20:11:37 by mzhurba          ###   ########.fr        #
+#    Created: 2019/07/15 19:47:51 by mzhurba           #+#    #+#              #
+#    Updated: 2019/07/15 20:00:01 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mzhurba.filler
+NAME = visualizer
 
-SRC =	check_dr.c cr_point.c get_left.c init_corner.c main.c read_piece.c\
-		check_map.c fill.c get_player.c init_filler.c put.c right_side.c\
-		check_ul.c fit_piece.c get_right.c invalid_pos.c read_data.c\
-		check_valid.c get_bottom.c get_top.c left_side.c read_map.c
+SRC =	colorizer.c end_free.c init_map.c init_score_meter.c init_winner.c\
+        print_one_line.c update.c update_score_meter.c create_score_line.c\
+		init_header.c init_players.c init_screen.c read_size.c update_map.c\
+		main.c
 OBJ = $(SRC:.c=.o)
 
 SRCDIR = src
-OBJDIR = objSRCDIR = src
 OBJDIR = obj
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
-HEADER = -I includes
-LIBS = -L libft/ -lft
+HEADER = -I includes -I ../libft/ft_printf/includes
+LIBS = -lncurses -lft -L ../libft
 
 CC = clang
+
 CFLAGS = -c -Wall -Wextra -Werror
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME) : $(OBJS) | lib
+$(NAME) : $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) -o $@
-	@make -C ./visualizer
-	@echo "💾  [mzhurba.filler - ready] 💾"
-
-lib:
-	@make -C ./libft
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@/bin/mkdir -p $(OBJDIR)
@@ -48,14 +43,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	@/bin/rm -rf $(OBJDIR)
-	@make -C ./libft clean
-	@make -C ./visualizer clean
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@make -C ./libft fclean
-	@make -C ./visualizer fclean
-	@echo "🗑  [mzhurba.filler - fclean] 🗑"
-
 
 re: fclean all

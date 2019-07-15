@@ -6,7 +6,7 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 13:46:35 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/09 20:12:09 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/15 20:07:15 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,23 +69,19 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "📙 [libft - ready] 📙"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@/bin/mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) $(HEADER) -o $@ -c $<
-#	@echo "🔨$(<:src/%=%)"
 
 $(OBJDIR)/%.o: $(SRC1DIR)/%.c
 	@/bin/mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) $(HEADER) -o $@ -c $<
-#	@echo "🔨$(<:ft_printf/src/%=%)"
 
 clean:
 	@/bin/rm -rf $(OBJDIR)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "🚮 [libft - fclean] 🚮"
 
 re: fclean all

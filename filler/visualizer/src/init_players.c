@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   init_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/11 21:36:40 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/15 19:43:39 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/15 19:31:22 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/15 19:31:31 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visualizer.h"
 
-void	read_map(char *line, t_object *map)
+void	init_players(t_visualizer *v)
 {
-	char	*tmp;
+	char	*line;
 	int		i;
 
-	tmp = ft_strchr(line, ' ') + 1;
-	map->height = ft_atoi(tmp);
-	tmp = ft_strchr(tmp, ' ') + 1;
-	map->width = ft_atoi(tmp);
-	map->info = ft_memalloc(sizeof(char *) * map->height);
 	i = -1;
-	get_next_line(0, &tmp);
-	free(tmp);
-	while (++i < map->height)
+	while (++i < 5)
 	{
-		get_next_line(0, &tmp);
-		map->info[i] = ft_strdup(tmp + 4);
-		free(tmp);
+		get_next_line(0, &line);
+		free(line);
 	}
+	get_next_line(0, &line);
+	v->p1 = ft_strdup(ft_strrchr(line, '/') + 1);
+	free(line);
+	get_next_line(0, &line);
+	free(line);
+	get_next_line(0, &line);
+	v->p2 = ft_strdup(ft_strrchr(line, '/') + 1);
+	free(line);
 }
