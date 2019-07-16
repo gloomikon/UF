@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:36:40 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/15 19:43:39 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 20:06:04 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void	read_map(char *line, t_object *map)
 	map->width = ft_atoi(tmp);
 	map->info = ft_memalloc(sizeof(char *) * map->height);
 	i = -1;
+	tmp = NULL;
 	get_next_line(0, &tmp);
-	free(tmp);
+	ft_strdel(&tmp);
 	while (++i < map->height)
 	{
 		get_next_line(0, &tmp);
 		map->info[i] = ft_strdup(tmp + 4);
-		free(tmp);
+		ft_strdel(&tmp);
 	}
 }

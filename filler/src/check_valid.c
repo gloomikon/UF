@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:49:34 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/11 21:50:09 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 18:08:13 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int		check_valid(t_filler *filler, int y, int x)
 
 	i = -1;
 	cnt = 0;
-	while (++i < filler->piece.height)
-	{
-		j = -1;
+	while (++i < filler->piece.height && (j = -1))
 		while (++j < filler->piece.width)
 		{
 			if (filler->piece.info[i][j] == '*' &&
@@ -31,9 +29,8 @@ int		check_valid(t_filler *filler, int y, int x)
 				filler->map.info[y + i][x + j] == filler->bot + 32)))
 				return (0);
 			if (filler->piece.info[i][j] == '*' &&
-				(filler->map.info[y + i][x + j] == filler->me))
+				(filler->map.info[y + i][x + j] == ME))
 				cnt++;
 		}
-	}
 	return (cnt == 1);
 }

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   right_side.c                                       :+:      :+:    :+:   */
+/*   piece_put_up.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/11 21:47:16 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/16 18:10:03 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/16 19:32:29 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/16 20:27:46 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		right_side(t_filler *filler)
+t_point	piece_put_up(t_filler *filler)
 {
-	int y;
+	t_point loop;
 
-	if (ft_strchr(MI[0], ME))
-		return (1);
-	y = -1;
-	while (++y < MH)
-		if (MI[y][MW - 1] == ME)
-			return (1);
-	return (0);
+	loop.y = -PH;
+	while (++loop.y < MH && (loop.x = -PW))
+		while (++loop.x < MW)
+			if (check_valid(filler, loop.y, loop.x))
+				return (cr_point(loop.x, loop.y));
+	return (cr_point(0, 0));
 }

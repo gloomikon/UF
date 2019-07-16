@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:46:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/12 00:36:49 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 17:19:55 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define BUFF_SIZE 1
 
+int					ft_max(int a, int b);
+int					ft_min(int a, int b);
 void				ft_putmem(void *s, int a);
 char				*ft_strrev(char *s);
 void				ft_putchar(char c);

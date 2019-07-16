@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 03:16:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/15 19:57:16 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 19:04:22 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ int	main(void)
 	ft_strdel(&line);
 	init_winner(&v);
 	end_free(&v);
-	getch();
 	return (0);
 }

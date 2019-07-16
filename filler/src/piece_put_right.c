@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_filler.c                                      :+:      :+:    :+:   */
+/*   piece_put_right.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/11 21:51:50 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/11 21:51:57 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/16 19:30:09 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/16 20:27:41 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	init_filler(int put_or_fill, t_point from, t_point to, t_filler *filler)
+t_point	piece_put_right(t_filler *filler)
 {
-	filler->put_or_fill = put_or_fill;
-	filler->from = from;
-	filler->to = to;
+	t_point loop;
+
+	loop.y = -PH;
+	while (++loop.y < MH && (loop.x = MW))
+		while (--loop.x >= 0)
+			if (check_valid(filler, loop.y, loop.x))
+				return (cr_point(loop.x, loop.y));
+	return (cr_point(0, 0));
 }

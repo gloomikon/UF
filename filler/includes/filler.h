@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 22:01:14 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/11 21:52:43 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 19:32:55 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,24 @@
 
 # define EQUALS(a, b)	(a == b) || (a == b + 32)
 
-# define UP_LEFT	7
-# define DOWN_RIGHT 3
-
 # define MW			filler->map.width
 # define MH			filler->map.height
 # define MI			filler->map.info
 # define PW			filler->piece.width
 # define PH			filler->piece.height
 # define PI			filler->piece.info
+# define HMAP		filler->hmap
+# define ME			filler->me
+# define BOT		filler->bot
 
-# define PUT		0
-# define FILL		1
+# define UP_LEFT	7
+# define DOWN_RIGHT	3
+# define F_LEFT		0
+# define F_RIGHT	1
+# define UP			8
+# define LEFT		4
+# define DOWN		2
+# define RIGHT		6
 
 typedef struct	s_point
 {
@@ -51,10 +57,8 @@ typedef struct	s_filler
 	t_object	map;
 	t_object	piece;
 	t_point		diff;
+	int			direction;
 	int			corner;
-	int			put_or_fill;
-	t_point		from;
-	t_point		to;
 	t_point		result;
 }				t_filler;
 
@@ -62,6 +66,7 @@ void			get_player(t_filler *filler);
 void			read_data(t_filler *filler);
 void			read_piece(char *line, t_object *piece);
 void			read_map(char *line, t_object *map);
+void			fit_piece(t_filler *filler);
 int				init_corner(t_filler *filler);
 
 int				get_bottom(t_object map, char who);
@@ -69,19 +74,21 @@ int				get_top(t_object map, char who);
 int				get_left(t_object map, char who);
 int				get_right(t_object map, char who);
 
-void			fit_piece(t_filler *filler);
 void			check_map(t_filler *filler);
 void			check_ul(t_filler *filler);
 void			check_dr(t_filler *filler);
 int				left_side(t_filler *filler);
 int				right_side(t_filler *filler);
-t_point			fill(t_filler *filler);
-t_point			put(t_filler *filler);
-int				check_valid(t_filler *filler, int y, int x);
+
+t_point			piece_fill_right(t_filler *filler);
+t_point			piece_fill_left(t_filler *filler);
+t_point			piece_put_down(t_filler *filler);
+t_point			piece_put_right(t_filler *filler);
+t_point			piece_put_left(t_filler *filler);
+t_point			piece_put_up(t_filler *filler);
 
 int				invalid_pos(int y, int x, t_object map);
 t_point			cr_point(int x, int y);
-void			init_filler(int put_or_fill, t_point from,
-				t_point to, t_filler *filler);
+int				check_valid(t_filler *filler, int y, int x);
 
 #endif
