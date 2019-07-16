@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 22:50:18 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/16 22:50:18 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/16 22:39:07 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/16 22:44:49 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "filler.h"
 
-char	*ft_strsub(char const *s, int start, int len)
+void	free_all(t_filler *filler)
 {
-	char	*result;
-	int		i;
+	int i;
 
-	if (s == NULL)
-		return (NULL);
-	if (start > ft_strlen(s))
-		return (NULL);
-	if ((result = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len && s[start] != '\0')
-	{
-		result[i] = s[start];
-		start++;
-		i++;
-	}
-	result[i] = '\0';
-	return (result);
+	i = -1;
+	while (++i < MH)
+		ft_strdel(&MI[i]);
+	free(MI);
+	i = -1;
+	while (++i < PH)
+		ft_strdel(&PI[i]);
+	free(PI);
 }

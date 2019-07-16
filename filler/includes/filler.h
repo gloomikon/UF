@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 22:01:14 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/16 19:32:55 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 22:41:38 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ t_point			piece_put_up(t_filler *filler);
 int				invalid_pos(int y, int x, t_object map);
 t_point			cr_point(int x, int y);
 int				check_valid(t_filler *filler, int y, int x);
+void			free_all(t_filler *filler);
 
 #endif

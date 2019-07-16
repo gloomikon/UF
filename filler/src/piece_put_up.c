@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 19:32:29 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/16 20:27:46 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 23:00:58 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ t_point	piece_put_up(t_filler *filler)
 		while (++loop.x < MW)
 			if (check_valid(filler, loop.y, loop.x))
 				return (cr_point(loop.x, loop.y));
-	return (cr_point(0, 0));
+	return (cr_point(-PW - 1, -PH - 1));
 }

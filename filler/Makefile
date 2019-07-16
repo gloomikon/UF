@@ -6,7 +6,7 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/11 21:56:49 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/16 19:33:52 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/16 22:43:09 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC =	check_dr.c cr_point.c get_left.c init_corner.c main.c read_piece.c\
 		check_ul.c fit_piece.c get_right.c invalid_pos.c read_data.c\
 		check_valid.c get_bottom.c get_top.c left_side.c read_map.c\
 		piece_fill_right.c piece_fill_left.c piece_put_down.c\
-		piece_put_right.c piece_put_left.c piece_put_up.c
+		piece_put_right.c piece_put_left.c piece_put_up.c free_all.c
 
 OBJ = $(SRC:.c=.o)
 

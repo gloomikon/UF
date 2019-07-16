@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:42:35 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/16 20:41:11 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/16 22:58:01 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	fit_piece(t_filler *filler)
 	else if (filler->direction == F_RIGHT)
 		filler->result = piece_fill_right(filler);
 	ft_printf("%d %d\n", filler->result.y, filler->result.x);
-	if (filler->result.y == 0 && filler->result.x == 0)
+	free_all(filler);
+	if (filler->result.y == (-PH - 1) && filler->result.x == (-PW - 1))
 		exit(0);
 }
