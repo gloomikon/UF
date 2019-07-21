@@ -1,4 +1,4 @@
-# Unit Factory (:four::two: School) projects
+# Unit Factory (42 School) projects
 * [Profile link](https://github.com/gloomikon/UnitFactory/#My-profile)
 * [Projects](https://github.com/gloomikon/UnitFactory/#Projects)
 	* Exams
@@ -16,7 +16,7 @@
 
 ## Projects
 
-* [Exams](https://github.com/gloomikon/UnitFactory/tree/master/Exams)
+* [Exams](https://github.com/gloomikon/UnitFactory/tree/master/Exams)  
 **84/100**
 * [Piscine Reloaded](https://github.com/gloomikon/UnitFactory/tree/master/PiscineReloaded)  
 **100 / 100**
@@ -30,7 +30,7 @@
 **110 / 100**
 * [Filler](https://github.com/gloomikon/UnitFactory/tree/master/filler)  
 **125 / 100**
-* [Fdf](https://github.com/gloomikon/UnitFactory/tree/master/fdf) 
+* [Fdf](https://github.com/gloomikon/UnitFactory/tree/master/fdf)  
 **In progress :clock330: :clock530: :clock5:**
 
 ## Piscines
