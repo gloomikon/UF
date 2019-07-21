@@ -10,4 +10,5 @@ that the filler takes all his interest. Each player has for the purpose of placi
 pieces as possible while attempting to prevent his opponent from doing the same. At the  
 end of the game, the one with the most points wins the match...  
 
+**Click on image to see video demonstation:**  
 [![Filler demonstration](https://firebasestorage.googleapis.com/v0/b/project-6823619469149101723.appspot.com/o/%D0%91%D0%B5%D0%B7%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1.png?alt=media&token=4d2e2d60-7620-429d-8e6b-f2de0e6587e6)](https://www.youtube.com/watch?v=wnf-beMos_8)
