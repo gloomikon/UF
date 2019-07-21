@@ -7,17 +7,17 @@ be allowed to use your `ft_printf` in all your future projects.
   
 ## Usage:
 `ft_printf("%[flags][width][.precision][length]specifier, ...);`  
-For multifile descriptor use:
+For multifile descriptor use:  
 `ft_dprintf(fd, "%[flags][width][.precision][length]specifier, ...);`  
 You can also use `%b` for binary output.  
-Or colors like this:
-`ft_printf("{red}Hello World!{off}");
+Or colors like this:  
+`ft_printf("{red}Hello World!{off}");`  
 Available colors:
-* {red}
-* {yellow}
-* {blue}
-* {white}
-* {black}
-* {cyan}
-* {magenta}
-* {green}
+* `{red}`
+* `{yellow}`
+* `{blue}`
+* `{white}`
+* `{black}`
+* `{cyan}`
+* `{magenta}`
+* `{green}`
