@@ -6,11 +6,18 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:42:37 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/22 21:33:23 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/23 18:34:41 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	err_exit(char *err)
+{
+	ft_printf("%s\n", err);
+	system("leaks a.out");
+	exit(1);
+}
 
 /*
 **	VALIDATION
@@ -122,17 +129,16 @@ void	free_split_array(char **split)
 
 void	free_lst(t_point_lst **lst)
 {
-	t_point_lst	*curr;
 	t_point_lst	*tmp;
 
-	curr = *lst;
-	while (curr)
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
 	{
-		tmp = curr->nxt;
-		free(curr);
-		curr = tmp;
+		tmp = (*lst)->nxt;
+		free(*lst);
+		*lst = tmp;
 	}
-	free(*lst);
 }
 
 /*
@@ -147,10 +153,11 @@ void		lst_push(t_point_lst **coords_stack, t_point_lst *new)
 			new->nxt = *coords_stack;
 		*coords_stack = new;
 	}
+	else
+		*coords_stack = new;
 }
 
-
-static t_point_lst	*new_point(char *s)
+static t_point_lst	*new_point(char *s, char **split, t_point_lst **lst)
 {
 	t_point_lst	*coord;
 	char		**parts;
@@ -158,9 +165,19 @@ static t_point_lst	*new_point(char *s)
 	coord = (t_point_lst *)ft_memalloc(sizeof(t_point_lst));
 	parts = ft_strsplit(s, ',');
 	if (!ft_isnumber(parts[0], 10))
-		//free and exit;
+	{
+		free_split_array(split);
+		free_split_array(parts);
+		free_lst(lst);
+		err_exit(ERR_MAP);
+	}
 	if (parts[1] && !ft_isnumber(parts[1], 16))
-		//free and exit;
+	{
+		free_split_array(split);
+		free_split_array(parts);
+		free_lst(lst);
+		err_exit(ERR_MAP);
+	}
 	coord->val.z = ft_atoi(parts[0]);
 	coord->val.color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
 	coord->nxt = NULL;
@@ -168,14 +185,9 @@ static t_point_lst	*new_point(char *s)
 	return (coord);
 }
 
-
-void	err_exit(char *err)
-{
-	ft_printf("%s\n", err);
-	system ("leaks a.out");
-	exit(1);
-}
-
+/*
+** READING
+*/
 
 void	read_map(int fd, t_fdf *fdf)
 {
@@ -185,11 +197,12 @@ void	read_map(int fd, t_fdf *fdf)
 	int			width;
 	t_point_lst	*lst;
 
+	lst = NULL;
 	while (get_next_line(fd, &line) && !(width = 0) && (++fdf->map.height))
 	{
 		split = ft_strsplit(line, ' ');
 		while (split[width])
-			lst_push(&lst, new_point(split[width++]));
+			lst_push(&lst, new_point(split[width++], split, &lst));
 		ft_strdel(&line);
 		free_split_array(split);
 		fdf->map.width = fdf->map.height == 1 ? width : fdf->map.width;
