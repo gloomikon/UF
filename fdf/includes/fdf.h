@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:42:33 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 19:49:09 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/25 21:04:47 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,4 +156,7 @@ void	mlx_hooking(t_fdf *fdf);
 
 int			key_press(int key, void *param);
 void	change_angle(int key, t_fdf *fdf);
+void	chenge_zoom(int key, t_fdf *fdf);
+void	change_pos(int key, t_fdf *fdf);
+void	change_height(int key, t_fdf *fdf);
 #endif
