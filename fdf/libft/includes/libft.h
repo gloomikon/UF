@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:46:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/16 17:19:55 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/25 02:05:58 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 int					ft_max(int a, int b);
 int					ft_min(int a, int b);
+int					ft_abs(int x);
 void				ft_putmem(void *s, int a);
 char				*ft_strrev(char *s);
 void				ft_putchar(char c);
@@ -40,6 +41,7 @@ char				*ft_ultoa(unsigned long n);
 char				*ft_ultoa_base(unsigned long n, int base);
 char				*ft_ltoa_base(long n, int base);
 int					ft_atoi(const char *str);
+int					ft_atoi_base(const char *str, int base);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
@@ -52,13 +54,17 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_isalpha(int c);
+int					ft_isspace(int c);
 int					ft_isdigit(int c);
+int					ft_isnumber(char *str, int base);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_islower(int c);
+int					ft_has_prefix(const char *str, int base);
+int					ft_isdigit_base(char c, int base);
 void				ft_strlower(char *s);
 char				*ft_strsub(char const *s, int start, int len);
 char				*ft_strjoin(char const *s1, char const *s2);

@@ -6,7 +6,7 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 13:46:35 by mzhurba           #+#    #+#              #
-#    Updated: 2019/07/16 17:20:14 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/07/25 01:49:54 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c\
 		ft_lstnew.c ft_ltoa.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c\
 		ft_lstmap.c ft_islower.c ft_strlower.c ft_isupper.c ft_lstadd.c\
 		ft_striteri.c ft_striter.c ft_putarr.c get_next_line.c ft_splitdel.c\
-		ft_max.c ft_min.c
+		ft_max.c ft_min.c ft_isspace.c ft_isdigit_base.c ft_has_prefix.c\
+		ft_atoi_base.c ft_isnumber.c ft_abs.c
 
 SRC1 =	check_base_prec.c check_digit_prec.c check_digit_sign.c check_form.c\
 		check_settings.c delete_zero.c ft_printf.c ft_str_prec.c\
