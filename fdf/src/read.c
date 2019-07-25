@@ -6,13 +6,13 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 22:44:42 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 03:34:58 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:24:21 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	fullfill_data(t_point_lst **lst, t_fdf *fdf)
+void	fullfill_data(t_point_lst **lst, t_fdf *fdf)
 {
 	int			i;
 	int			j;
@@ -25,7 +25,7 @@ static void	fullfill_data(t_point_lst **lst, t_fdf *fdf)
 	while (++i < fdf->map.height)
 		fdf->map.coords[i] =
 			(t_point*)malloc(sizeof(t_point) * fdf->map.width);
-	while(--i >= 0 && (j = fdf->map.width))
+	while (--i >= 0 && (j = fdf->map.width))
 		while (--j >= 0 && (point = lst_pop(lst)))
 		{
 			fdf->map.coords[i][j] = point->val;

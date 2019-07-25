@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 22:41:50 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 04:25:49 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:21:24 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_point_lst	*lst_pop(t_point_lst **lst)
 	}
 	return (top);
 }
-
 
 t_point_lst	*new_point(char *s, t_fdf *fdf)
 {

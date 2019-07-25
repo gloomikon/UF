@@ -6,13 +6,13 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:38:33 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 19:57:38 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:36:26 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	iso(int *x, int *y, int z)
+void		iso(int *x, int *y, int z)
 {
 	int prev_x;
 	int prev_y;
@@ -23,7 +23,7 @@ void	iso(int *x, int *y, int z)
 	*y = -z + (prev_x + prev_y) * sin(0.523599);
 }
 
-void	transform_x_axis(int *y, int *z, double alpha)
+void		transform_x_axis(int *y, int *z, double alpha)
 {
 	int prev_y;
 
@@ -32,7 +32,7 @@ void	transform_x_axis(int *y, int *z, double alpha)
 	*z = -prev_y * sin(alpha) + *z * cos(alpha);
 }
 
-void	transform_y_axis(int *x, int *z, double beta)
+void		transform_y_axis(int *x, int *z, double beta)
 {
 	int prev;
 
@@ -41,7 +41,7 @@ void	transform_y_axis(int *x, int *z, double beta)
 	*z = -prev * sin(beta) + *z * cos(beta);
 }
 
-void	transform_z_axis(int *x, int *y, double gamma)
+void		transform_z_axis(int *x, int *y, double gamma)
 {
 	int prev_x;
 	int prev_y;
@@ -56,13 +56,10 @@ t_point3d	projection(int x, int y, int z, t_fdf *fdf)
 {
 	t_point3d	p;
 
-	//part with color
-	p.color = fdf->map.coords[y][x].color == -1 ?
-		fdf->beauty.line_color : fdf->map.coords[y][x].color;
-	//rewrite !!!
+	p.color = generate_color(x, y, z, fdf);
 	x = x * fdf->cam.zoom - (fdf->map.width * fdf->cam.zoom) / 2;
 	y = y * fdf->cam.zoom - (fdf->map.height * fdf->cam.zoom) / 2;
-	z *= fdf->cam.zoom / fdf->cam.zdiv / 5;
+	z *= fdf->cam.zoom * fdf->cam.zdiv / 100;
 	transform_x_axis(&y, &z, fdf->cam.alpha);
 	transform_y_axis(&x, &z, fdf->cam.beta);
 	transform_z_axis(&x, &y, fdf->cam.gamma);

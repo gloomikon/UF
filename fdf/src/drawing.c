@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:29:44 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 18:32:10 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:21:58 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	fill_bg(t_fdf *fdf)
 	draw_star_sky(fdf);
 }
 
-void	draw_fdf(t_fdf	*fdf)
+void	draw_fdf(t_fdf *fdf)
 {
 	int x;
 	int y;
@@ -90,7 +90,7 @@ void	draw_fdf(t_fdf	*fdf)
 	fill_bg(fdf);
 	y = -1;
 	while (++y < fdf->map.height && (x = -1))
-		while(++x < fdf->map.width)
+		while (++x < fdf->map.width)
 		{
 			if (x != fdf->map.width - 1)
 				bresenham(

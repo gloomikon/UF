@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:37:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 18:37:34 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:20:12 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	put_pixel(t_fdf *fdf, int x, int y, int color)
 
 void	bresenham(t_point3d from, t_point3d to, t_fdf *fdf)
 {
+	int			err[2];
 	t_point3d	cur;
 	t_point3d	delta;
 	t_point3d	sign;
-	int			err[2];
 
 	delta.x = ft_abs(from.x - to.x);
 	delta.y = ft_abs(from.y - to.y);
@@ -33,8 +33,7 @@ void	bresenham(t_point3d from, t_point3d to, t_fdf *fdf)
 	cur = from;
 	while (cur.x != to.x || cur.y != to.y)
 	{
-		//put_pixel(fdf, cur.x, cur.y, get_color(cur, from, to, delta));
-		put_pixel(fdf, cur.x, cur.y, cur.color);
+		put_pixel(fdf, cur.x, cur.y, get_color(cur, from, to, delta));
 		if ((err[1] = err[0] * 2) > -delta.y)
 		{
 			err[0] -= delta.y;

@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:42:33 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 21:04:47 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:43:01 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@
 # include <mlx.h>
 # include <math.h>
 
-
 # define HEIGHT		1315
 # define WIDTH		2560
 # define MENU_WIDTH	400
 
 # define BGCOLOR	0x000000
-# define MENUCOLOR	0x660066
-
+# define MENUCOLOR	0x1A001A
 
 # define ERR_USAGE	"Usage: ./fdf <filename>"
 # define ERR_FILE	"Incorrect filename"
@@ -42,7 +40,7 @@ typedef struct			s_point3d
 	int					y;
 	int					z;
 	int					color;
-} 						t_point3d;
+}						t_point3d;
 
 typedef struct			s_point
 {
@@ -73,7 +71,7 @@ typedef struct			s_cam
 	double				alpha;
 	double				beta;
 	double				gamma;
-	double				zdiv;
+	int					zdiv;
 	int					xoffset;
 	int					yoffset;
 }						t_cam;
@@ -81,6 +79,7 @@ typedef struct			s_cam
 typedef	struct			s_beauty
 {
 	int					has_color;
+	int					ground;
 	int					ground_color;
 	int					line_color;
 }						t_beauty;
@@ -103,60 +102,74 @@ typedef struct			s_fdf
 ** WORK WITH LIST
 */
 
-void		lst_push(t_point_lst **lst, t_point_lst *new);
-t_point_lst	*lst_pop(t_point_lst **lst);
-t_point_lst	*new_point(char *s, t_fdf *fdf);
+void					lst_push(t_point_lst **lst, t_point_lst *new);
+t_point_lst				*lst_pop(t_point_lst **lst);
+t_point_lst				*new_point(char *s, t_fdf *fdf);
 
 /*
 ** FREE MEMORY
 */
 
-void	free_split_array(char **split);
-void	free_lst(t_point_lst **lst);
+void					free_split_array(char **split);
+void					free_lst(t_point_lst **lst);
 
 /*
 ** READ MAP
 */
 
-void	read_map(int fd, t_fdf *fdf);
+void					read_map(int fd, t_fdf *fdf);
+void					fullfill_data(t_point_lst **lst, t_fdf *fdf);
 
 /*
 ** DRAWING & DISPLAYING
 */
 
-void	draw_star(int x, int y, t_fdf *fdf);
-void	draw_star_sky(t_fdf *fdf);
-void	fill_bg(t_fdf *fdf);
-void	draw_fdf(t_fdf	*fdf);
-void	put_pixel(t_fdf *fdf, int x, int y, int color);
-void	bresenham(t_point3d from, t_point3d to, t_fdf *fdf);
+void					draw_star(int x, int y, t_fdf *fdf);
+void					draw_star_sky(t_fdf *fdf);
+void					fill_bg(t_fdf *fdf);
+void					draw_fdf(t_fdf	*fdf);
+void					put_pixel(t_fdf *fdf, int x, int y, int color);
+void					bresenham(t_point3d from, t_point3d to, t_fdf *fdf);
+int						get_color(t_point3d current, t_point3d start,
+							t_point3d end, t_point3d delta);
+int						get_light(int start, int end, double p);
+int						generate_color(int x, int y, int z, t_fdf *fdf);
 
 /*
 ** TRANSFORMATION
 */
 
-void	iso(int *x, int *y, int z);
-t_point3d	projection(int x, int y, int z, t_fdf *fdf);
-void	transform_x_axis(int *y, int *z, double alpha);
-void	transform_y_axis(int *x, int *z, double beta);
-void	transform_z_axis(int *x, int *y, double gamma);
+void					iso(int *x, int *y, int z);
+t_point3d				projection(int x, int y, int z, t_fdf *fdf);
+void					transform_x_axis(int *y, int *z, double alpha);
+void					transform_y_axis(int *x, int *z, double beta);
+void					transform_z_axis(int *x, int *y, double gamma);
 
 /*
 ** AUXILIARY FUNCTIONS
 */
 
-void	err_exit(char *err);
-int		eclose(void *param);
-void	init_fdf(t_fdf	*fdf);
-void	mlx_hooking(t_fdf *fdf);
+void					err_exit(char *err);
+int						eclose(void *param);
+void					init_fdf(t_fdf	*fdf);
+void					mlx_hooking(t_fdf *fdf);
+double					percent(int start, int end, int current);
 
 /*
 ** KEYBOARD CONTROL FUNCTIONS
 */
 
-int			key_press(int key, void *param);
-void	change_angle(int key, t_fdf *fdf);
-void	chenge_zoom(int key, t_fdf *fdf);
-void	change_pos(int key, t_fdf *fdf);
-void	change_height(int key, t_fdf *fdf);
+int						key_press(int key, void *param);
+
+/*
+** CHANGE PROPERTIES
+*/
+
+void					change_angle(int key, t_fdf *fdf);
+void					change_zoom(int key, t_fdf *fdf);
+void					change_pos(int key, t_fdf *fdf);
+void					change_height(int key, t_fdf *fdf);
+void					change_proj(int key, t_fdf *fdf);
+void					change_color(int key, t_fdf *fdf);
+
 #endif
