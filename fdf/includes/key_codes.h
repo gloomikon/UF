@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_codes.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/22 16:42:37 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 18:38:55 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/07/25 18:16:40 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/07/25 18:24:12 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef KEY_CODES_H
+# define KEY_CODES_H
 
-int	main(int argc, char **argv)
-{
-	t_fdf	fdf;
-	int		fd;
+# define UP		126
+# define DOWN	125
+# define LEFT	123
+# define RIGHT	124
+# define ESC	53
 
-	if (argc != 2)
-		err_exit(ERR_USAGE);
-	if ((fd = open(argv[1], O_RDONLY | O_DIRECTORY)) > 0)
-		err_exit(ERR_FILE);
-	if ((fd = open(argv[1], O_RDONLY)) < 0)
-		err_exit(ERR_FILE);
-	ft_bzero(&fdf, sizeof(t_fdf));
-	read_map(fd, &fdf);
-	close(fd);
-	init_fdf(&fdf);
-	draw_fdf(&fdf);
-	mlx_hooking(&fdf);
-	mlx_loop(fdf.mlx);
-	return (0);
-}
+#endif

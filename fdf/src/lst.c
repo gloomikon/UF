@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 22:41:50 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 03:36:39 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/25 04:25:49 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_point_lst	*new_point(char *s, t_fdf *fdf)
 		err_exit(ERR_MAP);
 	coord->val.z = ft_atoi(parts[0]);
 	coord->val.color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
-	fdf->color.has_color = parts[1] ? 1 : fdf->color.has_color;
+	fdf->beauty.has_color = parts[1] ? 1 : fdf->beauty.has_color;
 	coord->nxt = NULL;
 	free_split_array(parts);
 	return (coord);
