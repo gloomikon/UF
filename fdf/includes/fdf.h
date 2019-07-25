@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:42:33 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 18:39:36 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/25 19:49:09 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ typedef struct			s_cam
 {
 	int					projection;
 	int					zoom;
-	int					alpha;
-	int					beta;
-	int					gamma;
+	double				alpha;
+	double				beta;
+	double				gamma;
 	double				zdiv;
 	int					xoffset;
 	int					yoffset;
@@ -98,8 +98,6 @@ typedef struct			s_fdf
 	int					endian;
 	t_beauty			beauty;
 }						t_fdf;
-
-void	err_exit(char *err);
 
 /*
 ** WORK WITH LIST
@@ -139,6 +137,9 @@ void	bresenham(t_point3d from, t_point3d to, t_fdf *fdf);
 
 void	iso(int *x, int *y, int z);
 t_point3d	projection(int x, int y, int z, t_fdf *fdf);
+void	transform_x_axis(int *y, int *z, double alpha);
+void	transform_y_axis(int *x, int *z, double beta);
+void	transform_z_axis(int *x, int *y, double gamma);
 
 /*
 ** AUXILIARY FUNCTIONS
@@ -149,5 +150,10 @@ int		eclose(void *param);
 void	init_fdf(t_fdf	*fdf);
 void	mlx_hooking(t_fdf *fdf);
 
+/*
+** KEYBOARD CONTROL FUNCTIONS
+*/
 
+int			key_press(int key, void *param);
+void	change_angle(int key, t_fdf *fdf);
 #endif

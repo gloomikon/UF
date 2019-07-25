@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:34:23 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/25 18:36:06 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/25 19:58:27 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_fdf(t_fdf	*fdf)
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
 	fdf->data = mlx_get_data_addr(fdf->img, &(fdf->bpp),
 		&(fdf->sl), &(fdf->endian));
+	fdf->cam.yoffset = -300;
 }
 
 void	mlx_hooking(t_fdf *fdf)
