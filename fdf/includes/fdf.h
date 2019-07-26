@@ -6,14 +6,14 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:42:33 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/26 02:43:01 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 04:20:43 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "header.h"
+# include "../libft/ft_printf/includes/header.h"
 # include "key_codes.h"
 # include <fcntl.h>
 # include <limits.h>
@@ -80,6 +80,7 @@ typedef	struct			s_beauty
 {
 	int					has_color;
 	int					ground;
+	int					menu;
 	int					ground_color;
 	int					line_color;
 }						t_beauty;
@@ -171,5 +172,14 @@ void					change_pos(int key, t_fdf *fdf);
 void					change_height(int key, t_fdf *fdf);
 void					change_proj(int key, t_fdf *fdf);
 void					change_color(int key, t_fdf *fdf);
+
+/*
+** MENU
+*/
+
+void					print_menu(t_fdf *fdf);
+void					print_menu_colors(t_fdf *fdf);
+void					print_menu_color_values(t_fdf *fdf);
+char					*create_color_value(char *color, int value);
 
 #endif

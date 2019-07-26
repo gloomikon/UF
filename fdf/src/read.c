@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 22:44:42 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/26 02:24:21 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 03:58:46 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	read_map(int fd, t_fdf *fdf)
 {
 	char		*line;
 	char		**split;
-	int			res;
 	int			width;
 	t_point_lst	*lst;
 

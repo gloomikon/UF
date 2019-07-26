@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:29:44 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/26 02:21:58 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 03:42:23 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	fill_bg(t_fdf *fdf)
 	img = (int*)(fdf->data);
 	i = -1;
 	while (++i < HEIGHT * WIDTH)
-		img[i] = (i % WIDTH < MENU_WIDTH) ? MENUCOLOR : BGCOLOR;
+		img[i] = (i % WIDTH < fdf->beauty.menu * MENU_WIDTH) ?
+			MENUCOLOR : BGCOLOR;
 	draw_star_sky(fdf);
 }
 
@@ -104,4 +105,5 @@ void	draw_fdf(t_fdf *fdf)
 					fdf);
 		}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
+	print_menu(fdf);
 }

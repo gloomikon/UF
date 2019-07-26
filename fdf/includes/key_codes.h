@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:16:40 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/26 02:28:51 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:56:27 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 # define Z_DOWN			121
 
 /*
-** OTHER
+** LETTERS
 */
 
 # define LETTER_P		35
@@ -76,6 +76,11 @@
 # define LETTER_U		32
 # define LETTER_J		38
 
+/*
+** OTHER
+*/
+
+# define ENTER			36
 # define SPACE			49
 
 # define LETTER_LN_UP(x)	(x == LETTER_Q || x == LETTER_W || x == LETTER_E)

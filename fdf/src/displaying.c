@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:37:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/26 02:20:12 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 02:53:35 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
-	if (x >= MENU_WIDTH && x < WIDTH && y >= 0 && y < HEIGHT)
+	if (x >= MENU_WIDTH * fdf->beauty.menu && x < WIDTH && y >= 0 && y < HEIGHT)
 		*(int*)(fdf->data + (x + y * WIDTH) * fdf->bpp / 8) = color;
 }
 

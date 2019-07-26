@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:34:23 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/26 02:37:06 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/07/26 04:16:18 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	err_exit(char *err)
 {
 	ft_printf("%s\n", err);
-	system("leaks a.out");
 	exit(1);
 }
 
@@ -33,8 +32,9 @@ void	init_fdf(t_fdf *fdf)
 		(WIDTH - MENU_WIDTH) / fdf->map.width / 2,
 		HEIGHT / fdf->map.height / 2);
 	fdf->beauty.line_color = 0xFF0000;
-	fdf->beauty.ground_color = 0x33CCFF;
+	fdf->beauty.ground_color = 0x00FFFF;
 	fdf->beauty.ground = 1;
+	fdf->beauty.menu = 1;
 	fdf->mlx = mlx_init();
 	fdf->win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, "fdf - KOLUMBIA");
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
