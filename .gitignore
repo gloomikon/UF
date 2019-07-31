@@ -2,5 +2,6 @@
 .DS_Store
 .vscode/
 .vs/
+.idea/
 CMakeLists.txt
 cmake-build-debug/
