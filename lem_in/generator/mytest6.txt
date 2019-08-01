@@ -1,0 +1,10 @@
+1
+##start
+a 1 2
+b 2 3
+c 4 5
+##end
+d 5 6
+a-b
+b-c
+a-b

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strsplit_len.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/01 13:04:08 by mzhurba          ###   ########.fr       */
+/*   Created: 2019/08/01 11:12:30 by mzhurba           #+#    #+#             */
+/*   Updated: 2019/08/01 11:12:30 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-/*
-** MAIN
-*/
-
-int	main(int argc, char **argv)
+int	ft_strsplit_len(char **split)
 {
-	t_lemin	lemin;
+	int i;
 
-	ft_bzero(&lemin, sizeof(t_lemin));
-	read_data(&lemin);
-	printf("SUCCESS\n");
-	system("leaks -q a.out");
+	if (!split)
+		return (0);
+	i = 0;
+	while (split[i])
+		++i;
+	return (i);
 }

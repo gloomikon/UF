@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:46:12 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/07/30 17:19:43 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/01 11:18:51 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <limits.h>
+# include <fcntl.h>
 
 # define BUFF_SIZE 1
 
@@ -63,6 +64,7 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_islower(int c);
+int					ft_isupper(int c);
 int					ft_has_prefix(const char *str, int base);
 int					ft_isdigit_base(char c, int base);
 void				ft_strlower(char *s);
@@ -97,19 +99,23 @@ char				*ft_strnstr(const char *big,
 	const char *little, size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_isupper(int c);
+int					ft_strsplit_len(char **split);
+void				ft_free_split_array(char **split);
+
 typedef	struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
 typedef struct		s_gnl
 {
 	char	*rests[INT_MAX];
 	char	**curr;
 	char	*buf;
 }					t_gnl;
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
