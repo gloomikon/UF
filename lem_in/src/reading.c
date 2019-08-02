@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/01 14:40:57 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/02 15:58:47 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,28 @@ void	read_data(t_lemin *lemin)
 
 	read_ants(lemin);
 	read_vertices(lemin, &line);
+	(!lemin->start || !lemin->end) ? err_exit(&line) : 0;
 	read_edges(lemin, &line);
+	(!lemin->edges) ? err_exit(NULL) : 0;
 }
 
 void	read_ants(t_lemin *lemin)
 {
 	char	*line;
 
-	if (get_next_line(0, &line) == 1)
+	while (get_next_line(0, &line) == 1)
 	{
-		if (!ft_isnumber(line, 10)
-		|| (lemin->ants_begin = ft_atoi(line)) < 1
-		|| (lemin->ants_begin > INT_MAX))
-			err_exit(&line);
-		ft_strdel(&line);
+		if (comment(&line))
+			;
+		else
+		{
+			if (!ft_isnumber(line, 10)
+			|| (lemin->ants_begin = ft_atoi(line)) < 1
+			|| (lemin->ants_begin > INT_MAX))
+				err_exit(&line);
+			ft_strdel(&line);
+			break ;
+		}
 	}
 }
 

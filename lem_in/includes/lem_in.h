@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/01 14:40:04 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/02 16:48:24 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ typedef struct			s_edge
 	struct s_edge		*prev;
 }						t_edge;
 
-
+typedef struct			s_ant
+{
+	t_vert				*start;
+	t_vert				*end;
+}						t_ant;
 
 typedef struct		s_lemin
 {
+	t_ant			*ants;
 	t_vert			*verts;
 	t_vert			*start;
 	t_vert			*end;
