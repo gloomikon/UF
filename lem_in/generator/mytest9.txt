@@ -12,16 +12,17 @@ room_8 8 8
 ##end
 room_9 9 9
 room_10 10 10
+room_9-room_10
 room_0-room_1
 room_0-room_2
 room_1-room_3
 room_1-room_4
 room_2-room_5
+room_2-room_4
 room_3-room_6
 room_3-room_4
 room_3-room_7
 room_4-room_9
-room_6-room_8
-room_7-room_9
+room_8-room_6
+room_9-room_7
 room_8-room_9
-room_9-room_10

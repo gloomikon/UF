@@ -6,67 +6,106 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/04 13:05:37 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/04 14:01:24 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-//void	create_ants(t_lemin *lemin)
-//{
-//	int i;
-//
-//	i = -1;
-//	lemin->ants = (t_ant*)ft_memalloc(sizeof(t_ant) * lemin->ants_begin);
-//	while (++i < lemin->ants_begin)
-//		lemin->ants[i].start = lemin->start;
-//}
-
-void	print_data(t_lemin *lemin)
+void	delete_edge(t_edge **edges, t_edge *edge)
 {
-	t_vert	*verts;
-	t_edge	*edges;
+	t_edge	*prev;
+	t_edge	*curr;
 
-	verts = lemin->verts;
-	edges = lemin->edges;
-	ft_printf("%lld\n", lemin->ants_begin);
-	while (verts)
+	prev = NULL;
+	curr = *edges;
+	while (curr && curr != edge)
 	{
-		if (verts->type % 2)
-			verts->type == END ? ft_printf("##end\n") : ft_printf("##start\n");
-		ft_printf("%s %d %d\n", verts->name, verts->x, verts->y);
-		verts = verts->next;
+		prev = curr;
+		curr = curr->next;
 	}
-	while (edges)
-	{
-		printf("%s-%s\n", edges->start->name, edges->end->name);
-		edges = edges->next;
-	}
-	printf("\n");
+	if (!prev && curr)
+		*edges = curr->next;
+	else if (curr)
+		prev->next = curr->next;
+	(edge->start->output_links > 0) ? edge->start->output_links-- : 0;
+	(edge->end->input_links > 0) ? edge->end->input_links-- : 0;
+	free(edge);
 }
 
-void	breadth_first_search(t_lemin *lemin)
+void	delete_useless_edges(t_edge **edges)
 {
-	t_queue	*curr;
-	t_queue *queue;
+	t_edge	*del;
+	t_edge	*curr;
 
-	lemin->start->bfs_lvl = 0;
-	queue = NULL;
-	queue_push_elem(&queue, queue_create_elem(lemin->start));
-	while (queue)
+	curr = *edges;
+	while (curr)
 	{
-		curr = queue_get_curr_elem(&queue);
-		if (curr->vert == lemin->end)
-			lemin->end->bfs_lvl = INT_MAX;
-		else
+		del = curr;
+		if (del->start->bfs_lvl == del->end->bfs_lvl
+			|| del->start->bfs_lvl == -1
+			|| del->end->bfs_lvl == -1)
+			delete_edge(edges, del);
+		curr = curr->next;
+	}
+}
+
+void		orient_edges(t_edge *edges)
+{
+	t_edge	*curr;
+	t_vert	*tmp;
+
+	curr = edges;
+	while (curr)
+	{
+		if (curr->start->bfs_lvl > curr->end->bfs_lvl)
 		{
-			queue_update(&queue, curr->vert, lemin->edges);
-			lemin->bfs_lvl = curr->vert->bfs_lvl;
+			tmp = curr->start;
+			curr->start = curr->end;
+			curr->end = tmp;
 		}
-		free(curr);
+		curr = curr->next;
 	}
-	lemin->end->bfs_lvl == -1 ? err_exit(NULL) : print_data(lemin);
 }
+
+void	count_input_output_edges(t_edge *edges)
+{
+	t_edge *curr;
+
+	curr = edges;
+	while (curr)
+	{
+		curr->end->input_links++;
+		curr->start->output_links++;
+		curr = curr->next;
+	}
+}
+
+void	delete_dead_ends(t_lemin *lemin)
+{
+	t_edge	*curr;
+	t_edge	*del;
+	int		repeat;
+
+	repeat = 1;
+	while (repeat)
+	{
+		repeat = 0;
+		curr = lemin->edges;
+		while (curr)
+		{
+			del = curr;
+			if (((del->start != lemin->start
+			&& del->start->input_links == 0 && del->start->output_links > 0)
+				|| (del->end != lemin->end
+			&& del->end->input_links > 0 && del->end->output_links == 0))
+			&& (repeat = 1))
+				delete_edge(&lemin->edges, del);
+			curr = curr->next;
+		}
+	}
+}
+
 
 /*
 ** MAIN
@@ -75,18 +114,19 @@ void	breadth_first_search(t_lemin *lemin)
 int	main(int argc, char **argv)
 {
 	t_lemin	lemin;
-	t_vert *vert;
 
+	if (argc == 2)
+		(void)(argv);
 	ft_bzero(&lemin, sizeof(t_lemin));
 	read_data(&lemin);
 	breadth_first_search(&lemin);
-	//create_ants(&lemin);
+	delete_useless_edges(&lemin.edges);
+	orient_edges(lemin.edges);
+	count_input_output_edges(lemin.edges);
+	delete_dead_ends(&lemin);
+
+
 	printf("SUCCESS\n");
-	vert = lemin.verts;
-	while (vert)
-	{
-		printf("%s %d\n", vert->name, vert->bfs_lvl);
-		vert = vert->next;
-	}
+	print_data(&lemin);
 	system("leaks -q a.out");
 }
