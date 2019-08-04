@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/02 15:58:47 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/04 12:41:47 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	read_edges(t_lemin *lemin, char **line)
 		if (comment(line))
 			;
 		else if (command(*line))
-			ft_strdel(line);
+			(command(*line) % 2) ? err_exit(line) : ft_strdel(line);
 		else
 		{
 			if (!(edge = create_edge(lemin, line)))

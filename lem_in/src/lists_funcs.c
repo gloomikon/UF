@@ -41,7 +41,7 @@ t_vert	*create_vert(char *str, int type)
 	vert->y = ft_atoi(split[2]);
 	vert->input_links = 0;
 	vert->output_links = 0;
-	vert->bfs_level = -1;
+	vert->bfs_lvl = -1;
 	vert->ant_number = -1;
 	vert->next = NULL;
 	ft_free_split_array(split);
