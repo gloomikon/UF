@@ -6,106 +6,39 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/04 14:01:24 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/05 19:59:17 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <zconf.h>
 #include "lem_in.h"
 
-void	delete_edge(t_edge **edges, t_edge *edge)
+void	create_routes(t_lemin *lemin)
 {
-	t_edge	*prev;
+	int		i;
 	t_edge	*curr;
+	t_edge	*tmp;
 
-	prev = NULL;
-	curr = *edges;
-	while (curr && curr != edge)
-	{
-		prev = curr;
-		curr = curr->next;
-	}
-	if (!prev && curr)
-		*edges = curr->next;
-	else if (curr)
-		prev->next = curr->next;
-	(edge->start->output_links > 0) ? edge->start->output_links-- : 0;
-	(edge->end->input_links > 0) ? edge->end->input_links-- : 0;
-	free(edge);
-}
-
-void	delete_useless_edges(t_edge **edges)
-{
-	t_edge	*del;
-	t_edge	*curr;
-
-	curr = *edges;
+	i = -1;
+	curr = lemin->edges;
+	lemin->routes = (t_route*)ft_memalloc(sizeof(t_route) *
+								lemin->start->output_links);
 	while (curr)
 	{
-		del = curr;
-		if (del->start->bfs_lvl == del->end->bfs_lvl
-			|| del->start->bfs_lvl == -1
-			|| del->end->bfs_lvl == -1)
-			delete_edge(edges, del);
-		curr = curr->next;
-	}
-}
-
-void		orient_edges(t_edge *edges)
-{
-	t_edge	*curr;
-	t_vert	*tmp;
-
-	curr = edges;
-	while (curr)
-	{
-		if (curr->start->bfs_lvl > curr->end->bfs_lvl)
+		if (curr->start == lemin->start)
 		{
-			tmp = curr->start;
-			curr->start = curr->end;
-			curr->end = tmp;
+			tmp = curr;
+			lemin->routes[++i].start = curr;
+			lemin->routes[i].len = 1;
+			while (tmp->end != lemin->end)
+			{
+				tmp = lookfor_edge(lemin, tmp->end, START);
+				lemin->routes[i].len += 1;
+			}
 		}
 		curr = curr->next;
 	}
 }
-
-void	count_input_output_edges(t_edge *edges)
-{
-	t_edge *curr;
-
-	curr = edges;
-	while (curr)
-	{
-		curr->end->input_links++;
-		curr->start->output_links++;
-		curr = curr->next;
-	}
-}
-
-void	delete_dead_ends(t_lemin *lemin)
-{
-	t_edge	*curr;
-	t_edge	*del;
-	int		repeat;
-
-	repeat = 1;
-	while (repeat)
-	{
-		repeat = 0;
-		curr = lemin->edges;
-		while (curr)
-		{
-			del = curr;
-			if (((del->start != lemin->start
-			&& del->start->input_links == 0 && del->start->output_links > 0)
-				|| (del->end != lemin->end
-			&& del->end->input_links > 0 && del->end->output_links == 0))
-			&& (repeat = 1))
-				delete_edge(&lemin->edges, del);
-			curr = curr->next;
-		}
-	}
-}
-
 
 /*
 ** MAIN
@@ -119,14 +52,18 @@ int	main(int argc, char **argv)
 		(void)(argv);
 	ft_bzero(&lemin, sizeof(t_lemin));
 	read_data(&lemin);
-	breadth_first_search(&lemin);
-	delete_useless_edges(&lemin.edges);
-	orient_edges(lemin.edges);
-	count_input_output_edges(lemin.edges);
-	delete_dead_ends(&lemin);
-
-
+	main_algo(&lemin);
 	printf("SUCCESS\n");
-	print_data(&lemin);
+	for (int i = 0; i < lemin.start->output_links; ++i)
+	{
+		printf("%d\t", lemin.routes[i].len);
+		while (lemin.routes[i].start->end != lemin.end)
+		{
+			printf("%s-%s ", lemin.routes[i].start->start->name, lemin.routes[i].start->end->name);
+			lemin.routes[i].start = lookfor_edge(&lemin, lemin.routes[i].start->end, START);
+		}
+		printf("\n");
+	}
 	system("leaks -q a.out");
+	return (0);
 }

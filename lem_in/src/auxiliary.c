@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:43 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/01 15:28:15 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/05 17:38:08 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,20 @@ t_edge	*init_link(t_vert *start, t_vert *end)
 	edge->start = start;
 	edge->end = end;
 	return (edge);
+}
+
+t_edge	*lookfor_edge(t_lemin *lemin, t_vert *vert, int type)
+{
+	t_edge	*curr;
+
+	curr = lemin->edges;
+	while (curr)
+	{
+		if (curr->start == vert && type == START)
+			return (curr);
+		else if (curr->end == vert && type == END)
+			return (curr);
+		curr = curr->next;
+	}
+	return (NULL);
 }

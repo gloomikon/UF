@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/04 13:19:24 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/05 19:36:10 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,16 @@ typedef struct		s_queue
 	struct s_queue	*next;
 }					t_queue;
 
+typedef struct		s_route
+{
+	int 			len;
+	t_edge			*start;
+}					t_route;
+
 typedef struct		s_lemin
 {
 	//t_ant			*ants;
+	t_route			*routes;
 	t_vert			*verts;
 	t_vert			*start;
 	t_vert			*end;
@@ -62,6 +69,8 @@ typedef struct		s_lemin
 	int 			bfs_lvl;
 	long long		ants_begin;
 }					t_lemin;
+
+void	main_algo(t_lemin *lemin);
 
 /*
 ** READING
@@ -101,10 +110,33 @@ void	check_vert(t_lemin *lemin, t_vert *vert);
 void	check_edge(t_lemin *lem_in, t_edge *edge);
 
 /*
-* ALGORITHM
+** ALGORITHM
 */
 
 void	breadth_first_search(t_lemin *lemin);
+void	delete_useless_edges(t_edge **edges);
+void	orient_edges(t_edge *edges);
+void	count_input_output_edges(t_edge *edges);
+void	delete_dead_ends(t_lemin *lemin);
+void	delete_in_edges(t_lemin *lemin);
+void	delete_out_edges(t_lemin *lemin);
+void	create_routes(t_lemin *lemin);
+
+/*
+** DELETE INPUT EDGES (AUXILIARY FUNCS)
+*/
+
+void	del_one_in_edge(t_lemin *lemin, t_vert *vert);
+int		route_has_out_edge(t_lemin *lemin, t_edge *edge);
+void	del_another_in_edge(t_edge **edges, t_edge *edge);
+
+/*
+** DELETE OUTPUT EDGES (AUXILIARY FUNCS)
+*/
+
+int		count_length(t_lemin *lemin, t_edge *edge, int l);
+void	del_another_out_edges(t_edge **edges, t_edge *edge);
+void	del_one_out_edge(t_lemin *lemin, t_vert *vert);
 
 /*
 ** DISPLAYING RESULT
@@ -119,5 +151,7 @@ void	print_data(t_lemin *lemin);
 void	err_exit(char **str);
 t_vert	*find_vert(t_lemin *lemin, char *line);
 t_edge	*init_link(t_vert *start, t_vert *end);
+t_edge *lookfor_edge(t_lemin *lemin, t_vert *vert, int type);
+void	delete_edge(t_edge **edges, t_edge *edge);
 
 #endif
