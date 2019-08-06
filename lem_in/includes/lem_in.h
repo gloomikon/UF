@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/05 19:36:10 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/06 18:28:08 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct		s_route
 
 typedef struct		s_lemin
 {
-	//t_ant			*ants;
+	t_vert			**ants;
 	t_route			*routes;
 	t_vert			*verts;
 	t_vert			*start;
@@ -68,6 +68,8 @@ typedef struct		s_lemin
 	t_edge			*edges;
 	int 			bfs_lvl;
 	long long		ants_begin;
+	long long		ants_left;
+	int 			lines;
 }					t_lemin;
 
 void	main_algo(t_lemin *lemin);
@@ -137,6 +139,14 @@ void	del_another_in_edge(t_edge **edges, t_edge *edge);
 int		count_length(t_lemin *lemin, t_edge *edge, int l);
 void	del_another_out_edges(t_edge **edges, t_edge *edge);
 void	del_one_out_edge(t_lemin *lemin, t_vert *vert);
+
+/*
+** ROUTES
+*/
+
+void	prepare_ants(t_lemin *lemin);
+void	sort_routes(t_lemin *lemin);
+void	go_through_routes(t_lemin *lemin);
 
 /*
 ** DISPLAYING RESULT

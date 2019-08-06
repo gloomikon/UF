@@ -50,7 +50,7 @@ int		route_has_out_edge(t_lemin *lemin, t_edge *edge)
 	if (edge->start == lemin->start)
 		return (0);
 	return (edge->start->output_links > 1) ?
-	1 : route_has_out_edge(lemin, lookfor_edge(lemin, lemin->start, END));
+	1 : route_has_out_edge(lemin, lookfor_edge(lemin, edge->start, END));
 }
 
 void	del_another_in_edge(t_edge **edges, t_edge *edge)

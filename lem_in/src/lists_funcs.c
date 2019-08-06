@@ -42,7 +42,7 @@ t_vert	*create_vert(char *str, int type)
 	vert->input_links = 0;
 	vert->output_links = 0;
 	vert->bfs_lvl = -1;
-	vert->ant_number = -1;
+	vert->ant_number = 0;
 	vert->next = NULL;
 	ft_free_split_array(split);
 	ft_strdel(&str);

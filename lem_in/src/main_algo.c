@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_part_one.c                               :+:      :+:    :+:   */
+/*   main_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 17:41:23 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/05 19:08:05 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/06 19:55:10 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	main_algo(t_lemin *lemin)
 	delete_in_edges(lemin);
 	delete_out_edges(lemin);
 	create_routes(lemin);
+	sort_routes(lemin);
+	prepare_ants(lemin);
+	go_through_routes(lemin);
 }
 
 void	delete_useless_edges(t_edge **edges)

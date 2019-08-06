@@ -20,6 +20,7 @@ void	read_data(t_lemin *lemin)
 	read_vertices(lemin, &line);
 	(!lemin->start || !lemin->end) ? err_exit(&line) : 0;
 	read_edges(lemin, &line);
+	lemin->ants_left = lemin->ants_begin;
 	(!lemin->edges) ? err_exit(NULL) : 0;
 }
 
