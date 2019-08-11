@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:21:25 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/01 15:27:34 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/11 16:49:53 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,11 @@ int		command(char *str)
 	return (0);
 }
 
-int		comment(char **str)
+int		comment(char *str)
 {
-	int res;
-
-	res = 0;
-	if (!command(*str) && !ft_strncmp(*str, "#", 1))
-		res = 1;
-	if (res)
-		ft_strdel(str);
-	return (res);
+	if (!command(str) && !ft_strncmp(str, "#", 1))
+		return (1);
+	return (0);
 }
 
 int		room(char *str)
@@ -65,16 +60,16 @@ void	check_vert(t_lemin *lemin, t_vert *vert)
 		if (vert != verts
 			&& (!ft_strcmp(vert->name, verts->name)
 				|| (vert->x == verts->x && vert->y == verts->y)))
-			err_exit(NULL);
+			err_exit(lemin->beauty & LEAKS);
 		verts = verts->next;
 	}
 }
 
-void	check_edge(t_lemin *lem_in, t_edge *edge)
+void	check_edge(t_lemin *lemin, t_edge *edge)
 {
 	t_edge	*edges;
 
-	edges = lem_in->edges;
+	edges = lemin->edges;
 	while (edges)
 	{
 		if (edge != edges &&
@@ -82,7 +77,7 @@ void	check_edge(t_lemin *lem_in, t_edge *edge)
 		&& !ft_strcmp(edge->end->name, edges->end->name)) ||
 		(!ft_strcmp(edge->start->name, edges->end->name)
 		&& !ft_strcmp(edge->end->name, edges->start->name))))
-			err_exit(NULL);
+			err_exit(lemin->beauty & LEAKS);
 		edges = edges->next;
 	}
 }

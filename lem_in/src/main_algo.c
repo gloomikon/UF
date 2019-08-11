@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 17:41:23 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/06 19:55:10 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/11 14:55:28 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	main_algo(t_lemin *lemin)
 	create_routes(lemin);
 	sort_routes(lemin);
 	prepare_ants(lemin);
-	go_through_routes(lemin);
 }
 
 void	delete_useless_edges(t_edge **edges)

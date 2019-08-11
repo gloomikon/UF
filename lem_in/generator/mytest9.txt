@@ -1,3 +1,5 @@
+#comment
+#commen1
 20
 ##start
 room_0 0 0

@@ -20,7 +20,7 @@ room_2-room_5
 room_3-room_6
 room_3-room_4
 ##commsnf
-##start
+##strt
 room_3-room_7
 room_4-room_9
 room_6-room_8
@@ -28,4 +28,4 @@ room_7-room_9
 room_8-room_9
 room_9-room_10
 #comment
-#room_11 11 11
+room_11 11 11

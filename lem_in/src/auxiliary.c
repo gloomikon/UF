@@ -6,16 +6,15 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:43 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/05 17:38:08 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/11 16:47:49 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	err_exit(char **str)
+void	err_exit(int leaks)
 {
-	str ? ft_strdel(str) : 0;
-	system("leaks -q a.out");
+	leaks ? system("leaks -q lem_in") : 0;
 	ft_printf("ERROR\n");
 	exit(1);
 }

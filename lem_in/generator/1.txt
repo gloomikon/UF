@@ -1,5 +1,5 @@
 1
-#Here is the number of lines required: 34
+#Here is the number of result required: 34
 ##start
 Ssc8 3 3
 ##end
@@ -542,4 +542,4 @@ Qmd0-Pf_7
 Ain1-Goo6
 Kso7-Fgs7
 Oqx9-Tlv1
-#Here is the number of lines required: 34
+#Here is the number of result required: 34

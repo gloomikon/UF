@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:11:10 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/01 14:58:50 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/11 15:24:34 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ t_vert	*create_vert(char *str, int type)
 	vert->ant_number = 0;
 	vert->next = NULL;
 	ft_free_split_array(split);
-	ft_strdel(&str);
 	return (vert);
 }
 
@@ -59,15 +58,14 @@ t_edge	*create_edge(t_lemin *lemin, char **str)
 
 	dash = ft_strchr(*str + 1, '-');
 	if (!dash)
-		err_exit(str);
+		err_exit(lemin->beauty & LEAKS);
 	if (!(start_name = ft_strsub(*str, 0, dash - *str)))
-		err_exit(str);
+		err_exit(lemin->beauty & LEAKS);
 	if (!(end_name = ft_strsub(dash + 1, 0, ft_strlen(dash + 1))))
 	{
 		ft_strdel(&start_name);
-		err_exit(str);
+		err_exit(lemin->beauty & LEAKS);
 	}
-	ft_strdel(str);
 	if ((start_vert = find_vert(lemin, start_name))
 	&& (end_vert = find_vert(lemin, end_name)))
 		return (init_link(start_vert, end_vert));

@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 13:35:03 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/04 13:35:03 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/11 15:38:42 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	breadth_first_search(t_lemin *lemin)
 		}
 		free(curr);
 	}
-	lemin->end->bfs_lvl == -1 ? err_exit(NULL) : print_data(lemin);
+	lemin->end->bfs_lvl == -1 ? err_exit(lemin->beauty & LEAKS) : 0;
 }
