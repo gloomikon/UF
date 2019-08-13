@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/11 17:36:52 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/12 15:24:43 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../libft/ft_printf/includes/header.h"
 
-# define PROGRAM_FLAGS	"ircpel"
+# define PROGRAM_FLAGS	"ircpelh"
 
 # define INPUT	(1 << 0)
 # define RESULT	(1 << 1)
@@ -23,6 +23,7 @@
 # define PATHS	(1 << 3)
 # define EMOJI	(1 << 4)
 # define LEAKS	(1 << 5)
+# define HELP	(1 << 6)
 
 # define START	1
 # define MID	2
@@ -174,6 +175,7 @@ void				go_through_routes(t_lemin *lemin);
 void				print_input(t_lemin *lemin);
 void				print_paths(t_lemin *lemin);
 void				print_result(t_lemin *lemin);
+void				print_help(void);
 
 /*
 ** AUXILIARY
