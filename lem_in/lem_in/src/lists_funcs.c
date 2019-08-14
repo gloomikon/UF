@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:11:10 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 17:04:05 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/14 17:56:11 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_vert	*create_vert(char *str, int type, int number)
 	vert->type = type;
 	vert->x = ft_atoi(split[1]);
 	vert->y = ft_atoi(split[2]);
-	vert->bfs_lvl = -1;
 	vert->next = NULL;
 	ft_free_split_array(split);
 	return (vert);
@@ -67,15 +66,15 @@ void	check_edge(t_lemin *lemin, char **str, t_vert **a, t_vert **b)
 		err_exit(lemin->beauty & LEAKS, "Room not found");
 }
 
-t_edge	*create_edge(t_vert	*vert)
-{
-	t_edge	*edge;
+// t_edge	*create_edge(t_vert	*vert)
+// {
+// 	t_edge	*edge;
 
-	edge = (t_edge*)malloc(sizeof(t_edge));
-	edge->vert = vert;
-	edge->next = NULL;
-	return (edge);
-}
+// 	edge = (t_edge*)malloc(sizeof(t_edge));
+// 	edge->vert = vert;
+// 	edge->next = NULL;
+// 	return (edge);
+// }
 
 
 void	add_edge(t_lemin *lemin, t_vert *a, t_vert *b)

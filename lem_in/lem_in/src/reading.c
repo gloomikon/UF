@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 17:03:31 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/14 17:51:23 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ void	create_matrix(t_lemin *lemin)
 	lemin->matrix = (int**)malloc(sizeof(int*) * lemin->verts_count);
 	while (++i < lemin->verts_count)
 		lemin->matrix[i] = (int*)ft_memalloc(sizeof(int) * lemin->verts_count);
+	lemin->verts_arr = (t_vert**)malloc(sizeof(t_vert*) * lemin->verts_count);
+	i = 0;
+	while (lemin->verts)
+	{
+		lemin->verts_arr[i] = lemin->verts;
+		lemin->verts = lemin->verts->next;
+		lemin->verts_arr[i]->next = NULL;
+		++i;
+	}
 }
 
 void	read_data(t_lemin *lemin)

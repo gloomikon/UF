@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 17:04:00 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/14 17:45:57 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define MID	2
 # define END	3
 
-typedef	struct s_edge	t_edge;
 
 typedef struct		s_vert
 {
@@ -40,22 +39,12 @@ typedef struct		s_vert
 	int				x;
 	int				y;
 	int				type;
-	int				bfs_lvl;
 	int				number;
+	int				closed;
+	int				splitted;
 	struct s_vert	*next;
 }					t_vert;
 
-struct				s_edge
-{
-	t_vert			*vert;
-	struct s_edge	*next;
-};
-
-typedef struct		s_route
-{
-	int				len;
-	t_edge			*start;
-}					t_route;
 
 typedef struct		s_string
 {
@@ -63,10 +52,27 @@ typedef struct		s_string
 	struct s_string	*next;
 }					t_string;
 
+typedef struct		s_queue
+{
+	t_vert			*top;
+	struct s_queue	*next;
+	struct s_queue	*prev;
+}					t_queue;
+
+typedef struct		s_paths
+{
+	t_queue			*path;
+	int				len;
+	int				len0;
+	struct s_paths	*next;
+	struct s_paths	*prev;
+}					t_paths;
+
 typedef struct		s_lemin
 {
 	u_int8_t		beauty;
 	t_vert			*verts;
+	t_vert			**verts_arr;
 	int				**matrix;
 	t_vert			*start;
 	t_vert			*end;
@@ -103,7 +109,7 @@ char				*read_line(t_lemin *lemin);
 void				add_vert_to_lst(t_lemin *lemin, t_vert *vert);
 t_vert	*create_vert(char *str, int type, int number);
 // void	add_edge_to_lst(t_vert **a, t_vert **b);
-t_edge	*create_edge(t_vert	*vert);
+// t_edge	*create_edge(t_vert	*vert);
 void	add_edge(t_lemin *lemin, t_vert *a, t_vert *b);
 
 /*
@@ -124,7 +130,6 @@ int					comment(char *str);
 int					room(char *str);
 void				check_vert(t_lemin *lemin, t_vert *vert);
 void	check_edge(t_lemin *lemin, char **str, t_vert **a, t_vert **b);
-void	check_duplicate_edge(t_lemin *lemin, t_vert *a, t_vert *b);
 
 
 /*

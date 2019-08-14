@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:43 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 13:04:12 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/14 18:00:52 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,15 @@ void	err_exit(int leaks, char *error)
 
 t_vert	*find_vert(t_lemin *lemin, char *line)
 {
-	t_vert	*current;
+	int	i;
 
-	current = lemin->verts;
-	while (current)
-	{
-		if (!ft_strcmp(current->name, line))
+	i = -1;
+	while (++i < lemin->verts_count)
+		if (!ft_strcmp(lemin->verts_arr[i]->name, line))
 		{
 			ft_strdel(&line);
-			return (current);
-		}
-		current = current->next;
-	}
+			return (lemin->verts_arr[i]);
+		}	
 	ft_strdel(&line);
 	return (NULL);
 }
