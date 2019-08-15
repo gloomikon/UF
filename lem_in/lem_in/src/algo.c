@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 13:34:22 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/15 15:45:26 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/15 16:04:03 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,46 @@ t_queue	*bfs(t_lemin *lemin, int *len)
 	return (create_path(lemin, len));
 }
 
+int	start_point(t_paths *path_list)
+{
+	int	n;
+
+	n = 0;
+	while (path_list && ++n)
+		path_list = path_list->next;
+	n /= 3;
+	return (n < 4 ? 4 : n);
+}
+
+void	routing(t_paths *path_list, int **matrix, int quantity, int n)
+{
+	t_queue	*path;
+	int		i;
+
+	i = -1;
+	while (i < quantity)
+		ft_bzero(matrix[++i], sizeof(int) * quantity);
+	while (path_list && n--)
+	{
+		path = path_list->path;
+		while (path->next)
+		{
+			++matrix[]ath->top->number][path->next->top->number];
+			path->rop->splitted = 0;
+			path = path->next;
+		}
+	}
+}
+
 t_paths	*check_paths(t_lemin *lemin, t_paths *path_list, int *turns)
 {
 	static int	start = 0;
+	t_paths		*set;
+	t_queue		*path;
+	int			len;
 
-
+	!start ? start = start_point(path_list);
+	routing(path_list, lemin->matrix, lemin->verts_count, start++);
 }
 
 t_paths	*find_best(t_lemin *lemin, t_paths path_list)
