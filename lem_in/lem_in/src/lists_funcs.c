@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:11:10 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 17:56:11 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/15 15:47:19 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	add_vert_to_lst(t_lemin *lemin, t_vert *vert)
 		lemin->verts = vert;
 	(vert->type == START) ? lemin->start = vert : 0;
 	(vert->type == END) ? lemin->end = vert : 0;
+	lemin->verts_count += 1;
 }
 
 t_vert	*create_vert(char *str, int type, int number)
@@ -66,47 +67,11 @@ void	check_edge(t_lemin *lemin, char **str, t_vert **a, t_vert **b)
 		err_exit(lemin->beauty & LEAKS, "Room not found");
 }
 
-// t_edge	*create_edge(t_vert	*vert)
-// {
-// 	t_edge	*edge;
-
-// 	edge = (t_edge*)malloc(sizeof(t_edge));
-// 	edge->vert = vert;
-// 	edge->next = NULL;
-// 	return (edge);
-// }
-
-
 void	add_edge(t_lemin *lemin, t_vert *a, t_vert *b)
 {
 	if (lemin->matrix[a->number][b->number])
 		err_exit(lemin->beauty & LEAKS, "Duplicate edge");
 	lemin->matrix[a->number][b->number] = 1;
 	lemin->matrix[b->number][a->number] = 1;
-	lemin->edges = 1;
+	lemin->edges = TRUE;
 }
-
-
-// void	add_edge_to_lst(t_vert **a, t_vert **b)
-// {
-// 	t_edge	*current;
-
-// 	current = (t_edge*)(*a)->edges;
-// 	if (current)
-// 	{
-// 		while (current->next)
-// 			current = current->next;
-// 		current->next = create_edge(*b);
-// 	}
-// 	else
-// 		(*a)->edges = create_edge(*b);
-// 	current = (*b)->edges;
-// 	if (current)
-// 	{
-// 		while (current->next)
-// 			current = current->next;
-// 		current->next = create_edge(*a);
-// 	}
-// 	else
-// 		(*b)->edges = create_edge(*a);
-// }

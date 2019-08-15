@@ -6,30 +6,11 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 17:51:23 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/15 15:47:36 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-void	create_matrix(t_lemin *lemin)
-{
-	int	i;
-
-	i = -1;
-	lemin->matrix = (int**)malloc(sizeof(int*) * lemin->verts_count);
-	while (++i < lemin->verts_count)
-		lemin->matrix[i] = (int*)ft_memalloc(sizeof(int) * lemin->verts_count);
-	lemin->verts_arr = (t_vert**)malloc(sizeof(t_vert*) * lemin->verts_count);
-	i = 0;
-	while (lemin->verts)
-	{
-		lemin->verts_arr[i] = lemin->verts;
-		lemin->verts = lemin->verts->next;
-		lemin->verts_arr[i]->next = NULL;
-		++i;
-	}
-}
 
 void	read_data(t_lemin *lemin)
 {
@@ -82,9 +63,9 @@ void	read_vertices(t_lemin *lemin, char **line)
 		}
 		else if (room(*line))
 		{
-			check_vert(lemin, (vert = create_vert(*line, type_of_vert, lemin->verts_count)));
+			check_vert(lemin,
+			(vert = create_vert(*line, type_of_vert, lemin->verts_count)));
 			add_vert_to_lst(lemin, vert);
-			lemin->verts_count += 1;
 			type_of_vert = MID;
 		}
 		else

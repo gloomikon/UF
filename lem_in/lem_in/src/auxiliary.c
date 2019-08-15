@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:43 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/14 18:00:52 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/15 15:44:00 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	err_exit(int leaks, char *error)
 {
 	leaks ? system("leaks -q lem_in") : 0;
-	ft_printf("%s\n", error);
+	ft_printf("ERROR: %s\n", error);
 	exit(1);
 }
 
@@ -29,34 +29,38 @@ t_vert	*find_vert(t_lemin *lemin, char *line)
 		{
 			ft_strdel(&line);
 			return (lemin->verts_arr[i]);
-		}	
+		}
 	ft_strdel(&line);
 	return (NULL);
 }
 
-// t_edge	*init_link(t_vert *start, t_vert *end)
-// {
-// 	t_edge	*edge;
+void	create_matrix(t_lemin *lemin)
+{
+	int	i;
 
-// 	edge = (t_edge *)ft_memalloc(sizeof(t_edge));
-// 	edge->next = NULL;
-// 	edge->start = start;
-// 	edge->end = end;
-// 	return (edge);
-// }
+	i = -1;
+	lemin->matrix = (int**)malloc(sizeof(int*) * lemin->verts_count);
+	while (++i < lemin->verts_count)
+		lemin->matrix[i] = (int*)ft_memalloc(sizeof(int) * lemin->verts_count);
+	lemin->verts_arr = (t_vert**)malloc(sizeof(t_vert*) * lemin->verts_count);
+	i = 0;
+	while (lemin->verts)
+	{
+		lemin->verts_arr[i] = lemin->verts;
+		lemin->verts = lemin->verts->next;
+		lemin->verts_arr[i]->next = NULL;
+		++i;
+	}
+}
 
-// t_edge	*lookfor_edge(t_lemin *lemin, t_vert *vert, int type)
-// {
-// 	t_edge	*curr;
+void	update_info(t_lemin *lemin)
+{
+	int	i;
 
-// 	curr = lemin->edges;
-// 	while (curr)
-// 	{
-// 		if (curr->start == vert && type == START)
-// 			return (curr);
-// 		else if (curr->end == vert && type == END)
-// 			return (curr);
-// 		curr = curr->next;
-// 	}
-// 	return (NULL);
-// }
+	i = -1;
+	while (++i < lemin->verts_count)
+	{
+		lemin->verts_arr[i]->closed = 0;
+		lemin->verts_arr[i]->next = NULL;
+	}
+}
