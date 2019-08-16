@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/15 15:15:07 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/16 19:36:47 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,21 @@
 typedef struct		s_vert
 {
 	char			*name;
+	int 			len;
+	int 			number;
 	int				x;
 	int				y;
 	int				type;
-	int				number;
-	int				closed;
-	int				splitted;
+	struct s_vert	*parent;
 	struct s_vert	*next;
+	bool			visited;
 }					t_vert;
 
+typedef struct		s_path
+{
+	t_vert			*vert;
+	t_vert			*prev;
+}					t_path;
 
 typedef struct		s_string
 {

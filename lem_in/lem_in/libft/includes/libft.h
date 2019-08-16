@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # define BUFF_SIZE 1
 

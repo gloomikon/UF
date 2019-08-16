@@ -53,14 +53,14 @@ void	create_matrix(t_lemin *lemin)
 	}
 }
 
-void	update_info(t_lemin *lemin)
-{
-	int	i;
-
-	i = -1;
-	while (++i < lemin->verts_count)
-	{
-		lemin->verts_arr[i]->closed = 0;
-		lemin->verts_arr[i]->next = NULL;
-	}
-}
+//void	update_info(t_lemin *lemin)
+//{
+//	int	i;
+//
+//	i = -1;
+//	while (++i < lemin->verts_count)
+//	{
+//		lemin->verts_arr[i]->closed = 0;
+//		lemin->verts_arr[i]->next = NULL;
+//	}
+//}
