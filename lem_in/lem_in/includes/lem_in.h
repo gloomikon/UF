@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/16 19:36:47 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/17 18:56:23 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@ typedef struct		s_vert
 	bool			visited;
 }					t_vert;
 
-typedef struct		s_path
-{
-	t_vert			*vert;
-	t_vert			*prev;
-}					t_path;
-
 typedef struct		s_string
 {
 	char			*str;
@@ -65,21 +59,12 @@ typedef struct		s_queue
 	struct s_queue	*prev;
 }					t_queue;
 
-typedef struct		s_paths
-{
-	t_queue			*path;
-	int				len;
-	int				len0;
-	struct s_paths	*next;
-	struct s_paths	*prev;
-}					t_paths;
-
 typedef struct		s_lemin
 {
-	long long		ants_begin;
+	long long		ants;
 	int				verts_count;
 	u_int8_t		beauty;
-	int				edges;
+	bool			edges;
 	t_vert			**verts_arr;
 	t_vert			*verts;
 	int				**matrix;
@@ -87,7 +72,9 @@ typedef struct		s_lemin
 	t_vert			*end;
 	t_string		*strs;
 	int				result;
-	t_paths			paths;
+	t_vert			****paths;
+	int				*path_lens;
+	int				path_count;
 }					t_lemin;
 
 
@@ -139,8 +126,8 @@ void				check_edge(t_lemin *lemin, char **str, t_vert **a, t_vert **b);
 ** PATH FUNCS
 */
 
-t_queue				*create_path(t_lemin *lemin, int *len);
-void				add_path(t_paths **path_list, t_queue *path, int len);
+//t_queue				*create_path(t_lemin *lemin, int *len);
+//void				add_path(t_paths **path_list, t_queue *path, int len);
 
 /*
 ** ALGORITHM
@@ -159,7 +146,7 @@ void	relax(t_lemin *lemin, t_queue *q, int parent, int child);
 // void				print_paths(t_lemin *lemin);
 // void				print_result(t_lemin *lemin);
 void				print_help(void);
-void	print_paths(t_paths *path_list);
+//void	print_paths(t_paths *path_list);
 
 /*
 ** AUXILIARY

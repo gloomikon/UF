@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/16 20:06:46 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/17 19:38:57 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,53 @@ int		**create_copy(t_lemin *lemin)
 	return (matrix);
 }
 
+int		count_result(int ants, t_vert ***combination)
+{
+	int		sum_of_lens;
+	int		paths;
+	int		verts;
+
+	paths = -1;
+	verts = -1;
+	sum_of_lens = 0;
+	while (combination[++paths])
+	{
+		while (combination[paths][verts])
+			++verts;
+		sum_of_lens += verts;
+	}
+	return ((ants + sum_of_lens - 1) / paths);
+}
+
+void	init_paths(t_lemin *lemin)
+{
+	int	i;
+	int	j;
+	int	output;
+	int	input;
+
+	input = 0;
+	output = 0;
+	j = -1;
+	i = lemin->start->number;
+	while (++j < lemin->verts_count)
+		(lemin->matrix[i][j]) && (++output);
+	j = lemin->end->number;
+	i = -1;
+	while (++i < lemin->verts_count)
+		(lemin->matrix[i][j]) && (++input);
+	lemin->path_count = ft_min(input, output);
+	lemin->paths = (t_vert****)malloc(sizeof(t_vert***) * lemin->path_count);
+	lemin->paths[0] = (t_vert***)malloc(sizeof(t_vert**));
+	lemin->paths[0][0] = (t_vert**)ft_memalloc(sizeof(t_vert*) *
+												lemin->verts_count);
+	lemin->path_lens = (int*)malloc(sizeof(int) * lemin->path_count);
+	i = -1;
+	while (++i < lemin->path_count)
+		lemin->path_lens[i] = INT_MAX;
+	lemin->path_lens[0] = count_result(lemin->ants, lemin->paths[0]);
+}
+
 void	dejkstra(t_lemin *lemin)
 {
 	int i;
@@ -60,12 +107,6 @@ void	dejkstra(t_lemin *lemin)
 	t_vert	*vert;
 
 	lemin->start->len = 0;
-	i = 0;
-	while (++i < lemin->verts_count)
-	{
-		printf("%d  %s\n", lemin->verts_arr[i]->visited, lemin->verts_arr[i]->name);
-		lemin->verts_arr[i]->len = INT_MAX;
-	}
 	while ((i = -1) && (min = INT_MAX) && !(vert = NULL))
 	{
 		while (++i < lemin->verts_count)
@@ -85,14 +126,32 @@ void	dejkstra(t_lemin *lemin)
 	}
 	if (!lemin->end->parent)
 		err_exit(false, "No path!");
-	vert = lemin->end;
-	while (vert)
-	{
-		printf("%s%s", vert->name, vert->parent ? "->" : "\n");
-		vert = vert->parent;
-	}
 }
 
+void	annul(t_lemin *lemin)
+{
+	int	i;
+
+	i = -1;
+	while (++i < lemin->verts_count)
+		!(lemin->verts_arr[i]->len = 0)
+		&& (lemin->verts_arr[i]->parent = NULL);
+}
+
+void	create_dejkstra_path(t_lemin *lemin)
+{
+	int	len;
+	t_vert	*curr;
+
+	curr = lemin->end;
+	len = lemin->end->len;
+	while (curr)
+	{
+		lemin->paths[0][0][len--] = curr;
+		curr = curr->parent;
+	}
+	annul(lemin);
+}
 
 int		main(int argc, char **argv)
 {
@@ -108,6 +167,17 @@ int		main(int argc, char **argv)
 		read_data(&lemin);
 		copy = create_copy(&lemin);
 		dejkstra(&lemin);
+		init_paths(&lemin);
+		create_dejkstra_path(&lemin);
+		int i = -1;
+		while (lemin.paths[0][0][++i])
+			ft_printf("%s -> \n", lemin.paths[0][0][i]->name);
+//		for (int i = 0; i < lemin.verts_count; ++i)
+//		{
+//			if (!(lemin.paths[0][0][i]))
+//				break;
+//			ft_printf("%s -> \n", lemin.paths[0][0][i]->name);
+//		}
 //		for (int i = 0; i < lemin.verts_count; ++i)
 //		{
 //			for (int j = 0; j < lemin.verts_count; ++j)

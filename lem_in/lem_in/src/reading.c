@@ -36,8 +36,8 @@ void	read_ants(t_lemin *lemin)
 		else
 		{
 			if (!ft_isnumber(line, 10)
-			|| (lemin->ants_begin = ft_atoi(line)) < 1
-			|| (lemin->ants_begin > INT_MAX))
+			|| (lemin->ants = ft_atoi(line)) < 1
+			|| (lemin->ants > INT_MAX))
 				err_exit(lemin->beauty & LEAKS, "Ants number is invalid");
 			break ;
 		}

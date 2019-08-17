@@ -41,6 +41,7 @@ t_vert	*create_vert(char *str, int type, int number)
 	vert->type = type;
 	vert->x = ft_atoi(split[1]);
 	vert->y = ft_atoi(split[2]);
+	vert->len = INT_MAX;
 	vert->next = NULL;
 	ft_free_split_array(split);
 	return (vert);

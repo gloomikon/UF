@@ -63,28 +63,28 @@
 // 	ft_printf("\n     <=- RESULT -=>\n     |%5d turns |\n", lemin->result);
 // }
 
-void	print_paths(t_paths *path_list)
-{
-	t_queue *path;
-	int		n;
-
-	n = 0;
-	while (path_list)
-	{
-		ft_printf("{yellow}Path %d, length {green}%d{eoc}:\n",
-								++n, path_list->len0);
-		path = path_list->path;
-		while (path)
-		{
-			ft_putstr(path->top->name);
-			ft_putchar(' ');
-			path = path->next;
-		}
-		ft_putchar('\n');
-		path_list = path_list->next;
-	}
-	ft_putchar('\n');
-}
+//void	print_paths(t_paths *path_list)
+//{
+//	t_queue *path;
+//	int		n;
+//
+//	n = 0;
+//	while (path_list)
+//	{
+//		ft_printf("{yellow}Path %d, length {green}%d{eoc}:\n",
+//								++n, path_list->len0);
+//		path = path_list->path;
+//		while (path)
+//		{
+//			ft_putstr(path->top->name);
+//			ft_putchar(' ');
+//			path = path->next;
+//		}
+//		ft_putchar('\n');
+//		path_list = path_list->next;
+//	}
+//	ft_putchar('\n');
+//}
 
 void	print_help(void)
 {

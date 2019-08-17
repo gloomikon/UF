@@ -6,7 +6,7 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/11 17:27:21 by mzhurba           #+#    #+#              #
-#    Updated: 2019/08/14 11:55:16 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/08/17 19:43:02 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,3 +56,7 @@ fclean: clean
 
 
 re: fclean all
+
+test:
+	gcc src/*.c -I libft/ft_printf/includes -I libft/includes -I includes libft/libft.a
+	./a.out < ~/Desktop/generator/mytest12.txt
