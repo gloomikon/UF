@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 13:34:22 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/16 19:20:49 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/18 14:04:43 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@
 //	}
 //	while (q)
 //		queue_pop(&q);
-//	return (create_path(lemin, len));
+//	return (add_path(lemin, len));
 //}
 //
 //int	start_point(t_paths *path_list)

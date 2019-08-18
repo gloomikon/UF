@@ -6,30 +6,30 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:11:10 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/15 15:47:19 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/18 13:48:21 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	add_vert_to_lst(t_lemin *lemin, t_vert *vert)
+void	add_vert_to_lst(t_lemin *lemin, t_vert **verts, t_vert *vert, int type)
 {
 	t_vert *current;
 
-	if ((current = lemin->verts))
+	if ((current = *verts))
 	{
 		while (current->next)
 			current = current->next;
 		current->next = vert;
 	}
 	else
-		lemin->verts = vert;
-	(vert->type == START) ? lemin->start = vert : 0;
-	(vert->type == END) ? lemin->end = vert : 0;
+		*verts = vert;
+	(type == START) && (lemin->start = vert);
+	(type == END) && (lemin->end = vert);
 	lemin->verts_count += 1;
 }
 
-t_vert	*create_vert(char *str, int type, int number)
+t_vert	*create_vert(char *str, int number)
 {
 	char	**split;
 	t_vert	*vert;
@@ -38,7 +38,6 @@ t_vert	*create_vert(char *str, int type, int number)
 	vert = (t_vert *)ft_memalloc(sizeof(t_vert));
 	vert->name = ft_strdup(split[0]);
 	vert->number = number;
-	vert->type = type;
 	vert->x = ft_atoi(split[1]);
 	vert->y = ft_atoi(split[2]);
 	vert->len = INT_MAX;

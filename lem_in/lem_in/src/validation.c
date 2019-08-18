@@ -50,17 +50,15 @@ int		room(char *str)
 	return (result);
 }
 
-void	check_vert(t_lemin *lemin, t_vert *vert)
+bool	check_vert(t_vert *verts, t_vert *vert)
 {
-	t_vert	*verts;
-
-	verts = lemin->verts;
 	while (verts)
 	{
 		if (vert != verts
 			&& (!ft_strcmp(vert->name, verts->name)
 				|| (vert->x == verts->x && vert->y == verts->y)))
-			err_exit(lemin->beauty & LEAKS, "Duplicate room");
+			return (false);
 		verts = verts->next;
 	}
+	return (true);
 }

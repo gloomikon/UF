@@ -33,7 +33,7 @@
 //		*path_list = new;
 //}
 //
-//t_queue	*create_path(t_lemin *lemin, int *len)
+//t_queue	*add_path(t_lemin *lemin, int *len)
 //{
 //	t_vert	*track;
 //	t_queue	*path;

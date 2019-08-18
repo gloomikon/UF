@@ -11,50 +11,50 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-t_queue	*new_queue(t_vert *start)
-{
-	t_queue *new;
-
-	new = (t_queue *)malloc(sizeof(t_queue));
-	new->top = start;
-	new->next = NULL;
-	new->prev = NULL;
-	return (new);
-}
-
-void	queue_push(t_queue **q, t_vert *vert)
-{
-	while ((*q)->next)
-		*q = (*q)->next;
-	(*q)->next = new_queue(vert);
-	(*q)->next->prev = *q;
-	(*q) = (*q)->next;
-}
-
-void	queue_pop(t_queue **q)
-{
-	while ((*q)->prev)
-		*q = (*q)->prev;
-	if ((*q)->next)
-		(*q) = (*q)->next;
-	if ((*q)->prev)
-	{
-		free((*q)->prev);
-		(*q)->prev = NULL;
-	}
-	else
-	{
-		free(*q);
-		*q = NULL;
-	}
-}
-
-void	queue_push_front(t_queue **q, t_vert *vert)
-{
-	while ((*q)->prev)
-		*q = (*q)->prev;
-	(*q)->prev = new_queue(vert);
-	(*q)->prev->next = *q;
-	(*q) = (*q)->prev;
-}
+//
+//t_queue	*new_queue(t_vert *start)
+//{
+//	t_queue *new;
+//
+//	new = (t_queue *)malloc(sizeof(t_queue));
+//	new->top = start;
+//	new->next = NULL;
+//	new->prev = NULL;
+//	return (new);
+//}
+//
+//void	queue_push(t_queue **q, t_vert *vert)
+//{
+//	while ((*q)->next)
+//		*q = (*q)->next;
+//	(*q)->next = new_queue(vert);
+//	(*q)->next->prev = *q;
+//	(*q) = (*q)->next;
+//}
+//
+//void	queue_pop(t_queue **q)
+//{
+//	while ((*q)->prev)
+//		*q = (*q)->prev;
+//	if ((*q)->next)
+//		(*q) = (*q)->next;
+//	if ((*q)->prev)
+//	{
+//		free((*q)->prev);
+//		(*q)->prev = NULL;
+//	}
+//	else
+//	{
+//		free(*q);
+//		*q = NULL;
+//	}
+//}
+//
+//void	queue_push_front(t_queue **q, t_vert *vert)
+//{
+//	while ((*q)->prev)
+//		*q = (*q)->prev;
+//	(*q)->prev = new_queue(vert);
+//	(*q)->prev->next = *q;
+//	(*q) = (*q)->prev;
+//}

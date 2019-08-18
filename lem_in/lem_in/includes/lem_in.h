@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/17 18:56:23 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/18 19:31:13 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,19 @@ typedef struct		s_string
 	struct s_string	*next;
 }					t_string;
 
-typedef struct		s_queue
+
+typedef struct		s_path
 {
-	t_vert			*top;
-	struct s_queue	*next;
-	struct s_queue	*prev;
-}					t_queue;
+	t_vert			**verts_arr;
+	int				len;
+}					t_path;
+
+typedef struct		s_comb
+{
+	t_path			*paths_arr;
+	int				count;
+	int				result;
+}					t_comb;
 
 typedef struct		s_lemin
 {
@@ -65,16 +72,14 @@ typedef struct		s_lemin
 	int				verts_count;
 	u_int8_t		beauty;
 	bool			edges;
-	t_vert			**verts_arr;
-	t_vert			*verts;
+	t_vert			**verts;
 	int				**matrix;
 	t_vert			*start;
 	t_vert			*end;
 	t_string		*strs;
 	int				result;
-	t_vert			****paths;
-	int				*path_lens;
-	int				path_count;
+	t_comb			*combination;
+	int				max_paths;
 }					t_lemin;
 
 
@@ -84,7 +89,7 @@ typedef struct		s_lemin
 
 void				read_data(t_lemin *lemin);
 void				read_ants(t_lemin *lemin);
-void				read_vertices(t_lemin *lemin, char **line);
+void	read_vertices(t_lemin *lemin, char **line, t_vert **verts);
 void				read_edges(t_lemin *lemin, char **line);
 
 /*
@@ -99,18 +104,9 @@ char				*read_line(t_lemin *lemin);
 ** LISTS' FUNCTIONS
 */
 
-void				add_vert_to_lst(t_lemin *lemin, t_vert *vert);
-t_vert				*create_vert(char *str, int type, int number);
+void	add_vert_to_lst(t_lemin *lemin, t_vert **verts, t_vert *vert, int type);
+t_vert	*create_vert(char *str, int number);
 void				add_edge(t_lemin *lemin, t_vert *a, t_vert *b);
-
-/*
-** QUEUE'S FUNCTIONS
-*/
-
-t_queue				*new_queue(t_vert *start);
-void				queue_push(t_queue **q, t_vert *vert);
-void				queue_pop(t_queue **q);
-void				queue_push_front(t_queue **q, t_vert *vert);
 
 /*
 ** VALIDATION
@@ -119,24 +115,8 @@ void				queue_push_front(t_queue **q, t_vert *vert);
 int					command(char *str);
 int					comment(char *str);
 int					room(char *str);
-void				check_vert(t_lemin *lemin, t_vert *vert);
+bool	check_vert(t_vert *verts, t_vert *vert);
 void				check_edge(t_lemin *lemin, char **str, t_vert **a, t_vert **b);
-
-/*
-** PATH FUNCS
-*/
-
-//t_queue				*create_path(t_lemin *lemin, int *len);
-//void				add_path(t_paths **path_list, t_queue *path, int len);
-
-/*
-** ALGORITHM
-*/
-
-void	find_solution(t_lemin *lemin);
-t_queue	*bfs(t_lemin *lemin, int *len);
-void	relax(t_lemin *lemin, t_queue *q, int parent, int child);
-
 
 /*
 ** DISPLAYING RESULT
@@ -152,9 +132,10 @@ void				print_help(void);
 ** AUXILIARY
 */
 
-void				err_exit(int leaks, char *error);
-t_vert				*find_vert(t_lemin *lemin, char *line);
-void				create_matrix(t_lemin *lemin);
-void				update_info(t_lemin *lemin);
+int		err_exit(int leaks, char *error);
+t_vert	*find_vert(t_lemin *lemin, char *line);
+int		**create_matrix(t_lemin *lemin);
+void	create_adjacency_matrix(t_lemin *lemin, t_vert *verts);
+int		free_verts_list(t_vert **verts);
 
 #endif

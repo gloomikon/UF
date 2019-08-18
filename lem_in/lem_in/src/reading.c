@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/15 15:47:36 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/18 14:03:33 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 void	read_data(t_lemin *lemin)
 {
 	char *line;
+	t_vert	*verts;
 
 	read_ants(lemin);
-	read_vertices(lemin, &line);
-	(!lemin->start || !lemin->end) ?
-	err_exit(lemin->beauty & LEAKS, "No start or end room") : 0;
-	create_matrix(lemin);
+	verts = NULL;
+	read_vertices(lemin, &line, &verts);
+	(!lemin->start || !lemin->end) && (free_verts_list(&verts)) &&
+	err_exit(lemin->beauty & LEAKS, "No start or end room");
+	create_adjacency_matrix(lemin, verts);
 	read_edges(lemin, &line);
 	(!lemin->edges) ? err_exit(lemin->beauty & LEAKS, "No edges") : 0;
 }
@@ -44,7 +46,7 @@ void	read_ants(t_lemin *lemin)
 	}
 }
 
-void	read_vertices(t_lemin *lemin, char **line)
+void	read_vertices(t_lemin *lemin, char **line, t_vert **verts)
 {
 	int		type_of_vert;
 	t_vert	*vert;
@@ -63,9 +65,10 @@ void	read_vertices(t_lemin *lemin, char **line)
 		}
 		else if (room(*line))
 		{
-			check_vert(lemin,
-			(vert = create_vert(*line, type_of_vert, lemin->verts_count)));
-			add_vert_to_lst(lemin, vert);
+			if (!(check_vert(*verts,
+			(vert = create_vert(*line, lemin->verts_count)))))
+				err_exit(lemin->beauty & LEAKS, "Duplicate room");
+			add_vert_to_lst(lemin, verts, vert, type_of_vert);
 			type_of_vert = MID;
 		}
 		else
