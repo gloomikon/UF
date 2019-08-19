@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/19 20:06:26 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/19 20:40:57 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,6 +460,7 @@ void	generate_one_turn(int **ants, int *ants_left, t_lemin *lemin)
 			++(lemin->combination->paths_arr[r]->verts_arr[ants[i][1]]->ants);
 			--(*ants_left);
 		}
+		// ТУТА БЛЯТЬ ГОВНО ЗАРЫТО, НУЖНО ОТКОПАТЬ
 		else if (ants[i][0] != -1
 		&& lemin->combination->paths_arr[ants[i][0]]->verts_arr[ants[i][1]] !=
 													lemin->end)
@@ -467,7 +468,7 @@ void	generate_one_turn(int **ants, int *ants_left, t_lemin *lemin)
 			--(lemin->combination->paths_arr[ants[i][0]]->verts_arr[ants[i][1]]->ants);
 			lemin->beauty & EMOJI ? ft_printf("🐜") : ft_printf("L");
 			ft_printf("%d-%s ", i + 1,
-					  lemin->combination->paths_arr[r]->verts_arr[(++ants[i][1])]->name);
+				lemin->combination->paths_arr[ants[i][0]]->verts_arr[(++ants[i][1])]->name);
 			++(lemin->combination->paths_arr[r]->verts_arr[ants[i][1]]->ants);
 		}
 }

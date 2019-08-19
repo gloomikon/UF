@@ -73,5 +73,5 @@ void	add_edge(t_lemin *lemin, t_vert *a, t_vert *b)
 		err_exit(lemin->beauty & LEAKS, "Duplicate edge");
 	lemin->matrix[a->number][b->number] = 1;
 	lemin->matrix[b->number][a->number] = 1;
-	lemin->edges = TRUE;
+	lemin->edges = true;
 }
