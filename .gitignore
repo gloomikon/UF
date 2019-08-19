@@ -1,4 +1,6 @@
 *.out
+*.o
+obj/
 .DS_Store
 .vscode/
 .vs/
