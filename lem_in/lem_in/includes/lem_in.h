@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:44:21 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/18 19:31:13 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/19 18:55:20 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct		s_vert
 	struct s_vert	*parent;
 	struct s_vert	*next;
 	bool			visited;
+	bool			used;
+	int				ants;
 }					t_vert;
 
 typedef struct		s_string
@@ -61,7 +63,7 @@ typedef struct		s_path
 
 typedef struct		s_comb
 {
-	t_path			*paths_arr;
+	t_path			**paths_arr;
 	int				count;
 	int				result;
 }					t_comb;
@@ -69,6 +71,7 @@ typedef struct		s_comb
 typedef struct		s_lemin
 {
 	long long		ants;
+	long long		ants_end;
 	int				verts_count;
 	u_int8_t		beauty;
 	bool			edges;

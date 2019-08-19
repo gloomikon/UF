@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/18 20:03:41 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/19 20:06:26 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ int		count_result(int ants, t_comb *comb)
 	int	path;
 	int	sum_of_paths;
 
+	if (comb->count == 0)
+		return (INT_MAX);
 	path = -1;
 	sum_of_paths = 0;
 	while (++path < comb->count)
-		if (comb->paths_arr[path].len == 1)
+		if (comb->paths_arr[path]->len == 1)
 			return (1);
 		else
-			sum_of_paths += comb->paths_arr[path].len;
+			sum_of_paths += comb->paths_arr[path]->len;
 	return ((ants + sum_of_paths - 1) / path);
 }
 
@@ -59,8 +61,18 @@ int		annul(t_lemin *lemin)
 	i = -1;
 	while (++i < lemin->verts_count)
 		!(lemin->verts[i]->len = INT_MAX)
+		&& !(lemin->verts[i]->used = false)
 		&& (lemin->verts[i]->parent = NULL);
 	return (1);
+}
+
+void	init_path(t_comb *comb, int verts)
+{
+	comb->paths_arr[comb->count] = (t_path*)malloc(sizeof(t_path));
+	comb->paths_arr[comb->count]->len = 0;
+	if (!(comb->paths_arr[comb->count]->verts_arr =
+			(t_vert**)ft_memalloc(sizeof(t_vert*) * verts)))
+		err_exit(true, "MEMORY ERROR");
 }
 
 int		add_path(t_lemin *lemin, t_comb *comb)
@@ -68,14 +80,15 @@ int		add_path(t_lemin *lemin, t_comb *comb)
 	int		len;
 	t_vert	*tmp;
 
+	init_path(comb, lemin->verts_count);
 	len = 0;
 	tmp = lemin->end;
 	while (tmp && ++len)
 		tmp = tmp->parent;
-	comb->paths_arr[comb->count].len = len - 1;
+	comb->paths_arr[comb->count]->len = len - 1;
 	tmp = lemin->end;
 	while (tmp
-		&& (comb->paths_arr[comb->count].verts_arr[--len] = tmp))
+		&& (comb->paths_arr[comb->count]->verts_arr[--len] = tmp))
 		tmp = tmp->parent;
 	comb->count += 1;
 	comb->result = count_result(lemin->ants, comb);
@@ -102,28 +115,26 @@ void	count_max_paths(t_lemin *lemin)
 	lemin->max_paths = ft_min(input, output);
 }
 
-t_comb	*init_combination(int max_paths, int verts_count)
+
+t_comb	*init_combination(int max_paths)
 {
 	t_comb	*combination;
-	int i;
 
 	combination = (t_comb*)ft_memalloc(sizeof(t_comb));
-	combination->paths_arr = (t_path*)malloc(sizeof(t_path) * max_paths);
-	i = -1;
-	while (++i < max_paths)
-		(combination->paths_arr[i].verts_arr =
-				(t_vert**)ft_memalloc(sizeof(t_vert*) * verts_count))
-				&&	(combination->paths_arr[i].len = 0);
+	combination->paths_arr = (t_path**)ft_memalloc(sizeof(t_path*) * max_paths);
 	return (combination);
 }
 
-int		free_combination(t_comb **combination, int max_paths)
+int		free_combination(t_comb **combination)
 {
 	int	paths;
 
 	paths = -1;
-	while (++paths < max_paths)
-		free((*combination)->paths_arr[paths].verts_arr);
+	while (++paths < (*combination)->count)
+	{
+		free((*combination)->paths_arr[paths]->verts_arr);
+		free((*combination)->paths_arr[paths]);
+	}
 	free((*combination)->paths_arr);
 	free(*combination);
 	return (1);
@@ -181,7 +192,6 @@ int		bellman_ford(t_lemin *lemin, t_comb *tmp)
 	}
 	if (!lemin->end->parent)
 		return (0);
-	printf("bellman-ford found the path!\n");
 	return (add_path(lemin, tmp));
 }
 
@@ -201,6 +211,78 @@ int		update_graph(t_lemin *lemin)
 	return (1);
 }
 
+void	sort_paths(t_comb *comb)
+{
+	int	i;
+	int	j;
+	int	min;
+	t_path	*tmp;
+
+	i = -1;
+	while (++i < comb->count)
+	{
+		min = i;
+		j = i;
+		while (++j < comb->count)
+			if (comb->paths_arr[j]->len < comb->paths_arr[min]->len)
+				min = j;
+		if (min != i)
+		{
+			tmp = comb->paths_arr[i];
+			comb->paths_arr[i] = comb->paths_arr[min];
+			comb->paths_arr[min] = tmp;
+		}
+	}
+}
+
+void	delete_one_path(t_comb *comb, int path, int vert)
+{
+	int	i;
+
+	i = 0;
+	while (++i < vert)
+		comb->paths_arr[path]->verts_arr[i]->used = false;
+	free(comb->paths_arr[path]->verts_arr);
+	free(comb->paths_arr[path]);
+	i = path;
+	while (++i < comb->count)
+		comb->paths_arr[i - 1] = comb->paths_arr[i];
+	comb->count -= 1;
+}
+
+void	delete_joint_paths(t_comb *comb)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < comb->count && !(j = 0))
+		while (++j < comb->paths_arr[i]->len - 1)
+			if (comb->paths_arr[i]->verts_arr[i]->used)
+			{
+				delete_one_path(comb, i, j);
+				break;
+			}
+			else
+				comb->paths_arr[i]->verts_arr[j]->used = true;
+}
+
+void	print_comb(t_comb *comb, char *message)
+{
+	ft_printf("{yellow}%s   PATH_COUNT = %d\n{off}", message, comb->count);
+	for (int i = 0; i < comb->count; ++i)
+	{
+		printf("path len = %d\n", comb->paths_arr[i]->len);
+		for (int j = 0; j <= comb->paths_arr[i]->len; ++j)
+			ft_printf("%s%s",
+					  comb->paths_arr[i]->verts_arr[j]->name,
+					  j == comb->paths_arr[i]->len ? "\n\n" : "->");
+	}
+	if (ft_strequ(message, "new") || ft_strequ(message, "best"))
+		ft_printf("{green}RESULT = %d\n{off}", comb->result);
+	printf("\n\n");
+}
+
 void	create_new_combination(t_comb *new, t_comb *tmp, t_lemin *lemin, int **matrix)
 {
 	int i;
@@ -209,44 +291,50 @@ void	create_new_combination(t_comb *new, t_comb *tmp, t_lemin *lemin, int **matr
 
 	i = -1;
 	while (++i < tmp->count && (j = -1))
-		while (++j < tmp->paths_arr[i].len)
-			matrix[tmp->paths_arr[i].verts_arr[j]->number]
-			[tmp->paths_arr[i].verts_arr[j + 1]->number] = 1;
+		while (++j < tmp->paths_arr[i]->len)
+			matrix[tmp->paths_arr[i]->verts_arr[j]->number]
+			[tmp->paths_arr[i]->verts_arr[j + 1]->number] = 1;
 	i = -1;
 	while (++i < lemin->verts_count && (j = -1))
 		while (++j < lemin->verts_count)
 			(matrix[i][j]) && (matrix[j][i]) && !(matrix[i][j] = 0)
 			&& (matrix[j][i] = 0);
 	old = -1;
-	while (new->count < tmp->count)
+	while (new->count != tmp->count)
 	{
+		init_path(new, lemin->verts_count);
 		i = lemin->start->number;
 		j = old;
 		while (i != lemin->end->number)
 		{
 			++j;
-			if ((matrix[i][j])
-			&& (new->paths_arr[new->count].
-			verts_arr[new->paths_arr[new->count].len++] = lemin->verts[i]))
+			if (j == lemin->verts_count)
+			{
+				free(new->paths_arr[new->count]->verts_arr);
+				free(new->paths_arr[new->count]);
+				break;
+			}
+			else if ((matrix[i][j])
+			&& (new->paths_arr[new->count]->
+			verts_arr[new->paths_arr[new->count]->len++] = lemin->verts[i]))
 			{
 				(i == lemin->start->number) && (old = j);
 				i = j;
 				j = -1;
 			}
 		}
-		new->paths_arr[new->count].
-				verts_arr[new->paths_arr[new->count].len] = lemin->verts[i];
-		new->count += 1;
+		if (j != lemin->verts_count)
+		{
+			new->paths_arr[new->count]->
+					verts_arr[new->paths_arr[new->count]->len] = lemin->verts[i];
+			new->count += 1;
+		}
+		if (j == lemin->verts_count && i == lemin->start->number)
+			break;
 	}
+	sort_paths(new);
+	delete_joint_paths(new);
 	new->result = count_result(lemin->ants, new);
-//	printf("res = %d\n", new->result);
-//	for (int i = 0; i < new->count; i++)
-//		{
-//			for (int j = 0; j <= new->paths_arr[i].len; j++)
-//				ft_printf("%s-->",
-//						new->paths_arr[i].verts_arr[j]->name);
-//			ft_printf("\n");
-//		}
 }
 
 void	anull_matrix(int **matrix, int size)
@@ -277,22 +365,130 @@ void	bhandari(t_lemin *lemin)
 	int		**matrix;
 
 	matrix = create_matrix(lemin);
-	tmp_comb = init_combination(lemin->max_paths, lemin->verts_count);
+	tmp_comb = init_combination(lemin->max_paths);
 	add_path(lemin, tmp_comb);
 	while (tmp_comb->count < lemin->max_paths
 	&& update_graph(lemin) && annul(lemin) && (bellman_ford(lemin, tmp_comb)))
 	{
-		new_comb = init_combination(lemin->max_paths, lemin->verts_count);
+//		print_comb(tmp_comb, "tmp");
+		new_comb = init_combination(lemin->max_paths);
 		create_new_combination(new_comb, tmp_comb, lemin, matrix);
+//		print_comb(new_comb, "new");
 		if ((lemin->combination->result > new_comb->result)
-		&& (free_combination(&lemin->combination, lemin->max_paths)))
+		&& (free_combination(&lemin->combination)))
 			lemin->combination = new_comb;
 		else
-			free_combination(&new_comb, lemin->max_paths);
+			free_combination(&new_comb);
 		anull_matrix(matrix, lemin->verts_count);
 	}
 	free_matrix(&matrix, lemin->verts_count);
-	free_combination(&tmp_comb, lemin->max_paths);
+	free_combination(&tmp_comb);
+}
+
+//static void	generate_one_turn(long long *i, t_lemin *lemin)
+//{
+//	int		r;
+//	t_edge	*tmp;
+//
+//	lemin->result += 1;
+//	while (++(*i) < lemin->ants_begin)
+//		if (lemin->ants[*i] == lemin->start
+//			&& (r = find_free_route(lemin)) != -1
+//			&& lemin->ants_left > count_sum_of_routes(lemin, r))
+//		{
+//			lemin->ants[*i] = lemin->routes[r].start->end;
+//			lemin->beauty & EMOJI ? ft_printf("🐜") : ft_printf("L");
+//			ft_printf("%d-%s ", *i + 1, lemin->ants[*i]->name);
+//			lemin->ants[*i]->ant_number += 1;
+//			lemin->ants_left -= 1;
+//		}
+//		else if (lemin->ants[*i] != lemin->start
+//				 && lemin->ants[*i] != lemin->end)
+//		{
+//			lemin->ants[*i]->ant_number -= 1;
+//			tmp = lookfor_edge(lemin, lemin->ants[*i], START);
+//			lemin->ants[*i] = tmp->end;
+//			lemin->beauty & EMOJI ? ft_printf("🐜") : ft_printf("L");
+//			ft_printf("%d-%s ", *i + 1, lemin->ants[*i]->name);
+//			lemin->ants[*i]->ant_number += 1;
+//		}
+//}
+
+int		count_sum_of_paths(t_lemin *lemin, int n)
+{
+	int	i;
+	int	sum;
+
+	if (n == 0)
+		return (0);
+	i = -1;
+	sum = 0;
+	while (++i < n)
+		sum += (lemin->combination->paths_arr[n]->len -
+				lemin->combination->paths_arr[i]->len);
+
+	return (sum);
+}
+
+int		find_free_path(t_lemin *lemin)
+{
+	int	i;
+	i = -1;
+	while (++i < lemin->combination->count)
+		if (lemin->combination->paths_arr[i]->verts_arr[1] == lemin->end
+		|| lemin->combination->paths_arr[i]->verts_arr[1]->ants == 0)
+		return (i);
+	return (-1);
+}
+
+void	generate_one_turn(int **ants, int *ants_left, t_lemin *lemin)
+{
+	int		r;
+	int		i;
+
+	lemin->result += 1;
+	i = -1;
+	while (++i < lemin->ants)
+		if (ants[i][0] == -1
+		&& ((r = find_free_path(lemin)) != -1)
+		&& ((*ants_left) > count_sum_of_paths(lemin, r)))
+		{
+			ants[i][0] = r;
+			lemin->beauty & EMOJI ? ft_printf("🐜") : ft_printf("L");
+			ft_printf("%d-%s ", i + 1,
+			lemin->combination->paths_arr[r]->verts_arr[(++ants[i][1])]->name);
+			++(lemin->combination->paths_arr[r]->verts_arr[ants[i][1]]->ants);
+			--(*ants_left);
+		}
+		else if (ants[i][0] != -1
+		&& lemin->combination->paths_arr[ants[i][0]]->verts_arr[ants[i][1]] !=
+													lemin->end)
+		{
+			--(lemin->combination->paths_arr[ants[i][0]]->verts_arr[ants[i][1]]->ants);
+			lemin->beauty & EMOJI ? ft_printf("🐜") : ft_printf("L");
+			ft_printf("%d-%s ", i + 1,
+					  lemin->combination->paths_arr[r]->verts_arr[(++ants[i][1])]->name);
+			++(lemin->combination->paths_arr[r]->verts_arr[ants[i][1]]->ants);
+		}
+}
+
+void		go_through_routes(t_lemin *lemin)
+{
+	int		i;
+	int		**ants;
+	int		ants_left;
+
+	ants_left = lemin->ants;
+	ants = (int**)ft_memalloc(sizeof(int*) * lemin->ants);
+	i = -1;
+	while (++i < lemin->ants)
+		(ants[i] = (int*)ft_memalloc(sizeof(int) * 2))
+		&& (ants[i][0] = -1);
+	while (lemin->end->ants != lemin->ants)
+	{
+		generate_one_turn(ants, &ants_left, lemin);
+		ft_printf("\n");
+	}
 }
 
 int		main(int argc, char **argv)
@@ -309,20 +505,11 @@ int		main(int argc, char **argv)
 		dijkstra(&lemin);
 		count_max_paths(&lemin);
 		ft_printf("max = %d verts = %d\n", lemin.max_paths, lemin.verts_count);
-		lemin.combination = init_combination(lemin.max_paths, lemin.verts_count);
+		lemin.combination = init_combination(lemin.max_paths);
 		add_path(&lemin, lemin.combination);
 		bhandari(&lemin);
-//		err_exit(true, "test");
-
-//		for (int i = 0; i < lemin.combination->count; ++i)
-//		{
-//			for (int j = 0; j <= lemin.combination->paths_arr[0].len; ++j)
-//				ft_printf("%s-->",
-//						lemin.combination->paths_arr[i].verts_arr[j]->name);
-//			ft_printf("\n");
-//		}
-//		ft_printf("\n%d\n", lemin.combination->result);
-
+		print_comb(lemin.combination, "best");
+		go_through_routes(&lemin);
 		// (lemin.beauty & INPUT) ? 0 : print_input(&lemin);
 		// (lemin.beauty & PATHS) ? print_paths(&lemin) : 0;
 		// go_through_routes(&lemin);
