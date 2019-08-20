@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auxiliary.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:43 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/18 19:30:06 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 19:43:08 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		err_exit(int leaks, char *error)
 {
-	leaks ? system("leaks -q a.out") : 0;
+	leaks ? system("leaks -q lem-in") : 0;
 	ft_printf("{red}ERROR: %s\n{off}", error);
 	exit(1);
 	return (1);
@@ -51,25 +51,17 @@ int		free_verts_list(t_vert **verts)
 	return (1);
 }
 
-int		**create_matrix(t_lemin *lemin)
-{
-	int	**matrix;
-	int	i;
-
-	i = -1;
-	if (!(matrix = (int**)malloc(sizeof(int*) * lemin->verts_count)))
-		err_exit(lemin->beauty & LEAKS, "Memory error");
-	while (++i < lemin->verts_count)
-		if (!(matrix[i] = (int*)ft_memalloc(sizeof(int) * lemin->verts_count)))
-			err_exit(lemin->beauty & LEAKS, "Memory error");
-	return (matrix);
-}
-
 void	create_adjacency_matrix(t_lemin *lemin, t_vert *verts)
 {
 	int	i;
 
-	lemin->matrix = create_matrix(lemin);
+	i = -1;
+	if (!(lemin->matrix = (int**)malloc(sizeof(int*) * lemin->verts_count)))
+		err_exit(lemin->beauty & LEAKS, "Memory error");
+	while (++i < lemin->verts_count)
+		if (!(lemin->matrix[i] =
+			(int*)ft_memalloc(sizeof(int) * lemin->verts_count)))
+			err_exit(lemin->beauty & LEAKS, "Memory error");
 	lemin->verts = (t_vert**)malloc(sizeof(t_vert*) * lemin->verts_count);
 	i = 0;
 	while (verts)
@@ -81,14 +73,14 @@ void	create_adjacency_matrix(t_lemin *lemin, t_vert *verts)
 	}
 }
 
-//void	update_info(t_lemin *lemin)
-//{
-//	int	i;
-//
-//	i = -1;
-//	while (++i < lemin->verts_count)
-//	{
-//		lemin->verts_arr[i]->closed = 0;
-//		lemin->verts_arr[i]->next = NULL;
-//	}
-//}
+int		annul(t_lemin *lemin)
+{
+	int	i;
+
+	i = -1;
+	while (++i < lemin->verts_count)
+		(lemin->verts[i]->len = INT_MAX)
+		&& !(lemin->verts[i]->visited = false)
+		&& (lemin->verts[i]->parent = NULL);
+	return (1);
+}

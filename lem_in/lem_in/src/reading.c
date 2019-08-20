@@ -6,7 +6,7 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/18 14:03:33 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 19:14:21 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	read_data(t_lemin *lemin)
 {
-	char *line;
+	char	*line;
 	t_vert	*verts;
 
 	read_ants(lemin);
@@ -48,28 +48,27 @@ void	read_ants(t_lemin *lemin)
 
 void	read_vertices(t_lemin *lemin, char **line, t_vert **verts)
 {
-	int		type_of_vert;
+	int		type;
 	t_vert	*vert;
 
-	type_of_vert = MID;
+	type = MID;
 	while ((*line = read_line(lemin)))
 	{
 		if (comment(*line))
-			type_of_vert = MID;
+			type = MID;
 		else if (command(*line))
 		{
-			type_of_vert = command(*line);
-			if ((type_of_vert == START && lemin->start)
-				|| (type_of_vert == END && lemin->end))
-				err_exit(lemin->beauty & LEAKS, "Command duplicate");
+			type = command(*line);
+			((type == START && lemin->start) || (type == END && lemin->end))
+				&& err_exit(lemin->beauty & LEAKS, "Command duplicate");
 		}
 		else if (room(*line))
 		{
 			if (!(check_vert(*verts,
 			(vert = create_vert(*line, lemin->verts_count)))))
 				err_exit(lemin->beauty & LEAKS, "Duplicate room");
-			add_vert_to_lst(lemin, verts, vert, type_of_vert);
-			type_of_vert = MID;
+			add_vert_to_lst(lemin, verts, vert, type);
+			type = MID;
 		}
 		else
 			break ;

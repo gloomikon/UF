@@ -6,85 +6,73 @@
 /*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 13:18:46 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/15 14:35:24 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 19:11:32 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-// void	print_input(t_lemin *lemin)
-// {
-// 	t_string	*s;
+int		print_one_line(t_lemin *lemin, int ant, char *room)
+{
+	lemin->beauty & EMOJI ? ft_printf("🐜") : ft_printf("L");
+	ft_printf("%d-%s ", ant, room);
+	return (1);
+}
 
-// 	s = lemin->strs;
-// 	while (s)
-// 	{
-// 		((lemin->beauty & COLOR) && !ft_isnumber(s->str, 10)) ?
-// 									ft_printf("{yellow}") : 0;
-// 		((lemin->beauty & COLOR) && comment(s->str)) ?
-// 									ft_printf("{cyan}") : 0;
-// 		((lemin->beauty & COLOR) && command(s->str)) ?
-// 									ft_printf("{magenta}") : 0;
-// 		((lemin->beauty & COLOR) && room(s->str)) ?
-// 									ft_printf("{green}") : 0;
-// 		ft_printf("%s\n", s->str);
-// 		ft_printf("{off}");
-// 		s = s->next;
-// 	}
-// 	ft_printf("\n");
-// }
+void	print_input(t_lemin *lemin)
+{
+	t_string	*s;
 
-// void	print_paths(t_lemin *lemin)
-// {
-// 	t_edge	*curr;
-// 	int		i;
+	s = lemin->strs;
+	while (s)
+	{
+		((lemin->beauty & COLOR) && !ft_isnumber(s->str, 10)) ?
+									ft_printf("{yellow}") : 0;
+		((lemin->beauty & COLOR) && comment(s->str)) ?
+									ft_printf("{cyan}") : 0;
+		((lemin->beauty & COLOR) && command(s->str)) ?
+									ft_printf("{magenta}") : 0;
+		((lemin->beauty & COLOR) && room(s->str)) ?
+									ft_printf("{green}") : 0;
+		ft_printf("%s\n", s->str);
+		(lemin->beauty & COLOR) && (ft_printf("{off}"));
+		s = s->next;
+	}
+	ft_printf("\n");
+}
 
-// 	i = -1;
-// 	while (++i < lemin->start->output_links && (curr = lemin->routes[i].start))
-// 	{
-// 		while (curr->end != lemin->end)
-// 		{
-// 			lemin->beauty & COLOR ? ft_printf("{green}") : 0;
-// 			ft_printf("[%s]{off}", curr->start->name);
-// 			lemin->beauty & EMOJI ? ft_printf(" 👉 ") : ft_printf(" --> ");
-// 			curr = lookfor_edge(lemin, curr->end, START);
-// 		}
-// 		lemin->beauty & COLOR ? ft_printf("{green}") : 0;
-// 		ft_printf("[%s]{off}", curr->start->name);
-// 		lemin->beauty & EMOJI ? ft_printf(" 👉 ") : ft_printf(" --> ");
-// 		lemin->beauty & COLOR ? ft_printf("{red}") : 0;
-// 		ft_printf("[%s]{off}\n", lemin->end->name);
-// 	}
-// 	ft_printf("\n");
-// }
+void	print_comb(t_lemin *lemin)
+{
+	int i;
+	int j;
 
-// void	print_result(t_lemin *lemin)
-// {
-// 	ft_printf("\n     <=- RESULT -=>\n     |%5d turns |\n", lemin->result);
-// }
+	i = -1;
+	(lemin->beauty & COLOR) && ft_printf("{yellow}");
+	ft_printf("NUMBER OF PATHS = %d\n", lemin->comb->count);
+	(lemin->beauty & COLOR) && ft_printf("{off}");
+	while (++i < lemin->comb->count && (j = -1))
+	{
+		(lemin->beauty & COLOR) && ft_printf("{green}");
+		ft_printf("Path #%d length = %d\n", i + 1,
+				lemin->comb->paths_arr[i]->len);
+		(lemin->beauty & COLOR) && ft_printf("{off}");
+		while (++j <= lemin->comb->paths_arr[i]->len)
+		{
+			ft_printf("%s ",
+					lemin->comb->paths_arr[i]->verts_arr[j]->name);
+			if (j != lemin->comb->paths_arr[i]->len)
+				(lemin->beauty & EMOJI) ? ft_printf("👉 ") : ft_printf("--> ");
+			else
+				ft_printf("\n");
+		}
+	}
+	printf("\n");
+}
 
-//void	print_paths(t_paths *path_list)
-//{
-//	t_queue *path;
-//	int		n;
-//
-//	n = 0;
-//	while (path_list)
-//	{
-//		ft_printf("{yellow}Path %d, length {green}%d{eoc}:\n",
-//								++n, path_list->len0);
-//		path = path_list->path;
-//		while (path)
-//		{
-//			ft_putstr(path->top->name);
-//			ft_putchar(' ');
-//			path = path->next;
-//		}
-//		ft_putchar('\n');
-//		path_list = path_list->next;
-//	}
-//	ft_putchar('\n');
-//}
+void	print_result(t_lemin *lemin)
+{
+	ft_printf("\n     <=- RESULT -=>\n     |%5d turns |\n", lemin->result);
+}
 
 void	print_help(void)
 {

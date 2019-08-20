@@ -6,16 +6,14 @@
 #    By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/11 17:27:21 by mzhurba           #+#    #+#              #
-#    Updated: 2019/08/17 19:43:02 by mzhurba          ###   ########.fr        #
+#    Updated: 2019/08/20 19:22:58 by mzhurba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-SRC =	auxiliary.c die.c lists_funcs.c queue_funcs.c routes_preparing.c\
-        breadth_first_search.c displaying_result.c main.c reading.c\
-        saving_input.c delete_funcs.c doe.c main_algo.c route_funcs.c\
-        validation.c
+SRC =	ants.c auxiliary.c comb_funcs.c displaying_result.c lists_funcs.c\
+		main.c reading.c saving_input.c validation.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,7 +34,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS) | lib
 	@$(CC) $(OBJS) $(LIBS) -o $@
-	@echo "💾  [lem_in - ready] 💾"
+	@echo "💾  [lem-in - ready] 💾"
 
 lib:
 	@make -C ./libft
@@ -52,11 +50,7 @@ clean:
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make -C ./libft fclean
-	@echo "🗑  [lem_in - fclean] 🗑"
+	@echo "🗑  [lem-in - fclean] 🗑"
 
 
 re: fclean all
-
-test:
-	gcc src/*.c -I libft/ft_printf/includes -I libft/includes -I includes libft/libft.a
-	./a.out < ~/Desktop/generator/mytest12.txt
