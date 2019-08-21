@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/20 19:14:21 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 23:57:46 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	read_data(t_lemin *lemin)
 	create_adjacency_matrix(lemin, verts);
 	read_edges(lemin, &line);
 	(!lemin->edges) ? err_exit(lemin->beauty & LEAKS, "No edges") : 0;
+	count_max_paths(lemin);
 }
 
 void	read_ants(t_lemin *lemin)

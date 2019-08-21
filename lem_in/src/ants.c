@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ants.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 18:48:49 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/20 19:45:30 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 22:22:16 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	go_through_routes(t_lemin *lemin)
 	int		ants_left;
 
 	ants_left = lemin->ants;
-	ants = (int**)ft_memalloc(sizeof(int*) * lemin->ants);
+	ants = (int**)malloc(sizeof(int*) * lemin->ants);
 	i = -1;
 	while (++i < lemin->ants)
 		(ants[i] = (int*)ft_memalloc(sizeof(int) * 2))

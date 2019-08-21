@@ -6,7 +6,7 @@
 /*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 11:07:30 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/20 19:45:36 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 23:57:52 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,13 @@ int		main(int argc, char **argv)
 	else
 	{
 		read_data(&lemin);
-		count_max_paths(&lemin);
 		lemin.comb = init_combination(lemin.max_paths);
 		while (dijkstra(&lemin))
+		{
 			add_path(&lemin) && annul(&lemin);
+			if (lemin.comb->paths_arr[0]->len == 1)
+				break ;
+		}
 		if (lemin.comb->count == 0)
 			err_exit(lemin.beauty & LEAKS, "No paths");
 		(lemin.beauty & INPUT) ? 0 : print_input(&lemin);

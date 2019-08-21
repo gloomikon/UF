@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   comb_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhurba <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mzhurba <mzhurba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 18:45:07 by mzhurba           #+#    #+#             */
-/*   Updated: 2019/08/20 19:11:53 by mzhurba          ###   ########.fr       */
+/*   Updated: 2019/08/20 23:43:24 by mzhurba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	count_max_paths(t_lemin *lemin)
 	while (++i < lemin->verts_count)
 		(lemin->matrix[i][j]) && (++input);
 	lemin->max_paths = ft_min(input, output);
+	(lemin->max_paths == 0) && err_exit(lemin->beauty & LEAKS, "No paths");
 }
 
 t_comb	*init_combination(int max_paths)
