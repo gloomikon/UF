@@ -35,6 +35,8 @@
 **125 / 100**
 * [Lem_in](https://github.com/gloomikon/UnitFactory/tree/master/lem_in)  
 **123 / 100**
+* [Corewar](https://github.com/gloomikon/Corewar)  
+**125 / 100**
 
 ## Piscines
 
