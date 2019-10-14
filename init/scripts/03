@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -d $1 ]
+then
+	ls -lS $1
+else
+	echo "Invalid directory"
+fi

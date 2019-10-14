@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -e /root/old ]
+then
+	if ! md5sum -c /root/old
+	then
+		mail -s "File has changed" root
+	fi
+else
+	md5sum /etc/crontab > old
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+IFS=':'
+
+cat /etc/passwd |
+while read username password uid gid comment home_dir shell
+do
+	echo "$username:$uid:$home_dir"
+done
