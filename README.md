@@ -10,6 +10,8 @@
 	* Filler
 	* Fdf
 	* Lem_in
+	* Corewar
+	* init
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
 	* Piscine Swift
