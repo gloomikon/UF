@@ -38,6 +38,8 @@
 **123 / 100**
 * [Corewar](https://github.com/gloomikon/Corewar)  
 **125 / 100**
+* [init](https://github.com/gloomikon/UnitFactory/tree/master/init)  
+**100 / 100**
 
 ## Piscines
 
