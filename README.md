@@ -10,8 +10,11 @@
 	* Filler
 	* Fdf
 	* Lem_in
+	* Corewar
+	* init
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
+	* Piscine Swift
 ## My profile  
 [mzhurba](https://profile.intra.42.fr/users/mzhurba "mzhurba")  
 
@@ -37,24 +40,12 @@
 **123 / 100**
 * [Corewar](https://github.com/gloomikon/Corewar)  
 **125 / 100**
+* [init](https://github.com/gloomikon/UnitFactory/tree/master/init)  
+**100 / 100**
 
 ## Piscines
 
-* [Piscince C](https://github.com/gloomikon/UnitFactory/tree/master/PISCINE)  
+* [Piscine C](https://github.com/gloomikon/UnitFactory/tree/master/PISCINE)  
+* [Piscine Swift](https://github.com/gloomikon/Piscine_Swift_iOS)  
+  **125 / 100**  
 
-Day | Result
---- | ---
-Day 00	| 92
-Day 02	| 65
-Day 03	| 100
-Day 04	| 5
-Day 05	| 60
-Day 06	| 100
-Day 07	| 20
-Day 08	| 0
-Day 09	| 0
-Day 10	| 20
-Day 11	| 29
-Day 12	| 35
-Day 13	| 50
-Rush 01	| 0
