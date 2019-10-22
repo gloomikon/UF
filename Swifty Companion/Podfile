@@ -6,5 +6,4 @@ target 'Swifty Companion' do
   use_frameworks!
 
   # Pods for Swifty Companion
-  pod 'p2.OAuth2', '~> 4.2'
 end
