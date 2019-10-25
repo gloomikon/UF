@@ -72,51 +72,50 @@ class APIController {
                 return
             }
             do {
-                print("1")
                 var skills : [Skill] = []
                 var projects : [Project] = []
                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
                 if (json["first_name"] as? String) != nil {
+                    
                     // Get bio
                     let login = json["login"] as! String
-                    print("login " + login)
                     let displayname = json["displayname"] as! String
-                    print("displayname " + displayname)
                     let image_url = json["image_url"] as! String
-                    print("image_url " + image_url)
                     let email = json["email"] as! String
-                    print("email " + email)
                     let correction_point = json["correction_point"] as! Int
-                    print("correction_point ", correction_point)
                     let wallet = json["wallet"] as! Int
-                    print("wallet ", wallet)
                     
                     // Get skills
-                    let cursus_users = (json["cursus_users"] as? [NSDictionary])!.first!
-                    let grade = cursus_users["grade"] as! String
-                    print("grade " + grade)
-                    let level = cursus_users["level"] as! Double
-                    print("level ", level)
-                    let skillsJSON = (cursus_users["skills"] as? [NSDictionary])!
+                    let cursus_users_array = (json["cursus_users"] as? [NSDictionary])!
+                    var cursus_users: NSDictionary?
+                    for c in cursus_users_array {
+                        let name = (c["cursus"] as! NSDictionary)["name"] as! String
+                        if (name.contains("42")) {
+                            cursus_users = c
+                            break;
+                        }
+                    }
+                    let grade = cursus_users!["grade"] as? String
+                    let level = cursus_users!["level"] as! Double
+                    let id = (cursus_users!["cursus"] as! NSDictionary)["id"] as! Int
+                    let skillsJSON = (cursus_users!["skills"] as? [NSDictionary])!
                     for s in skillsJSON {
                         let name = s["name"] as! String
-                        print("skill name " + name)
                         let level = s["level"] as! Double
-                        print("skill level ", level)
                         skills.append(Skill(name: name, level: level))
                     }
-                    let date = cursus_users["begin_at"] as! String
+                    let date = cursus_users!["begin_at"] as! String
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                     let begin_at = dateFormatter.date(from: date)!
-                    print("begin_at", begin_at)
+                    
                     // Get projects
                     let projectsJSON : [NSDictionary] = (json["projects_users"] as? [NSDictionary])!
                     for p in projectsJSON {
-                        if self.suitableProject(project: p, date: begin_at) {
+                        if self.suitableProject(project: p, id: id) {
                             let project = p["project"] as! NSDictionary
-                            let name = project["name"] as! String
+                            let name = project["slug"] as! String
                             let status = p["status"] as! String
                             let validated = p["validated?"] as? Bool
                             let mark = p["final_mark"] as? Int
@@ -125,6 +124,7 @@ class APIController {
                     }
                     
                     self.user = User(login: login, displayname: displayname, image_url: image_url, email: email, correction_point: correction_point, wallet: wallet, grade: grade, level: level, begin_at: begin_at, skills: skills, projects: projects)
+                    print(self.user!.description)
                 } else {
                     print("Error - invalid user")
                 }
@@ -132,19 +132,16 @@ class APIController {
                 return
             }
         }
-        task.resume ()
+        task.resume()
     }
     
-    private func suitableProject(project: NSDictionary, date: Date) -> Bool {
-        let marked = project["marked"] as! Bool
-        if marked {
-            let d = project["marked_at"] as! String
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            let end_date = dateFormatter.date(from: d)!
-            return end_date > date
+    private func suitableProject(project: NSDictionary, id: Int) -> Bool {
+        let cursus_ids = project["cursus_ids"] as! [Int]
+        if cursus_ids.contains(id) {
+            let parent_id = (project["project"] as! NSDictionary)["parent_id"] as? Int
+            let status = project["status"] as! String
+            return (parent_id == nil) && (status != "parent")
         }
-        return true
+        return false
     }
 }

@@ -13,4 +13,15 @@ struct Project {
     let status: String
     let validated: Bool?
     let mark: Int?
+    
+    var description: String {
+        return """
+        name: \(name)
+        status: \(status)
+        validated: \(String(describing: validated))
+        mark: \(String(describing: mark))
+        
+        
+        """
+    }
 }

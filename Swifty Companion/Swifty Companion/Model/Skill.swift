@@ -11,4 +11,13 @@ import Foundation
 struct Skill {
     let name: String
     let level: Double
+    
+    var description: String {
+        return """
+        name: \(name)
+        level: \(level)
+        
+        
+        """
+    }
 }
