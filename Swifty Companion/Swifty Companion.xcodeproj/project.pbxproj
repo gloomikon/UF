@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A43A0D02369C09E0085EA8E /* BioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43A0CF2369C09E0085EA8E /* BioController.swift */; };
+		2A43A0D22369C2C60085EA8E /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43A0D12369C2C60085EA8E /* Data.swift */; };
+		2A43A0D42369C5730085EA8E /* APISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43A0D32369C5730085EA8E /* APISearchController.swift */; };
+		2A43A0D62369E9030085EA8E /* ViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43A0D52369E9030085EA8E /* ViewController+Error.swift */; };
 		2A70DEA6235EFC2B00768A1E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A70DEA5235EFC2B00768A1E /* SearchController.swift */; };
 		2AC72647235F40FF00149002 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC72646235F40FF00149002 /* User.swift */; };
 		2AC72649235F41A800149002 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC72648235F41A800149002 /* Skill.swift */; };
@@ -16,12 +20,16 @@
 		2AE17F61235DAFD2006C8022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE17F5F235DAFD2006C8022 /* Main.storyboard */; };
 		2AE17F63235DAFD2006C8022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE17F62235DAFD2006C8022 /* Assets.xcassets */; };
 		2AE17F66235DAFD2006C8022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE17F64235DAFD2006C8022 /* LaunchScreen.storyboard */; };
-		2AF037C0235E1A630085ED0C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF037BF235E1A630085ED0C /* APIController.swift */; };
+		2AF037C0235E1A630085ED0C /* APILoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF037BF235E1A630085ED0C /* APILoginController.swift */; };
 		8D3D7C9CC24F927370D0B7B3 /* Pods_Swifty_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E090F87D62734F376B80C617 /* Pods_Swifty_Companion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A6E0DF805A45B45BC5936D7 /* Pods-Swifty Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.debug.xcconfig"; path = "Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.debug.xcconfig"; sourceTree = "<group>"; };
+		2A43A0CF2369C09E0085EA8E /* BioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioController.swift; sourceTree = "<group>"; };
+		2A43A0D12369C2C60085EA8E /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		2A43A0D32369C5730085EA8E /* APISearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchController.swift; sourceTree = "<group>"; };
+		2A43A0D52369E9030085EA8E /* ViewController+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Error.swift"; sourceTree = "<group>"; };
 		2A70DEA5235EFC2B00768A1E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		2AC72646235F40FF00149002 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2AC72648235F41A800149002 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
@@ -33,7 +41,7 @@
 		2AE17F62235DAFD2006C8022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AE17F65235DAFD2006C8022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AE17F67235DAFD2006C8022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2AF037BF235E1A630085ED0C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		2AF037BF235E1A630085ED0C /* APILoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginController.swift; sourceTree = "<group>"; };
 		3F244749C22CFB7E18614CC2 /* Pods-Swifty Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.release.xcconfig"; path = "Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.release.xcconfig"; sourceTree = "<group>"; };
 		E090F87D62734F376B80C617 /* Pods_Swifty_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,6 +73,7 @@
 				2AC72646235F40FF00149002 /* User.swift */,
 				2AC72648235F41A800149002 /* Skill.swift */,
 				2AC7264A235F41EE00149002 /* Project.swift */,
+				2A43A0D12369C2C60085EA8E /* Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,9 +88,12 @@
 		2A70DEA4235EFADC00768A1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2AF037BF235E1A630085ED0C /* APIController.swift */,
+				2AF037BF235E1A630085ED0C /* APILoginController.swift */,
+				2A43A0D32369C5730085EA8E /* APISearchController.swift */,
 				2AE17F5D235DAFD2006C8022 /* LoginController.swift */,
 				2A70DEA5235EFC2B00768A1E /* SearchController.swift */,
+				2A43A0CF2369C09E0085EA8E /* BioController.swift */,
+				2A43A0D52369E9030085EA8E /* ViewController+Error.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,13 +236,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A43A0D42369C5730085EA8E /* APISearchController.swift in Sources */,
 				2AE17F5E235DAFD2006C8022 /* LoginController.swift in Sources */,
 				2A70DEA6235EFC2B00768A1E /* SearchController.swift in Sources */,
+				2A43A0D62369E9030085EA8E /* ViewController+Error.swift in Sources */,
 				2AE17F5C235DAFD2006C8022 /* AppDelegate.swift in Sources */,
 				2AC72649235F41A800149002 /* Skill.swift in Sources */,
+				2A43A0D02369C09E0085EA8E /* BioController.swift in Sources */,
 				2AC72647235F40FF00149002 /* User.swift in Sources */,
 				2AC7264B235F41EE00149002 /* Project.swift in Sources */,
-				2AF037C0235E1A630085ED0C /* APIController.swift in Sources */,
+				2A43A0D22369C2C60085EA8E /* Data.swift in Sources */,
+				2AF037C0235E1A630085ED0C /* APILoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

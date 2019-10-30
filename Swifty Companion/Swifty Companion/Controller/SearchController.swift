@@ -1,26 +1,27 @@
-//
-//  SearchController.swift
-//  Swifty Companion
-//
-//  Created by Mykola ZHURBA on 10/22/19.
-//  Copyright © 2019 Mykola ZHURBA. All rights reserved.
-//
-
 import UIKit
 
 class SearchController: UIViewController {
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchField: UITextField!
     
-    var apiController: APIController?
+    var apiSearchController: APISearchController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        apiSearchController = APISearchController(delegate: self)
         self.navigationItem.hidesBackButton = true
         searchBtn.layer.cornerRadius = 10
     }
     
     @IBAction func search(_ sender: UIButton) {
-        apiController?.getUserInfo(login: searchField.text!)
+        if (searchField.text == "") {
+            displayError(message: "Field can not be empty")
+        } else {
+            apiSearchController?.getUserInfo(login: searchField.text!)
+        }
+    }
+    
+    public func gotoBio() {
+        self.performSegue(withIdentifier: "gotoBio", sender: nil)
     }
 }

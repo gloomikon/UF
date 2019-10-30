@@ -18,19 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="MXP-tf-2ZZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="42_Logo.svg" translatesAutoresizingMaskIntoConstraints="NO" id="Q4r-rV-y6m">
                                 <rect key="frame" x="82" y="128" width="250" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="F1e-es-e4k"/>
                                     <constraint firstAttribute="width" secondItem="Q4r-rV-y6m" secondAttribute="height" multiplier="1:1" id="u86-Zk-o62"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ir1-6y-1cR">
-                                <rect key="frame" x="132" y="821" width="150" height="41"/>
+                                <rect key="frame" x="132" y="831" width="150" height="41"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="13e-bl-OtI"/>
@@ -47,14 +43,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ir1-6y-1cR" firstAttribute="centerX" secondItem="MXP-tf-2ZZ" secondAttribute="centerX" id="B3J-mx-W3u"/>
-                            <constraint firstItem="ir1-6y-1cR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LIw-xd-63T"/>
-                            <constraint firstItem="Q4r-rV-y6m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Pmn-NP-NPG"/>
-                            <constraint firstAttribute="trailing" secondItem="MXP-tf-2ZZ" secondAttribute="trailing" id="VQo-WV-9pV"/>
-                            <constraint firstItem="MXP-tf-2ZZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WaR-eL-6be"/>
-                            <constraint firstItem="MXP-tf-2ZZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yr3-mU-6FV"/>
-                            <constraint firstAttribute="bottom" secondItem="MXP-tf-2ZZ" secondAttribute="bottom" id="pLu-xt-3ka"/>
-                            <constraint firstItem="Q4r-rV-y6m" firstAttribute="centerX" secondItem="MXP-tf-2ZZ" secondAttribute="centerX" id="qjO-bf-qYX"/>
+                            <constraint firstItem="Q4r-rV-y6m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="G8B-bf-kj3"/>
+                            <constraint firstItem="Q4r-rV-y6m" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NuZ-bf-4y1"/>
+                            <constraint firstItem="ir1-6y-1cR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fRy-rZ-ZrL"/>
+                            <constraint firstItem="ir1-6y-1cR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="10" id="rad-KM-001"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -75,9 +67,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-74-v17">
-                                <rect key="frame" x="0.0" y="-909" width="414" height="1805"/>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-nA-jdc">
                                 <rect key="frame" x="57" y="438" width="300" height="30"/>
                                 <constraints>
@@ -103,54 +92,77 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="neZ-74-v17" secondAttribute="bottom" id="A7F-7b-kvK"/>
                             <constraint firstItem="kSf-oZ-uc9" firstAttribute="top" secondItem="wXl-nA-jdc" secondAttribute="bottom" constant="15" id="BjE-nA-7mf"/>
                             <constraint firstItem="wXl-nA-jdc" firstAttribute="centerY" secondItem="3S1-p4-eZ0" secondAttribute="centerY" id="Q7Z-hM-wej"/>
                             <constraint firstItem="kSf-oZ-uc9" firstAttribute="centerX" secondItem="3S1-p4-eZ0" secondAttribute="centerX" id="Vy2-Hy-VKU"/>
                             <constraint firstItem="wXl-nA-jdc" firstAttribute="centerX" secondItem="3S1-p4-eZ0" secondAttribute="centerX" id="dij-SB-ECV"/>
-                            <constraint firstAttribute="trailing" secondItem="neZ-74-v17" secondAttribute="trailing" id="gAj-Jv-23C"/>
-                            <constraint firstItem="neZ-74-v17" firstAttribute="leading" secondItem="n2a-6w-MBB" secondAttribute="leading" id="jLs-hB-wtL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3S1-p4-eZ0"/>
                     </view>
                     <connections>
                         <outlet property="searchBtn" destination="kSf-oZ-uc9" id="C7d-su-1Kc"/>
                         <outlet property="searchField" destination="wXl-nA-jdc" id="kwO-pL-UkY"/>
-                        <segue destination="Fbu-Oy-Z3b" kind="unwind" identifier="searchToLogin" unwindAction="unWindSegueWithSegue:" id="4gA-Mi-IGT"/>
+                        <segue destination="6oQ-vE-tge" kind="show" identifier="gotoBio" id="uVB-F5-9TX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKo-Uz-TcU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Fbu-Oy-Z3b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1763.1696428571429" y="20.289855072463769"/>
         </scene>
-        <!--Info-->
+        <!--Bio-->
         <scene sceneID="TT6-Pc-AaL">
             <objects>
-                <viewController title="Info" id="b4C-2A-B03" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bio" title="Bio" id="b4C-2A-B03" customClass="BioController" customModule="Swifty_Companion" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iYk-cx-hXK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-c7-h0b">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lpj-D4-c7r">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2S-rf-6Qf">
+                                        <rect key="frame" x="0.0" y="362.5" width="414" height="362.5"/>
+                                        <color key="backgroundColor" red="1" green="0.14110703891594589" blue="0.059402316309628778" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.75630132380000004" blue="0.39770371450000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97510612963864707" green="1" blue="0.2755907812100733" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="ERn-c7-h0b" firstAttribute="bottom" secondItem="SNs-XT-0aZ" secondAttribute="bottom" id="34p-uF-Fx2"/>
+                            <constraint firstItem="ERn-c7-h0b" firstAttribute="trailing" secondItem="SNs-XT-0aZ" secondAttribute="trailing" id="XGD-UA-APQ"/>
+                            <constraint firstItem="ERn-c7-h0b" firstAttribute="top" secondItem="SNs-XT-0aZ" secondAttribute="top" id="Xdp-Qc-EM3"/>
+                            <constraint firstItem="ERn-c7-h0b" firstAttribute="leading" secondItem="SNs-XT-0aZ" secondAttribute="leading" id="zGQ-T7-gYR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SNs-XT-0aZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Bio" image="face" id="2zK-ep-4yN"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="photo" destination="Lpj-D4-c7r" id="stQ-cW-Yhf"/>
+                        <outlet property="stackView" destination="ERn-c7-h0b" id="54e-u9-Mwp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqs-Ed-giB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3655" y="-316"/>
+            <point key="canvasLocation" x="3653.6231884057975" y="-316.07142857142856"/>
         </scene>
         <!--More-->
         <scene sceneID="l9R-1q-Wd9">
             <objects>
-                <viewController id="glZ-8Z-lZe" sceneMemberID="viewController">
+                <viewController title="More" id="glZ-8Z-lZe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="agf-DA-F2t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dNx-BH-Pm8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="More" image="more" id="4AA-Y5-R8C"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="info" id="4AA-Y5-R8C"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAW-DS-pH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,6 +192,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6oQ-vE-tge" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DKp-UP-Awp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -195,8 +208,7 @@
     </scenes>
     <resources>
         <image name="42_Logo.svg" width="1200" height="1200"/>
-        <image name="bg" width="773" height="1805"/>
-        <image name="face" width="80" height="80"/>
-        <image name="more" width="64" height="64"/>
+        <image name="face" width="30" height="30"/>
+        <image name="info" width="30" height="30"/>
     </resources>
 </document>
