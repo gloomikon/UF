@@ -15,13 +15,13 @@ class APISearchController {
         request.setValue("Bearer " + self.token, forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             (data, response, error) in
-            guard error == nil && data != nil else {
-                //                print(error!.localizedDescription)
-                return
-            }
+            guard error == nil && data != nil else { return }
             do {
                 var skills : [Skill] = []
                 var projects : [Project] = []
+                var level: Double
+                var grade: String?
+                var begin_at: Date
                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
                 if (json["first_name"] as? String) != nil {
                     
@@ -43,34 +43,39 @@ class APISearchController {
                             break;
                         }
                     }
-                    let grade = cursus_users!["grade"] as? String
-                    let level = cursus_users!["level"] as! Double
-                    let id = (cursus_users!["cursus"] as! NSDictionary)["id"] as! Int
-                    let skillsJSON = (cursus_users!["skills"] as? [NSDictionary])!
-                    for s in skillsJSON {
-                        let name = s["name"] as! String
-                        let level = s["level"] as! Double
-                        skills.append(Skill(name: name, level: level))
-                    }
-                    let date = cursus_users!["begin_at"] as! String
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                    let begin_at = dateFormatter.date(from: date)!
-                    
-                    // Get projects
-                    let projectsJSON : [NSDictionary] = (json["projects_users"] as? [NSDictionary])!
-                    for p in projectsJSON {
-                        if self.suitableProject(project: p, id: id) {
-                            let project = p["project"] as! NSDictionary
-                            let name = project["slug"] as! String
-                            let status = p["status"] as! String
-                            let validated = p["validated?"] as? Bool
-                            let mark = p["final_mark"] as? Int
-                            projects.append(Project(name: name, status: status, validated: validated, mark: mark))
+                    if let cursus_users = cursus_users {
+                        grade = cursus_users["grade"] as? String
+                        level = cursus_users["level"] as! Double
+                        let id = (cursus_users["cursus"] as! NSDictionary)["id"] as! Int
+                        let skillsJSON = (cursus_users["skills"] as? [NSDictionary])!
+                        for s in skillsJSON {
+                            let name = s["name"] as! String
+                            let level = s["level"] as! Double
+                            skills.append(Skill(name: name, level: level))
                         }
+                        let date = cursus_users["begin_at"] as! String
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                        begin_at = dateFormatter.date(from: date)!
+
+                        // Get projects
+                        let projectsJSON : [NSDictionary] = (json["projects_users"] as? [NSDictionary])!
+                        for p in projectsJSON {
+                            if self.suitableProject(project: p, id: id) {
+                                let project = p["project"] as! NSDictionary
+                                let name = project["slug"] as! String
+                                let status = p["status"] as! String
+                                let validated = p["validated?"] as? Bool
+                                let mark = p["final_mark"] as? Int
+                                projects.append(Project(name: name, status: status, validated: validated, mark: mark))
+                            }
+                        }
+                    } else {
+                        level = 0
+                        begin_at = Date()
                     }
-                    
+
                     serverData.user = User(login: login, displayname: displayname, image_url: image_url, email: email, correction_point: correction_point, wallet: wallet, grade: grade, level: level, begin_at: begin_at, skills: skills, projects: projects)
                     print(serverData.user!.description)
                     DispatchQueue.main.async {
@@ -78,6 +83,7 @@ class APISearchController {
                     }
                 } else {
                     DispatchQueue.main.async {
+                        self.delegate.loadingIndicator.stopAnimating()
                         self.delegate.displayError(message: "User not found")
                     }
                 }

@@ -3,6 +3,7 @@ import UIKit
 class SearchController: UIViewController {
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var apiSearchController: APISearchController?
     let layer = CAGradientLayer()
@@ -21,11 +22,13 @@ class SearchController: UIViewController {
         if (searchField.text == "") {
             displayError(message: "Field can not be empty")
         } else {
+            loadingIndicator.startAnimating()
             apiSearchController?.getUserInfo(login: searchField.text!)
         }
     }
     
     public func gotoBio() {
+        loadingIndicator.stopAnimating()
         self.performSegue(withIdentifier: "gotoBio", sender: nil)
     }
     
