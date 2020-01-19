@@ -15,6 +15,7 @@
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
 	* Piscine Swift
+	* Piscine CPP
 ## My profile  
 [mzhurba](https://profile.intra.42.fr/users/mzhurba "mzhurba")  
 
@@ -47,5 +48,7 @@
 
 * [Piscine C](https://github.com/gloomikon/UnitFactory/tree/master/PISCINE)  
 * [Piscine Swift](https://github.com/gloomikon/Piscine_Swift_iOS)  
+  **125 / 100**  
+* [Piscine CPP](https://github.com/gloomikon/Piscine_CPP)  
   **125 / 100**  
 
