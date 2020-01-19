@@ -1,0 +1,466 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "APISearchController"
+provides-nominal:
+- "16Swifty_Companion19APISearchControllerC"
+provides-member:
+- ["16Swifty_Companion19APISearchControllerC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "&&"
+- !private "+"
+- !private "=="
+- "APISearchController"
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- !private "DateFormatter"
+- !private "DispatchQueue"
+- !private "Double"
+- !private "FloatLiteralType"
+- "Int"
+- !private "IntegerLiteralType"
+- !private "JSONSerialization"
+- !private "Locale"
+- "NSDictionary"
+- !private "Project"
+- "SearchController"
+- !private "Skill"
+- "String"
+- !private "StringLiteralType"
+- !private "URL"
+- !private "URLRequest"
+- !private "URLSession"
+- !private "UnicodeScalarType"
+- !private "User"
+- !private "print"
+- "serverData"
+depends-member:
+- ["16Swifty_Companion19APISearchControllerC", "Bool"]
+- !private ["16Swifty_Companion19APISearchControllerC", "DateFormatter"]
+- !private ["16Swifty_Companion19APISearchControllerC", "DispatchQueue"]
+- !private ["16Swifty_Companion19APISearchControllerC", "Double"]
+- ["16Swifty_Companion19APISearchControllerC", "Int"]
+- !private ["16Swifty_Companion19APISearchControllerC", "JSONSerialization"]
+- !private ["16Swifty_Companion19APISearchControllerC", "Locale"]
+- ["16Swifty_Companion19APISearchControllerC", "NSDictionary"]
+- !private ["16Swifty_Companion19APISearchControllerC", "Project"]
+- ["16Swifty_Companion19APISearchControllerC", "SearchController"]
+- !private ["16Swifty_Companion19APISearchControllerC", "Skill"]
+- ["16Swifty_Companion19APISearchControllerC", "String"]
+- !private ["16Swifty_Companion19APISearchControllerC", "URL"]
+- !private ["16Swifty_Companion19APISearchControllerC", "URLRequest"]
+- !private ["16Swifty_Companion19APISearchControllerC", "URLSession"]
+- !private ["16Swifty_Companion19APISearchControllerC", "User"]
+- ["16Swifty_Companion19APISearchControllerC", "delegate"]
+- ["16Swifty_Companion19APISearchControllerC", "getUserInfo"]
+- ["16Swifty_Companion19APISearchControllerC", "init"]
+- !private ["16Swifty_Companion19APISearchControllerC", "print"]
+- ["16Swifty_Companion19APISearchControllerC", "serverData"]
+- !private ["16Swifty_Companion19APISearchControllerC", "suitableProject"]
+- ["16Swifty_Companion19APISearchControllerC", "token"]
+- !private ["Sa", "append"]
+- !private ["Sa", "contains"]
+- !private ["SK", "append"]
+- !private ["SK", "contains"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "async"]
+- !private ["s7CVarArgP", "contains"]
+- !private ["s7CVarArgP", "dataTask"]
+- !private ["s7CVarArgP", "date"]
+- !private ["s7CVarArgP", "dateFormat"]
+- !private ["s7CVarArgP", "displayError"]
+- !private ["s7CVarArgP", "gotoBio"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "jsonObject"]
+- !private ["s7CVarArgP", "locale"]
+- !private ["s7CVarArgP", "main"]
+- !private ["s7CVarArgP", "resume"]
+- !private ["s7CVarArgP", "shared"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", "append"]
+- !private ["Sl", "contains"]
+- !private ["Sl", "subscript"]
+- !private ["SL", "contains"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "contains"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- !private ["s28CustomDebugStringConvertibleP", "contains"]
+- !private ["s28CustomDebugStringConvertibleP", "dataTask"]
+- !private ["s28CustomDebugStringConvertibleP", "date"]
+- !private ["s28CustomDebugStringConvertibleP", "dateFormat"]
+- !private ["s28CustomDebugStringConvertibleP", "displayError"]
+- !private ["s28CustomDebugStringConvertibleP", "gotoBio"]
+- !private ["s28CustomDebugStringConvertibleP", "httpMethod"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "jsonObject"]
+- !private ["s28CustomDebugStringConvertibleP", "locale"]
+- !private ["s28CustomDebugStringConvertibleP", "main"]
+- !private ["s28CustomDebugStringConvertibleP", "resume"]
+- !private ["s28CustomDebugStringConvertibleP", "setValue"]
+- !private ["s28CustomDebugStringConvertibleP", "shared"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "contains"]
+- !private ["s17CustomReflectableP", "httpMethod"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "setValue"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- !private ["s23CustomStringConvertibleP", "contains"]
+- !private ["s23CustomStringConvertibleP", "dataTask"]
+- !private ["s23CustomStringConvertibleP", "date"]
+- !private ["s23CustomStringConvertibleP", "dateFormat"]
+- !private ["s23CustomStringConvertibleP", "displayError"]
+- !private ["s23CustomStringConvertibleP", "gotoBio"]
+- !private ["s23CustomStringConvertibleP", "httpMethod"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "jsonObject"]
+- !private ["s23CustomStringConvertibleP", "locale"]
+- !private ["s23CustomStringConvertibleP", "main"]
+- !private ["s23CustomStringConvertibleP", "resume"]
+- !private ["s23CustomStringConvertibleP", "setValue"]
+- !private ["s23CustomStringConvertibleP", "shared"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- ["16Swifty_Companion4DataV", "token"]
+- !private ["16Swifty_Companion4DataV", "user"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "contains"]
+- !private ["So15NSDateFormatterC", "date"]
+- !private ["So15NSDateFormatterC", "dateFormat"]
+- !private ["So15NSDateFormatterC", "init"]
+- !private ["So15NSDateFormatterC", "locale"]
+- !private ["Se", "append"]
+- !private ["Se", "contains"]
+- !private ["Se", "init"]
+- !private ["Se", "subscript"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SD", "subscript"]
+- !private ["So18OS_dispatch_objectC", "async"]
+- !private ["So18OS_dispatch_objectC", "main"]
+- !private ["So17OS_dispatch_queueC", "async"]
+- !private ["So17OS_dispatch_queueC", "main"]
+- !private ["SE", "append"]
+- !private ["SE", "contains"]
+- !private ["SE", "init"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "append"]
+- !private ["SQ", "async"]
+- !private ["SQ", "contains"]
+- !private ["SQ", "dataTask"]
+- !private ["SQ", "date"]
+- !private ["SQ", "dateFormat"]
+- !private ["SQ", "displayError"]
+- !private ["SQ", "gotoBio"]
+- !private ["SQ", "httpMethod"]
+- !private ["SQ", "init"]
+- !private ["SQ", "jsonObject"]
+- !private ["SQ", "locale"]
+- !private ["SQ", "main"]
+- !private ["SQ", "resume"]
+- !private ["SQ", "setValue"]
+- !private ["SQ", "shared"]
+- !private ["SQ", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "contains"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "contains"]
+- !private ["s32ExpressibleByStringInterpolationP", "contains"]
+- !private ["s26ExpressibleByStringLiteralP", "contains"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "contains"]
+- !private ["So11NSFormatterC", "date"]
+- !private ["So11NSFormatterC", "dateFormat"]
+- !private ["So11NSFormatterC", "init"]
+- !private ["So11NSFormatterC", "locale"]
+- !private ["SH", "append"]
+- !private ["SH", "async"]
+- !private ["SH", "contains"]
+- !private ["SH", "dataTask"]
+- !private ["SH", "date"]
+- !private ["SH", "dateFormat"]
+- !private ["SH", "displayError"]
+- !private ["SH", "gotoBio"]
+- !private ["SH", "httpMethod"]
+- !private ["SH", "init"]
+- !private ["SH", "jsonObject"]
+- !private ["SH", "locale"]
+- !private ["SH", "main"]
+- !private ["SH", "resume"]
+- !private ["SH", "setValue"]
+- !private ["SH", "shared"]
+- !private ["SH", "subscript"]
+- !private ["So19NSJSONSerializationC", "jsonObject"]
+- !private ["10Foundation6LocaleV", "init"]
+- !private ["s25LosslessStringConvertibleP", "contains"]
+- !private ["s10MirrorPathP", "contains"]
+- !private ["SM", "append"]
+- !private ["SM", "contains"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "contains"]
+- !private ["So8NSCodingP", "contains"]
+- !private ["So8NSCodingP", "date"]
+- !private ["So8NSCodingP", "dateFormat"]
+- !private ["So8NSCodingP", "displayError"]
+- !private ["So8NSCodingP", "gotoBio"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "locale"]
+- !private ["So8NSCodingP", "subscript"]
+- !private ["So9NSCopyingP", "contains"]
+- !private ["So9NSCopyingP", "date"]
+- !private ["So9NSCopyingP", "dateFormat"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "locale"]
+- !private ["So9NSCopyingP", "resume"]
+- !private ["So9NSCopyingP", "subscript"]
+- !private ["So12NSDictionaryC", "subscript"]
+- !private ["So26NSExtensionRequestHandlingP", "displayError"]
+- !private ["So26NSExtensionRequestHandlingP", "gotoBio"]
+- !private ["So17NSFastEnumerationP", "subscript"]
+- !private ["So21NSItemProviderReadingP", "contains"]
+- !private ["So21NSItemProviderWritingP", "contains"]
+- !private ["So16NSMutableCopyingP", "contains"]
+- !private ["So16NSMutableCopyingP", "subscript"]
+- !private ["So8NSObjectC", "async"]
+- !private ["So8NSObjectC", "contains"]
+- !private ["So8NSObjectC", "dataTask"]
+- !private ["So8NSObjectC", "date"]
+- !private ["So8NSObjectC", "dateFormat"]
+- !private ["So8NSObjectC", "displayError"]
+- !private ["So8NSObjectC", "gotoBio"]
+- !private ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "jsonObject"]
+- !private ["So8NSObjectC", "locale"]
+- !private ["So8NSObjectC", "main"]
+- !private ["So8NSObjectC", "resume"]
+- !private ["So8NSObjectC", "shared"]
+- !private ["So8NSObjectC", "subscript"]
+- !private ["So8NSObjectP", "async"]
+- !private ["So8NSObjectP", "contains"]
+- !private ["So8NSObjectP", "dataTask"]
+- !private ["So8NSObjectP", "date"]
+- !private ["So8NSObjectP", "dateFormat"]
+- !private ["So8NSObjectP", "displayError"]
+- !private ["So8NSObjectP", "gotoBio"]
+- !private ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "jsonObject"]
+- !private ["So8NSObjectP", "locale"]
+- !private ["So8NSObjectP", "main"]
+- !private ["So8NSObjectP", "resume"]
+- !private ["So8NSObjectP", "shared"]
+- !private ["So8NSObjectP", "subscript"]
+- !private ["So14NSSecureCodingP", "contains"]
+- !private ["So14NSSecureCodingP", "subscript"]
+- !private ["So8NSStringC", "contains"]
+- !private ["So9OS_objectC", "async"]
+- !private ["So9OS_objectC", "main"]
+- !private ["So19NSProgressReportingP", "resume"]
+- !private ["16Swifty_Companion7ProjectV", "init"]
+- !private ["Sk", "append"]
+- !private ["Sk", "contains"]
+- !private ["Sm", "append"]
+- !private ["Sm", "contains"]
+- !private ["10Foundation20ReferenceConvertibleP", "httpMethod"]
+- !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["10Foundation20ReferenceConvertibleP", "setValue"]
+- !private ["16Swifty_Companion16SearchControllerC", "displayError"]
+- !private ["16Swifty_Companion16SearchControllerC", "gotoBio"]
+- !private ["ST", "append"]
+- !private ["ST", "contains"]
+- !private ["ST", "subscript"]
+- !private ["16Swifty_Companion5SkillV", "init"]
+- !private ["SS", "contains"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["Sy", "contains"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "contains"]
+- !private ["s20TextOutputStreamableP", "contains"]
+- !private ["So21UIAppearanceContainerP", "displayError"]
+- !private ["So21UIAppearanceContainerP", "gotoBio"]
+- !private ["So18UIContentContainerP", "displayError"]
+- !private ["So18UIContentContainerP", "gotoBio"]
+- !private ["So18UIFocusEnvironmentP", "displayError"]
+- !private ["So18UIFocusEnvironmentP", "gotoBio"]
+- !private ["So30UIPasteConfigurationSupportingP", "displayError"]
+- !private ["So30UIPasteConfigurationSupportingP", "gotoBio"]
+- !private ["So11UIResponderC", "displayError"]
+- !private ["So11UIResponderC", "gotoBio"]
+- !private ["So30UIResponderStandardEditActionsP", "displayError"]
+- !private ["So30UIResponderStandardEditActionsP", "gotoBio"]
+- !private ["So16UIStateRestoringP", "displayError"]
+- !private ["So16UIStateRestoringP", "gotoBio"]
+- !private ["So18UITraitEnvironmentP", "displayError"]
+- !private ["So18UITraitEnvironmentP", "gotoBio"]
+- !private ["So23UIUserActivityRestoringP", "displayError"]
+- !private ["So23UIUserActivityRestoringP", "gotoBio"]
+- !private ["So16UIViewControllerC", "displayError"]
+- !private ["So16UIViewControllerC", "gotoBio"]
+- !private ["10Foundation3URLV", "init"]
+- !private ["10Foundation10URLRequestV", "httpMethod"]
+- !private ["10Foundation10URLRequestV", "init"]
+- !private ["10Foundation10URLRequestV", "setValue"]
+- !private ["So12NSURLSessionC", "dataTask"]
+- !private ["So12NSURLSessionC", "shared"]
+- !private ["So20NSURLSessionDataTaskC", "resume"]
+- !private ["So16NSURLSessionTaskC", "resume"]
+- !private ["16Swifty_Companion4UserV", "description"]
+- !private ["16Swifty_Companion4UserV", "init"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "contains"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "contains"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "contains"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "contains"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "contains"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "contains"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "contains"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "contains"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "contains"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dataTask"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "date"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dateFormat"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "displayError"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "gotoBio"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "jsonObject"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "locale"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "main"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "resume"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "shared"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "contains"]
+- !private ["s21_ObjectiveCBridgeableP", "httpMethod"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "setValue"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- "16Swifty_Companion19APISearchControllerC"
+- !private "Sa"
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- "16Swifty_Companion4DataV"
+- !private "10Foundation12DataProtocolP"
+- !private "So15NSDateFormatterC"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SD"
+- !private "So18OS_dispatch_objectC"
+- !private "So17OS_dispatch_queueC"
+- !private "SE"
+- !private "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "So11NSFormatterC"
+- !private "SH"
+- !private "So19NSJSONSerializationC"
+- !private "10Foundation6LocaleV"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So12NSDictionaryC"
+- !private "So26NSExtensionRequestHandlingP"
+- !private "So17NSFastEnumerationP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "So9OS_objectC"
+- !private "So19NSProgressReportingP"
+- !private "16Swifty_Companion7ProjectV"
+- !private "Sk"
+- !private "Sm"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "16Swifty_Companion16SearchControllerC"
+- !private "ST"
+- !private "16Swifty_Companion5SkillV"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So21UIAppearanceContainerP"
+- !private "So18UIContentContainerP"
+- !private "So18UIFocusEnvironmentP"
+- !private "So30UIPasteConfigurationSupportingP"
+- !private "So11UIResponderC"
+- !private "So30UIResponderStandardEditActionsP"
+- !private "So16UIStateRestoringP"
+- !private "So18UITraitEnvironmentP"
+- !private "So23UIUserActivityRestoringP"
+- !private "So16UIViewControllerC"
+- !private "10Foundation3URLV"
+- !private "10Foundation10URLRequestV"
+- !private "So12NSURLSessionC"
+- !private "So20NSURLSessionDataTaskC"
+- !private "So16NSURLSessionTaskC"
+- !private "16Swifty_Companion4UserV"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s34_ExpressibleByFileReferenceLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/AuthenticationServices.framework/Headers/AuthenticationServices.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "56d584e071fd2d55b2344771dae9d6d8"

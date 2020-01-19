@@ -21,6 +21,8 @@
 		2AE17F63235DAFD2006C8022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE17F62235DAFD2006C8022 /* Assets.xcassets */; };
 		2AE17F66235DAFD2006C8022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE17F64235DAFD2006C8022 /* LaunchScreen.storyboard */; };
 		2AF037C0235E1A630085ED0C /* APILoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF037BF235E1A630085ED0C /* APILoginController.swift */; };
+		7712C95923D3711F00557961 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712C95823D3711F00557961 /* SkillsTableViewCell.swift */; };
+		7712C95B23D375F900557961 /* ProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712C95A23D375F900557961 /* ProjectsTableViewCell.swift */; };
 		8D3D7C9CC24F927370D0B7B3 /* Pods_Swifty_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E090F87D62734F376B80C617 /* Pods_Swifty_Companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		2AE17F67235DAFD2006C8022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AF037BF235E1A630085ED0C /* APILoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginController.swift; sourceTree = "<group>"; };
 		3F244749C22CFB7E18614CC2 /* Pods-Swifty Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.release.xcconfig"; path = "Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.release.xcconfig"; sourceTree = "<group>"; };
+		7712C95823D3711F00557961 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
+		7712C95A23D375F900557961 /* ProjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		E090F87D62734F376B80C617 /* Pods_Swifty_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,8 @@
 		2A70DEA3235EFAD300768A1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7712C95823D3711F00557961 /* SkillsTableViewCell.swift */,
+				7712C95A23D375F900557961 /* ProjectsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,9 +244,11 @@
 			files = (
 				2A43A0D42369C5730085EA8E /* APISearchController.swift in Sources */,
 				2AE17F5E235DAFD2006C8022 /* LoginController.swift in Sources */,
+				7712C95B23D375F900557961 /* ProjectsTableViewCell.swift in Sources */,
 				2A70DEA6235EFC2B00768A1E /* SearchController.swift in Sources */,
 				2A43A0D62369E9030085EA8E /* ViewController+Error.swift in Sources */,
 				2AE17F5C235DAFD2006C8022 /* AppDelegate.swift in Sources */,
+				7712C95923D3711F00557961 /* SkillsTableViewCell.swift in Sources */,
 				2AC72649235F41A800149002 /* Skill.swift in Sources */,
 				2A43A0D02369C09E0085EA8E /* BioController.swift in Sources */,
 				2AC72647235F40FF00149002 /* User.swift in Sources */,

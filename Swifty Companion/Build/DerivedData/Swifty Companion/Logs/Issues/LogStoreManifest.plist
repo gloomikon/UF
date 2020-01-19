@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>365FD849-A741-4A45-BA1C-689408DB25D8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.target.product-type.framework</string>
+			<key>fileName</key>
+			<string>365FD849-A741-4A45-BA1C-689408DB25D8.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>signature</key>
+			<string>Pods-Swifty_Companion-bffbfeelbbhnbcftzhlakuhgyeqp</string>
+			<key>timeStartedRecording</key>
+			<real>601062621.40753996</real>
+			<key>timeStoppedRecording</key>
+			<real>601062621.43743896</real>
+			<key>title</key>
+			<string>Build target Pods-Swifty Companion</string>
+			<key>uniqueIdentifier</key>
+			<string>365FD849-A741-4A45-BA1C-689408DB25D8</string>
+		</dict>
+		<key>C754B7B2-0E40-4C33-BA94-E776396C7A6F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
+			<key>fileName</key>
+			<string>C754B7B2-0E40-4C33-BA94-E776396C7A6F.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>signature</key>
+			<string>Swifty_Companion-getpwinecowlxrdgmvmzrviwpapr</string>
+			<key>timeStartedRecording</key>
+			<real>601062621.43867099</real>
+			<key>timeStoppedRecording</key>
+			<real>601062622.55115104</real>
+			<key>title</key>
+			<string>Build target Swifty Companion</string>
+			<key>uniqueIdentifier</key>
+			<string>C754B7B2-0E40-4C33-BA94-E776396C7A6F</string>
+		</dict>
+	</dict>
+	<key>preserveOldLogs</key>
+	<true/>
+</dict>
+</plist>
