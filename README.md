@@ -12,6 +12,7 @@
 	* Lem_in
 	* Corewar
 	* init
+	* Swifty Companion
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
 	* Piscine Swift
