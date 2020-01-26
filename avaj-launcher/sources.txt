@@ -1,0 +1,9 @@
+avajlauncher/simulation/MyFileWriter.java
+avajlauncher/simulation/MyException.java
+avajlauncher/simulation/flyable/Aircraft.java
+avajlauncher/simulation/flyable/Flyable.java
+avajlauncher/simulation/flyable/Helicopter.java
+avajlauncher/simulation/Coordinates.java
+avajlauncher/weather/WeatherTower.java
+avajlauncher/weather/Tower.java
+avajlauncher/weather/WeatherProvider.java
