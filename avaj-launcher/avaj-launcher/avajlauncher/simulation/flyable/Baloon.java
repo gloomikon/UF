@@ -1,13 +1,13 @@
 package avajlauncher.simulation.flyable;
 
-import avajlauncher.simulation.weather.*;
+import avajlauncher.weather.*;
 import avajlauncher.simulation.*;
 import java.util.*;
 
-public class Helicopter extends Aircraft implements Flyable {
+public class Baloon extends Aircraft implements Flyable {
 	WeatherTower weatherTower;
 
-	Helicopter(String name, Coordinates coordinates) {
+	Baloon(String name, Coordinates coordinates) {
 		super(name, coordinates);
 	}
 
@@ -22,27 +22,27 @@ public class Helicopter extends Aircraft implements Flyable {
 		};
 
 		String weather = weatherTower.getWeather(coordinates);
+		MyFileWriter.writer.write("Baloon#" + name + "(" + id + "): " + messages.get(weather));
 
 		switch (weather) {
 		case "SUN":
-			coordinates.changeLongitudeBy(10);
-			coordinates.changeHeightBy(2);
+			coordinates.changeLongitudeBy(2);
+			coordinates.changeHeightBy(4);
 			break;
 		case "RAIN":
-			coordinates.changeLongitudeBy(5);
+			coordinates.changeHeightBy(-5);
 			break;
 		case "FOG":
-			coordinates.changeLongitudeBy(1);
+			coordinates.changeHeightBy(-3);
 			break;
 		case "SNOW":
-			coordinates.changeHeightBy(-12);
+			coordinates.changeHeightBy(-15);
 			break;
 		default:
 			break;
 		}
-		MyFileWriter.writer.write("Helicopter#" + name + "(" + id + "): " + messages.get(weather));
 		if (coordinates.getHeight() < 0) {
-			MyFileWriter.writer.write("Helicopter#" + name + "(" + id + "): landing.");
+			MyFileWriter.writer.write("Baloon#" + name + "(" + id + "): landing.");
 			weatherTower.unregister(this);
 		}
 	}

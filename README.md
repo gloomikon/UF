@@ -13,7 +13,7 @@
 	* Corewar
 	* init
 	* Swifty Companion
-	* avaj_launcher
+	* avaj-launcher
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
 	* Piscine Swift
@@ -47,7 +47,7 @@
 **100 / 100**
 * [Swifty Companion](https://github.com/gloomikon/UF/tree/master/Swifty%20Companion)  
 **125 / 100**
-* [avaj_launcher](https://github.com/gloomikon/UF/tree/master/avaj-launcher)  
+* [avaj-launcher](https://github.com/gloomikon/UF/tree/master/avaj-launcher)  
 **In progress**
 
 ## Piscines

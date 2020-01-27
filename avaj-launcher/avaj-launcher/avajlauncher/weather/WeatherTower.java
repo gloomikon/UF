@@ -1,4 +1,4 @@
-package avajlauncher.simulation.weather;
+package avajlauncher.weather;
 
 import avajlauncher.simulation.*;
 import avajlauncher.simulation.flyable.*;

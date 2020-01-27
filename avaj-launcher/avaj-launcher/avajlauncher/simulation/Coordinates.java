@@ -5,7 +5,7 @@ public class Coordinates {
 	private int latitude;
 	private int height;
 
-	Coordinates(int longitude, int latitude, int height) throws MyException {
+	public Coordinates(int longitude, int latitude, int height) throws MyException {
 		if (latitude < 0 || longitude < 0 || height < 0) {
 			MyException except = new MyException("Value can not be negative");
 			throw except;
