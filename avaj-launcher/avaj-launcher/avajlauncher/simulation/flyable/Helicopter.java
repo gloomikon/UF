@@ -42,7 +42,7 @@ public class Helicopter extends Aircraft implements Flyable {
 			break;
 		}
 		if (coordinates.getHeight() < 0) {
-			Simulation.writer.println("Helicopter#" + name + "(" + id + "): landing.");
+			Simulation.writer.println("Helicopter#" + name + "(" + id + "): landing at [" + coordinates.getLongitude() + ", " + coordinates.getLatitude() + "].");
 			weatherTower.unregister(this);
 		}
 	}

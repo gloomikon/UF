@@ -42,7 +42,7 @@ public class JetPlane extends Aircraft implements Flyable {
 			break;
 		}
 		if (coordinates.getHeight() < 0) {
-			Simulation.writer.println("JetPlane#" + name + "(" + id + "): landing.");
+			Simulation.writer.println("JetPlane#" + name + "(" + id + "): landing at [" + coordinates.getLongitude() + ", " + coordinates.getLatitude() + "].");
 			weatherTower.unregister(this);
 		}
 	}

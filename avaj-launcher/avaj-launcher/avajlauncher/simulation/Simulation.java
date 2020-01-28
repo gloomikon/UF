@@ -25,6 +25,10 @@ public class Simulation {
 
 			// READ FIRST LINE
 			line = reader.readLine();
+			if (line == null) {
+				System.out.println("File can not be empty!");
+				System.exit(-1);
+			}
 			if (line.isEmpty() == true) {
 				System.exit(-1);
 			}
@@ -37,9 +41,10 @@ public class Simulation {
 				}
 			}
 			catch(NumberFormatException e) {
-				System.exit(-1);
 				System.out.println(e);
+				System.exit(-1);
 			}
+
 			// READ ALL DATA
 
 			while ((line = reader.readLine()) != null) {

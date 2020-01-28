@@ -6,7 +6,7 @@ public class Coordinates {
 	private int height;
 
 	public Coordinates(int longitude, int latitude, int height) throws InvalidCoordinateException {
-		if (latitude < 0 || longitude < 0 || height < 0) {
+		if (latitude <= 0 || longitude <= 0 || height < 0) {
 			InvalidCoordinateException except = new InvalidCoordinateException("Value can not be negative");
 			throw except;
 		}
@@ -16,15 +16,15 @@ public class Coordinates {
 	}
 
 	public int getLongitude() {
-		return (this.longitude);
+		return longitude;
 	}
 
 	public int getLatitude() {
-		return (this.latitude);
+		return latitude;
 	}
 
 	public int getHeight() {
-		return (this.height);
+		return height;
 	}
 
 	public void changeLongitudeBy(int value) throws InvalidCoordinateException {
