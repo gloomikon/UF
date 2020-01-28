@@ -8,7 +8,12 @@ public class WeatherTower extends Tower {
 		return WeatherProvider.getProvider().getCurrentWeather(coordinates);
 	}
 
-	void changeWeather() throws MyException {
-		// TODO
+	public void changeWeather() {
+		conditionsChanged();
+	}
+
+	public void registering(Flyable flyable) {
+		register(flyable);
+		flyable.registerTower(this);
 	}
 }

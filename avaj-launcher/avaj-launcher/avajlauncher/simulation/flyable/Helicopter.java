@@ -11,7 +11,7 @@ public class Helicopter extends Aircraft implements Flyable {
 		super(name, coordinates);
 	}
 
-	public void updateConditions() throws MyException {
+	public void updateConditions() throws InvalidCoordinateException {
 		Map<String, String> messages = new HashMap<String, String>() {
 			{
 				put("RAIN", "Ehhh, I knew I should have to fix these wipers...");
@@ -22,7 +22,7 @@ public class Helicopter extends Aircraft implements Flyable {
 		};
 
 		String weather = weatherTower.getWeather(coordinates);
-		MyFileWriter.writer.write("Helicopter#" + name + "(" + id + "): " + messages.get(weather));
+		Simulation.writer.println("Helicopter#" + name + "(" + id + "): " + messages.get(weather));
 
 		switch (weather) {
 		case "SUN":
@@ -42,7 +42,7 @@ public class Helicopter extends Aircraft implements Flyable {
 			break;
 		}
 		if (coordinates.getHeight() < 0) {
-			MyFileWriter.writer.write("Helicopter#" + name + "(" + id + "): landing.");
+			Simulation.writer.println("Helicopter#" + name + "(" + id + "): landing.");
 			weatherTower.unregister(this);
 		}
 	}

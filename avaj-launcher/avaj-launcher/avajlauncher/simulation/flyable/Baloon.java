@@ -11,18 +11,18 @@ public class Baloon extends Aircraft implements Flyable {
 		super(name, coordinates);
 	}
 
-	public void updateConditions() throws MyException {
+	public void updateConditions() throws InvalidCoordinateException {
 		Map<String, String> messages = new HashMap<String, String>() {
 			{
-				put("RAIN", "Ehhh, I knew I should have to fix these wipers...");
-				put("SUN", "This is hot.");
-				put("FOG", "May god bless the radar.");
-				put("SNOW", "My rotor is going to freeze!");
+				put("RAIN", "Damn you rain! You messed up my baloon.");
+				put("SUN", "Let's enjoy the good weather and take some pics.");
+				put("FOG", "Damn it! I can see nothing.");
+				put("SNOW", "It's snowing. We're gonna crash.");
 			}
 		};
 
 		String weather = weatherTower.getWeather(coordinates);
-		MyFileWriter.writer.write("Baloon#" + name + "(" + id + "): " + messages.get(weather));
+		Simulation.writer.println("Baloon#" + name + "(" + id + "): " + messages.get(weather));
 
 		switch (weather) {
 		case "SUN":
@@ -42,7 +42,7 @@ public class Baloon extends Aircraft implements Flyable {
 			break;
 		}
 		if (coordinates.getHeight() < 0) {
-			MyFileWriter.writer.write("Baloon#" + name + "(" + id + "): landing.");
+			Simulation.writer.println("Baloon#" + name + "(" + id + "): landing.");
 			weatherTower.unregister(this);
 		}
 	}

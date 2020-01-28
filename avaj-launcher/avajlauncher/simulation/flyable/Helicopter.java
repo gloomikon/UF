@@ -4,45 +4,45 @@ import avajlauncher.weather.*;
 import avajlauncher.simulation.*;
 import java.util.*;
 
-public class JetPlane extends Aircraft implements Flyable {
+public class Helicopter extends Aircraft implements Flyable {
 	WeatherTower weatherTower;
 
-	JetPlane(String name, Coordinates coordinates) {
+	Helicopter(String name, Coordinates coordinates) {
 		super(name, coordinates);
 	}
 
 	public void updateConditions() throws InvalidCoordinateException {
 		Map<String, String> messages = new HashMap<String, String>() {
 			{
-				put("RAIN", "It's raining. Better watch out for lightings.");
-				put("SUN", "I'm melting >_<");
-				put("FOG", "See me?");
-				put("SNOW", "OMG! Winter is coming!");
+				put("RAIN", "Ehhh, I knew I should have to fix these wipers...");
+				put("SUN", "This is hot.");
+				put("FOG", "May god bless the radar.");
+				put("SNOW", "My rotor is going to freeze!");
 			}
 		};
 
 		String weather = weatherTower.getWeather(coordinates);
-		Simulation.writer.println("JetPlane#" + name + "(" + id + "): " + messages.get(weather));
+		Simulation.writer.println("Helicopter#" + name + "(" + id + "): " + messages.get(weather));
 
 		switch (weather) {
 		case "SUN":
-			coordinates.changeLatitudeBy(10);
+			coordinates.changeLongitudeBy(10);
 			coordinates.changeHeightBy(2);
 			break;
 		case "RAIN":
-			coordinates.changeLatitudeBy(5);
+			coordinates.changeLongitudeBy(5);
 			break;
 		case "FOG":
-			coordinates.changeLatitudeBy(1);
+			coordinates.changeLongitudeBy(1);
 			break;
 		case "SNOW":
-			coordinates.changeHeightBy(-7);
+			coordinates.changeHeightBy(-12);
 			break;
 		default:
 			break;
 		}
 		if (coordinates.getHeight() < 0) {
-			Simulation.writer.println("JetPlane#" + name + "(" + id + "): landing.");
+			Simulation.writer.println("Helicopter#" + name + "(" + id + "): landing.");
 			weatherTower.unregister(this);
 		}
 	}
