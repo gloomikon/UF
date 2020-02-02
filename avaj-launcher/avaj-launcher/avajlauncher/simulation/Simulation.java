@@ -30,6 +30,7 @@ public class Simulation {
 				System.exit(-1);
 			}
 			if (line.isEmpty() == true) {
+				System.out.println("First line can not be empty!");
 				System.exit(-1);
 			}
 			try {
@@ -48,7 +49,7 @@ public class Simulation {
 			// READ ALL DATA
 
 			while ((line = reader.readLine()) != null) {
-				String[] words = line.split(" +|\t+");
+				String[] words = line.trim().split("\\s+");
 				if (words.length != 5) {
 					System.out.println("Invalid line: " + line);
 					System.exit(-1);
