@@ -48,7 +48,7 @@
 * [Swifty Companion](https://github.com/gloomikon/UF/tree/master/Swifty%20Companion)  
 **125 / 100**
 * [avaj-launcher](https://github.com/gloomikon/UF/tree/master/avaj-launcher)  
-**In progress**
+**125 / 100**
 
 ## Piscines
 
