@@ -1,4 +1,4 @@
-# Unit Factory (42 School) projects
+# UNIT Factory (42 School) projects
 * [Profile link](https://github.com/gloomikon/UnitFactory/#My-profile)
 * [Projects](https://github.com/gloomikon/UnitFactory/#Projects)
 	* Exams
