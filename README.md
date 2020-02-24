@@ -14,6 +14,7 @@
 	* init
 	* Swifty Companion
 	* avaj-launcher
+	* Swifty Proteins
 * [Piscines](https://github.com/gloomikon/UnitFactory/#Piscines)
 	* Piscine C
 	* Piscine Swift
@@ -48,6 +49,8 @@
 * [Swifty Companion](https://github.com/gloomikon/UF/tree/master/Swifty%20Companion)  
 **125 / 100**
 * [avaj-launcher](https://github.com/gloomikon/UF/tree/master/avaj-launcher)  
+**125 / 100**
+* [Swifty Proteins](https://github.com/gloomikon/Swifty_Proteins)  
 **125 / 100**
 
 ## Piscines
